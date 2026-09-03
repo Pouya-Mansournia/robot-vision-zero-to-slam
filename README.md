@@ -1,5 +1,9 @@
 # Robot Vision: Zero to SLAM
 
+<p align="center">
+  <img src="assets/cover.jpg" alt="Cover of the book Robot Vision: Zero to SLAM, next to a spread of open pages showing the classical vision pipeline, CNN detection, visual odometry, and a SLAM system" width="100%">
+</p>
+
 This is a free book about computer vision for robotics, written in English and Persian. It starts from a question most tutorials skip, "what is a digital image, really?", and does not stop until you have followed the whole path to Visual SLAM and ROS 2.
 
 ![Chapters](https://img.shields.io/badge/chapters-10-0e7c86)
