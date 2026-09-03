@@ -65,9 +65,8 @@ h1 em{font-style:normal; color:var(--accent);}
 .btn{display:inline-flex; align-items:center; gap:8px; padding:13px 22px; border-radius:10px; font-weight:700; font-size:.95rem; text-decoration:none; border:1px solid transparent; cursor:pointer;}
 .btn-primary{background:var(--accent); color:#fff; box-shadow:var(--shadow);}
 .btn-ghost{background:transparent; color:var(--ink); border-color:var(--line);}
-.hero-art{aspect-ratio:1/1; border-radius:18px; background:var(--panel); border:1px solid var(--line); box-shadow:var(--shadow); overflow:hidden;}
-.pixel-grid{width:100%; height:100%; display:grid; grid-template-columns:repeat(8,1fr); grid-template-rows:repeat(8,1fr);}
-.pixel-grid div{border:.5px solid var(--bg-alt);}
+.hero-art{border-radius:18px; background:var(--panel); border:1px solid var(--line); box-shadow:var(--shadow); overflow:hidden;}
+.hero-art img{display:block; width:100%; height:auto;}
 .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden; margin-top:44px;}
 @media (max-width:640px){.stats{grid-template-columns:repeat(2,1fr);}}
 .stat{background:var(--panel); padding:20px 18px;}
@@ -121,8 +120,8 @@ footer.site{border-top:1px solid var(--line); background:var(--bg-alt); padding:
       <div class="kicker"><span class="en">A free, beginner-friendly book</span><span class="fa">یک کتاب آموزشی کاملاً رایگان و مبتدی‌پسند</span></div>
       <h1><span class="en">From a single <em>pixel</em> to a real robot's eyes</span><span class="fa">از یک <em>پیکسل تنها</em> تا چشمِ یک ربات واقعی</span></h1>
       <p class="lead">
-        <span class="en">This book walks you, step by step, from "what actually is a digital image?" to a real robotics vision system — the same path a computer vision engineer follows: pixels, filters, edges, features, camera geometry, YOLO object detection, deep learning, and finally SLAM and ROS 2 on a real robot.</span>
-        <span class="fa">این کتاب شما را قدم‌به‌قدم، از «اصلاً تصویر دیجیتال چیست؟» به یک سیستم بینایی واقعی رباتیک می‌برد — همان مسیری که یک مهندس بینایی ماشین طی می‌کند: پیکسل، فیلتر، لبه، ویژگی، هندسه دوربین، تشخیص اشیا با YOLO، یادگیری عمیق، و در نهایت SLAM و ROS 2 روی یک ربات واقعی.</span>
+        <span class="en">This book walks you, step by step, from "what actually is a digital image?" to a real robotics vision system. It follows the same path a computer vision engineer does: pixels, filters, edges, features, camera geometry, YOLO object detection, deep learning, and finally SLAM and ROS 2 on a real robot.</span>
+        <span class="fa">این کتاب شما را قدم‌به‌قدم، از «اصلاً تصویر دیجیتال چیست؟» به یک سیستم بینایی واقعی رباتیک می‌برد؛ همان مسیری که یک مهندس بینایی ماشین طی می‌کند: پیکسل، فیلتر، لبه، ویژگی، هندسه دوربین، تشخیص اشیا با YOLO، یادگیری عمیق، و در نهایت SLAM و ROS 2 روی یک ربات واقعی.</span>
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="01-what-is-a-digital-image.html"><span class="en">Start with Chapter 1 →</span><span class="fa">شروع از فصل ۱ ←</span></a>
@@ -135,7 +134,7 @@ footer.site{border-top:1px solid var(--line); background:var(--bg-alt); padding:
         <div class="stat"><b>∞</b><span class="en">Runnable code</span><span class="fa">کد قابل‌اجرا</span></div>
       </div>
     </div>
-    <div class="hero-art" aria-hidden="true"><div class="pixel-grid" id="pixelGrid"></div></div>
+    <div class="hero-art"><img src="assets/cover.jpg" alt="Cover of the book Robot Vision: Zero to SLAM, shown next to a spread of open pages"></div>
   </div>
 </section>
 
@@ -143,7 +142,7 @@ footer.site{border-top:1px solid var(--line); background:var(--bg-alt); padding:
   <div class="wrap">
     <div class="section-head">
       <h2><span class="en">The book's roadmap</span><span class="fa">نقشه راه کتاب</span></h2>
-      <p><span class="en">Each dot is one chapter. The path is linear — every chapter builds on the last one.</span><span class="fa">هر نقطه یک فصل است. مسیر خطی است — هر فصل روی مفاهیم فصل قبل بنا می‌شود.</span></p>
+      <p><span class="en">Each dot is one chapter. The path is linear. Every chapter builds on the last one.</span><span class="fa">هر نقطه یک فصل است. مسیر خطی است. هر فصل روی مفاهیم فصل قبل بنا می‌شود.</span></p>
     </div>
     <div class="path" aria-hidden="true">
       <div class="path-dot">1</div><div class="path-line"></div><div class="path-dot">2</div><div class="path-line"></div>
@@ -154,7 +153,7 @@ footer.site{border-top:1px solid var(--line); background:var(--bg-alt); padding:
     </div>
 
     <div class="grid">
-      <div class="part-label"><span class="en">Part One — Image Foundations</span><span class="fa">بخش یک — بنیان‌های تصویر</span></div>
+      <div class="part-label"><span class="en">Part One: Image Foundations</span><span class="fa">بخش یک: بنیان‌های تصویر</span></div>
 
       <a class="card" href="01-what-is-a-digital-image.html">
         <div class="card-top"><span class="card-num">CH 01</span><span class="card-part"><span class="en">Foundations</span><span class="fa">بنیان</span></span></div>
@@ -170,37 +169,37 @@ footer.site{border-top:1px solid var(--line); background:var(--bg-alt); padding:
         <div class="card-tags"><span class="tag">imread</span><span class="tag">BGR</span><span class="tag">VideoCapture</span></div>
       </a>
 
-      <div class="part-label"><span class="en">Part Two — Classical Vision</span><span class="fa">بخش دو — بینایی کلاسیک</span></div>
+      <div class="part-label"><span class="en">Part Two: Classical Vision</span><span class="fa">بخش دو: بینایی کلاسیک</span></div>
 
       <a class="card" href="03-classical-image-processing.html">
         <div class="card-top"><span class="card-num">CH 03</span><span class="card-part"><span class="en">Classical</span><span class="fa">کلاسیک</span></span></div>
         <h3><span class="en">Classical Image Processing</span><span class="fa">پردازش تصویر کلاسیک</span></h3>
-        <p><span class="en">Convolution, Gaussian blur, thresholding, histograms, and morphology — fast, lightweight tools that predate deep learning.</span><span class="fa">Convolution، بلور گاوسی، آستانه‌گذاری، هیستوگرام و مورفولوژی — ابزارهای سریع و سبک قبل از دیپ‌لرنینگ.</span></p>
+        <p><span class="en">Convolution, Gaussian blur, thresholding, histograms, and morphology. Fast, lightweight tools that predate deep learning.</span><span class="fa">Convolution، بلور گاوسی، آستانه‌گذاری، هیستوگرام و مورفولوژی؛ ابزارهای سریع و سبک قبل از دیپ‌لرنینگ.</span></p>
         <div class="card-tags"><span class="tag">Gaussian Blur</span><span class="tag">Threshold</span><span class="tag">Morphology</span></div>
       </a>
 
       <a class="card" href="04-edges-and-shapes.html">
         <div class="card-top"><span class="card-num">CH 04</span><span class="card-part"><span class="en">Classical</span><span class="fa">کلاسیک</span></span></div>
         <h3><span class="en">Edges and Shapes</span><span class="fa">لبه‌ها و شکل‌ها</span></h3>
-        <p><span class="en">From image gradients to the Canny algorithm and contour extraction — how a computer finds an object's boundary.</span><span class="fa">از گرادیان تصویر تا الگوریتم Canny و استخراج Contour — چطور کامپیوتر مرز یک شیء را پیدا می‌کند.</span></p>
+        <p><span class="en">From image gradients to the Canny algorithm and contour extraction, and how a computer finds an object's boundary.</span><span class="fa">از گرادیان تصویر تا الگوریتم Canny و استخراج Contour؛ چطور کامپیوتر مرز یک شیء را پیدا می‌کند.</span></p>
         <div class="card-tags"><span class="tag">Gradient</span><span class="tag">Canny</span><span class="tag">Contour</span></div>
       </a>
 
       <a class="card" href="05-feature-detection.html">
         <div class="card-top"><span class="card-num">CH 05</span><span class="card-part"><span class="en">Classical</span><span class="fa">کلاسیک</span></span></div>
         <h3><span class="en">Feature Detection & Matching</span><span class="fa">استخراج ویژگی تصویر</span></h3>
-        <p><span class="en">Harris corners, ORB, and matching features across two photos — the foundation of panoramas, Visual Odometry, and SLAM.</span><span class="fa">Harris Corner، ORB و تطبیق ویژگی بین دو عکس — پایه‌ی Panorama، Visual Odometry و SLAM.</span></p>
+        <p><span class="en">Harris corners, ORB, and matching features across two photos. This is the foundation of panoramas, Visual Odometry, and SLAM.</span><span class="fa">Harris Corner، ORB و تطبیق ویژگی بین دو عکس؛ پایه‌ی Panorama، Visual Odometry و SLAM.</span></p>
         <div class="card-tags"><span class="tag">Corner</span><span class="tag">ORB</span><span class="tag">Homography</span></div>
       </a>
 
       <a class="card" href="06-camera-geometry-3d-vision.html">
         <div class="card-top"><span class="card-num">CH 06</span><span class="card-part"><span class="en">Classical</span><span class="fa">کلاسیک</span></span></div>
         <h3><span class="en">Camera Geometry & 3D Vision</span><span class="fa">دوربین و بینایی سه‌بعدی</span></h3>
-        <p><span class="en">The pinhole model, the camera matrix, calibration, and stereo vision — extracting real depth from a flat photo.</span><span class="fa">مدل Pinhole، ماتریس دوربین، کالیبراسیون و دید استریو — چطور از یک عکس دوبعدی، عمق واقعی استخراج می‌شود.</span></p>
+        <p><span class="en">The pinhole model, the camera matrix, calibration, and stereo vision, which extracts real depth from a flat photo.</span><span class="fa">مدل Pinhole، ماتریس دوربین، کالیبراسیون و دید استریو؛ چطور از یک عکس دوبعدی عمق واقعی استخراج می‌شود.</span></p>
         <div class="card-tags"><span class="tag">Calibration</span><span class="tag">Stereo</span><span class="tag">Depth</span></div>
       </a>
 
-      <div class="part-label"><span class="en">Part Three — Deep Learning</span><span class="fa">بخش سه — یادگیری عمیق</span></div>
+      <div class="part-label"><span class="en">Part Three: Deep Learning</span><span class="fa">بخش سه: یادگیری عمیق</span></div>
 
       <a class="card" href="07-object-detection-yolo.html">
         <div class="card-top"><span class="card-num">CH 07</span><span class="card-part"><span class="en">Deep Learning</span><span class="fa">دیپ‌لرنینگ</span></span></div>
@@ -216,12 +215,12 @@ footer.site{border-top:1px solid var(--line); background:var(--bg-alt); padding:
         <div class="card-tags"><span class="tag">CNN</span><span class="tag">Segmentation</span><span class="tag">Transfer Learning</span></div>
       </a>
 
-      <div class="part-label"><span class="en">Part Four — Vision on a Real Robot</span><span class="fa">بخش چهار — بینایی روی ربات واقعی</span></div>
+      <div class="part-label"><span class="en">Part Four: Vision on a Real Robot</span><span class="fa">بخش چهار: بینایی روی ربات واقعی</span></div>
 
       <a class="card" href="09-robot-vision-slam-fusion.html">
         <div class="card-top"><span class="card-num">CH 09</span><span class="card-part"><span class="en">Robotics</span><span class="fa">رباتیک</span></span></div>
         <h3><span class="en">Vision for Robotics</span><span class="fa">بینایی برای رباتیک</span></h3>
-        <p><span class="en">Visual Odometry, Optical Flow, Visual SLAM, and Sensor Fusion with a Kalman Filter — where is the robot, really?</span><span class="fa">Visual Odometry، Optical Flow، Visual SLAM و Sensor Fusion با فیلتر کالمن — ربات کجاست؟</span></p>
+        <p><span class="en">Visual Odometry, Optical Flow, Visual SLAM, and Sensor Fusion with a Kalman Filter. Where is the robot, really?</span><span class="fa">Visual Odometry، Optical Flow، Visual SLAM و Sensor Fusion با فیلتر کالمن. ربات کجاست؟</span></p>
         <div class="card-tags"><span class="tag">SLAM</span><span class="tag">Kalman Filter</span><span class="tag">EKF</span></div>
       </a>
 
@@ -240,7 +239,7 @@ footer.site{border-top:1px solid var(--line); background:var(--bg-alt); padding:
     <div class="section-head"><h2><span class="en">How to read this book</span><span class="fa">این کتاب را چطور بخوانم؟</span></h2></div>
     <div class="howto">
       <div class="item"><b><span class="n">1</span><span class="en">Follow the order</span><span class="fa">ترتیب را رعایت کن</span></b><p><span class="en">Each chapter builds on the last; start at Chapter 1 even if you already know Python.</span><span class="fa">هر فصل روی فصل قبل بنا می‌شود؛ از فصل ۱ شروع کن، حتی اگر با پایتون آشنایی داری.</span></p></div>
-      <div class="item"><b><span class="n">2</span><span class="en">Run the code</span><span class="fa">کدها را اجرا کن</span></b><p><span class="en">Every chapter has "Try It Yourself" boxes — copy the code, run it, see the output.</span><span class="fa">هر فصل جعبه‌های «امتحانش کن» دارد — کد را کپی کن، اجرا کن، خروجی را ببین.</span></p></div>
+      <div class="item"><b><span class="n">2</span><span class="en">Run the code</span><span class="fa">کدها را اجرا کن</span></b><p><span class="en">Every chapter has "Try It Yourself" boxes. Copy the code, run it, see the output.</span><span class="fa">هر فصل جعبه‌های «امتحانش کن» دارد؛ کد را کپی کن، اجرا کن، خروجی را ببین.</span></p></div>
       <div class="item"><b><span class="n">3</span><span class="en">Check the glossary</span><span class="fa">واژه‌نامه را نگاه کن</span></b><p><span class="en">Technical terms are always footnoted to the glossary at the end of that same chapter.</span><span class="fa">اصطلاح‌های تخصصی همیشه با پانوشت به واژه‌نامه انتهای همان فصل وصل‌اند.</span></p></div>
     </div>
   </div>
@@ -248,22 +247,12 @@ footer.site{border-top:1px solid var(--line); background:var(--bg-alt); padding:
 
 <footer class="site">
   <div class="wrap footer-row">
-    <span><span class="en">Robot Vision: Zero to SLAM — a free book for learning computer vision and robotics from scratch.</span><span class="fa">چشم ربات: از صفر تا SLAM — یک کتاب آموزشی رایگان برای یادگیری بینایی ماشین و رباتیک از صفر.</span></span>
+    <span><span class="en">Robot Vision: Zero to SLAM. A free book for learning computer vision and robotics from scratch.</span><span class="fa">چشم ربات: از صفر تا SLAM. یک کتاب آموزشی رایگان برای یادگیری بینایی ماشین و رباتیک از صفر.</span></span>
     <a class="btn btn-primary" href="01-what-is-a-digital-image.html" style="padding:10px 18px;"><span class="en">Start reading →</span><span class="fa">شروع مطالعه ←</span></a>
   </div>
 </footer>
 
 <script>
-(function(){
-  var grid = document.getElementById('pixelGrid');
-  var accentCells = [10,11,19,20,27,28,35,36];
-  for (var i=0;i<64;i++){
-    var d = document.createElement('div');
-    if (accentCells.indexOf(i) !== -1){ d.style.background='var(--accent)'; d.style.opacity=(0.35+Math.random()*0.5).toFixed(2); }
-    else if (Math.random() < 0.12){ d.style.background='var(--accent-2)'; d.style.opacity=(0.2+Math.random()*0.3).toFixed(2); }
-    grid.appendChild(d);
-  }
-})();
 document.getElementById('langToggle').addEventListener('click', function(){
   var next = document.documentElement.lang === 'fa' ? 'en' : 'fa';
   document.documentElement.lang = next;
