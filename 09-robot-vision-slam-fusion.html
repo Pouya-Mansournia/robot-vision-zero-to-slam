@@ -17,7 +17,7 @@
   if (t === 'dark' || t === 'light') { document.documentElement.setAttribute('data-theme', t); }
 })();
 </script>
-<title>Robot Vision: Zero to SLAM — Ch. 9</title>
+<title>Robot Vision: Zero to SLAM · Ch. 9</title>
 <style>
 :root{
   --bg:#f4f1e8; --bg-alt:#eae5d6; --panel:#ffffff; --ink:#1b2430; --ink-soft:#4a5568;
@@ -142,7 +142,7 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
   <div class="wrap">
     <div>
       <a class="brand" href="index.html"><span class="en">Robot Vision: Zero to SLAM 🤖👁</span><span class="fa">چشم ربات: از صفر تا SLAM 🤖👁</span></a>
-      <span class="chapnum"><span class="en">— Chapter 09 of 10</span><span class="fa">— فصل ۰۹ از ۱۰</span></span>
+      <span class="chapnum"><span class="en">, Chapter 09 of 10</span><span class="fa">, فصل ۰۹ از ۱۰</span></span>
     </div>
     <div class="navlinks">
       <a href="08-deep-learning-vision.html"><span class="en">← Previous</span><span class="fa">← فصل قبل</span></a>
@@ -192,15 +192,15 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
   <div class="box box-why">
     <div class="box-title"><span class="en">🎯 Why this matters</span><span class="fa">🎯 چرا این مهم است؟</span></div>
     <p>
-      <span class="en">A real mobile robot never has just one sensor, and no single sensor is ever perfectly accurate. This chapter shows how to figure out a robot's motion from camera images (Visual Odometry), how to build a map and locate yourself on it at the same time (SLAM), and — most importantly — how to turn several imperfect sensors into one trustworthy estimate using simple math (Sensor Fusion). This is the beating heart of every real autonomous robot.</span>
+      <span class="en">A real mobile robot never has just one sensor, and no single sensor is ever perfectly accurate. This chapter shows how to figure out a robot's motion from camera images (Visual Odometry), how to build a map and locate yourself on it at the same time (SLAM), and, most importantly, how to turn several imperfect sensors into one trustworthy estimate using simple math (Sensor Fusion). This is the beating heart of every real autonomous robot.</span>
       <span class="fa">یک ربات متحرک واقعی هیچ‌وقت فقط یک سنسور ندارد و هیچ‌وقت هیچ سنسوری کامل درست نیست. این فصل نشان می‌دهد چطور از تصویر دوربین، حرکت ربات را بفهمیم (Visual Odometry)، چطور هم‌زمان نقشه بسازیم و خودمان را روی آن پیدا کنیم (SLAM)، و از همه مهم‌تر چطور چند سنسور ناقص را با ریاضیات ساده به یک تخمین قابل‌اعتماد تبدیل کنیم (Sensor Fusion). این قلب تپنده‌ی هر ربات خودران واقعی است.</span>
     </p>
   </div>
 
-  <h2 id="sec-vo"><span class="en">1. Visual Odometry — Reading Motion from Images</span><span class="fa">۱. Visual Odometry — حرکت را از روی تصویر بخوان</span></h2>
+  <h2 id="sec-vo"><span class="en">1. Visual Odometry, Reading Motion from Images</span><span class="fa">۱. Visual Odometry, حرکت را از روی تصویر بخوان</span></h2>
   <p>
-    <span class="en"><span class="ltr">Visual Odometry</span><sup>1</sup> (VO) means estimating the motion of a camera — and therefore the robot — just by looking at consecutive video frames. Its main tool is exactly what we learned in Chapter 5: finding and matching features (Feature Matching).</span>
-    <span class="fa"><span class="ltr">Visual Odometry</span><sup>1</sup> (VO) یعنی تخمین حرکت دوربین — و در نتیجه ربات — فقط با نگاه‌کردن به فریم‌های متوالی ویدیو. ابزار اصلی‌اش همان چیزی است که در فصل ۵ یاد گرفتیم: پیدا کردن و تطبیق ویژگی‌ها (Feature Matching).</span>
+    <span class="en"><span class="ltr">Visual Odometry</span><sup>1</sup> (VO) means estimating the motion of a camera, and therefore the robot, just by looking at consecutive video frames. Its main tool is exactly what we learned in Chapter 5: finding and matching features (Feature Matching).</span>
+    <span class="fa"><span class="ltr">Visual Odometry</span><sup>1</sup> (VO) یعنی تخمین حرکت دوربین، و در نتیجه ربات، فقط با نگاه‌کردن به فریم‌های متوالی ویدیو. ابزار اصلی‌اش همان چیزی است که در فصل ۵ یاد گرفتیم: پیدا کردن و تطبیق ویژگی‌ها (Feature Matching).</span>
   </p>
 
   <div class="pipe">
@@ -214,22 +214,22 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
   </div>
 
   <p>
-    <span class="en">A crucial point: VO only gives you the <b>relative</b> motion between two consecutive frames — "how far did I move from the last frame to this one." To build the full trajectory, you have to sum up these tiny motions one by one (Integration). And that's exactly where the problem starts: every summation carries a small error with it, and these errors accumulate over time — a phenomenon called <span class="ltr">Drift</span><sup>2</sup>.</span>
-    <span class="fa">نکته‌ی حیاتی: VO فقط حرکت <b>نسبی</b> بین دو فریم پشت‌سرهم را می‌دهد — «از فریم قبلی تا این فریم چقدر جابه‌جا شدم». برای ساختن کل مسیر، باید این جابه‌جایی‌های کوچک را یکی‌یکی روی هم جمع بزنیم (Integration). مشکل همین‌جاست: هر جمع‌زدن، یک خطای کوچک هم با خودش می‌آورد و این خطاها رفته‌رفته روی هم انباشته می‌شوند — به این پدیده <span class="ltr">Drift</span><sup>2</sup> می‌گویند.</span>
+    <span class="en">A crucial point: VO only gives you the <b>relative</b> motion between two consecutive frames, "how far did I move from the last frame to this one." To build the full trajectory, you have to sum up these tiny motions one by one (Integration). And that's exactly where the problem starts: every summation carries a small error with it, and these errors accumulate over time, a phenomenon called <span class="ltr">Drift</span><sup>2</sup>.</span>
+    <span class="fa">نکته‌ی حیاتی: VO فقط حرکت <b>نسبی</b> بین دو فریم پشت‌سرهم را می‌دهد، «از فریم قبلی تا این فریم چقدر جابه‌جا شدم». برای ساختن کل مسیر، باید این جابه‌جایی‌های کوچک را یکی‌یکی روی هم جمع بزنیم (Integration). مشکل همین‌جاست: هر جمع‌زدن، یک خطای کوچک هم با خودش می‌آورد و این خطاها رفته‌رفته روی هم انباشته می‌شوند، به این پدیده <span class="ltr">Drift</span><sup>2</sup> می‌گویند.</span>
   </p>
 
   <div class="box box-warn">
     <div class="box-title"><span class="en">🧮 Numerical example</span><span class="fa">🧮 مثال عددی</span></div>
     <p>
-      <span class="en">Suppose each frame has just 2mm of measurement error. The camera runs at 30 frames per second. After 60 seconds — 1,800 processed frames — the accumulated error can reach several centimeters, even though each frame's error alone was tiny. This is exactly why VO alone isn't enough for long paths.</span>
-      <span class="fa">فرض کنید هر فریم فقط ۲ میلی‌متر خطای اندازه‌گیری دارد. حالا دوربین با ۳۰ فریم در ثانیه کار می‌کند. بعد از ۶۰ ثانیه، یعنی ۱۸۰۰ فریم پردازش شده، و خطای انباشته‌شده می‌تواند به چند سانتی‌متر برسد — با اینکه خطای هر فریم به‌تنهایی ناچیز بود. این دقیقاً همان دلیلی است که VO به‌تنهایی برای مسیرهای طولانی کافی نیست.</span>
+      <span class="en">Suppose each frame has just 2mm of measurement error. The camera runs at 30 frames per second. After 60 seconds, 1,800 processed frames, the accumulated error can reach several centimeters, even though each frame's error alone was tiny. This is exactly why VO alone isn't enough for long paths.</span>
+      <span class="fa">فرض کنید هر فریم فقط ۲ میلی‌متر خطای اندازه‌گیری دارد. حالا دوربین با ۳۰ فریم در ثانیه کار می‌کند. بعد از ۶۰ ثانیه، یعنی ۱۸۰۰ فریم پردازش شده، و خطای انباشته‌شده می‌تواند به چند سانتی‌متر برسد، با اینکه خطای هر فریم به‌تنهایی ناچیز بود. این دقیقاً همان دلیلی است که VO به‌تنهایی برای مسیرهای طولانی کافی نیست.</span>
     </p>
   </div>
 
-  <h2 id="sec-flow"><span class="en">2. Optical Flow — Motion of Every Pixel</span><span class="fa">۲. Optical Flow — حرکت هر پیکسل</span></h2>
+  <h2 id="sec-flow"><span class="en">2. Optical Flow, Motion of Every Pixel</span><span class="fa">۲. Optical Flow, حرکت هر پیکسل</span></h2>
   <p>
-    <span class="en"><span class="ltr">Optical Flow</span><sup>3</sup> takes a different approach: instead of finding a handful of discrete feature points, it estimates the motion of <b>every pixel</b> (or a dense grid of pixels) between two consecutive frames — giving a motion vector (u, v) for each pixel, describing how far it moved horizontally and vertically.</span>
-    <span class="fa"><span class="ltr">Optical Flow</span><sup>3</sup> رویکرد متفاوتی دارد: به‌جای پیدا کردن چند نقطه‌ی ویژگی گسسته، حرکت <b>هر پیکسل</b> (یا یک گرید متراکم از پیکسل‌ها) بین دو فریم متوالی را تخمین می‌زند — برای هر پیکسل یک بردار حرکت (u, v) به دست می‌آید که می‌گوید آن پیکسل چند واحد در جهت افقی و عمودی جابه‌جا شده.</span>
+    <span class="en"><span class="ltr">Optical Flow</span><sup>3</sup> takes a different approach: instead of finding a handful of discrete feature points, it estimates the motion of <b>every pixel</b> (or a dense grid of pixels) between two consecutive frames, giving a motion vector (u, v) for each pixel, describing how far it moved horizontally and vertically.</span>
+    <span class="fa"><span class="ltr">Optical Flow</span><sup>3</sup> رویکرد متفاوتی دارد: به‌جای پیدا کردن چند نقطه‌ی ویژگی گسسته، حرکت <b>هر پیکسل</b> (یا یک گرید متراکم از پیکسل‌ها) بین دو فریم متوالی را تخمین می‌زند، برای هر پیکسل یک بردار حرکت (u, v) به دست می‌آید که می‌گوید آن پیکسل چند واحد در جهت افقی و عمودی جابه‌جا شده.</span>
   </p>
   <p>
     <span class="en">Uses: quickly detecting motion in a scene, estimating the camera's angular velocity, and as a lightweight helper input for VO or lightweight tracking (which we'll revisit in Chapter 10).</span>
@@ -265,12 +265,12 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
   </p>
   <p><span class="en">Every SLAM system has two main parts:</span><span class="fa">دو بخش اصلی هر سیستم SLAM:</span></p>
   <ul>
-    <li><span class="en"><b>Frontend</b>: feature extraction and motion estimation between frames — much like the VO we just saw.</span><span class="fa"><b>Frontend</b>: استخراج ویژگی و تخمین حرکت بین فریم‌ها — شبیه همان VO که دیدیم.</span></li>
+    <li><span class="en"><b>Frontend</b>: feature extraction and motion estimation between frames, much like the VO we just saw.</span><span class="fa"><b>Frontend</b>: استخراج ویژگی و تخمین حرکت بین فریم‌ها، شبیه همان VO که دیدیم.</span></li>
     <li><span class="en"><b>Backend</b>: global optimization of the trajectory and map, and correcting accumulated error when the robot returns to a place it has seen before.</span><span class="fa"><b>Backend</b>: بهینه‌سازی کلی مسیر و نقشه، و تصحیح خطای تجمعی وقتی ربات به مکانی که قبلاً دیده برمی‌گردد.</span></li>
   </ul>
   <p>
-    <span class="en">Returning to a previously-seen place has a special name: <span class="ltr">Loop Closure</span><sup>8</sup>. When the robot recognizes "I've seen this place before," it can go back and correct its entire estimated trajectory — dramatically reducing drift. Without loop closure, error only ever grows and grows.</span>
-    <span class="fa">این بازگشت به مکان قدیمی نامی خاص دارد: <span class="ltr">Loop Closure</span><sup>8</sup>. وقتی ربات تشخیص می‌دهد «این مکان را قبلاً دیده‌ام»، می‌تواند کل مسیر تخمینی‌اش را عقب برگردد و تصحیح کند، و همین باعث می‌شود Drift به‌شدت کاهش یابد — بدون Loop Closure، خطا فقط زیاد و زیادتر می‌شود.</span>
+    <span class="en">Returning to a previously-seen place has a special name: <span class="ltr">Loop Closure</span><sup>8</sup>. When the robot recognizes "I've seen this place before," it can go back and correct its entire estimated trajectory, dramatically reducing drift. Without loop closure, error only ever grows and grows.</span>
+    <span class="fa">این بازگشت به مکان قدیمی نامی خاص دارد: <span class="ltr">Loop Closure</span><sup>8</sup>. وقتی ربات تشخیص می‌دهد «این مکان را قبلاً دیده‌ام»، می‌تواند کل مسیر تخمینی‌اش را عقب برگردد و تصحیح کند، و همین باعث می‌شود Drift به‌شدت کاهش یابد، بدون Loop Closure، خطا فقط زیاد و زیادتر می‌شود.</span>
   </p>
 
   <div class="svgbox">
@@ -301,14 +301,14 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
     <div class="svgcap"><span class="en">When the robot re-recognizes a place it has seen before, the whole estimated trajectory gets corrected.</span><span class="fa">وقتی ربات مکانی را که قبلاً دیده دوباره تشخیص می‌دهد، کل مسیر تخمینی تصحیح می‌شود.</span></div>
   </div>
 
-  <h2 id="sec-fusion"><span class="en">5. Sensor Fusion — Why and How?</span><span class="fa">۵. Sensor Fusion — چرا و چطور؟</span></h2>
+  <h2 id="sec-fusion"><span class="en">5. Sensor Fusion, Why and How?</span><span class="fa">۵. Sensor Fusion, چرا و چطور؟</span></h2>
   <p>
     <span class="en">A robot usually has multiple sources of information: a <span class="ltr">Wheel Encoder</span>, an <span class="ltr">IMU</span>, a camera, and maybe <span class="ltr">LiDAR</span>. The key question: when these sensors give different numbers, which one should the robot trust?</span>
     <span class="fa">یک ربات معمولاً چند منبع اطلاعات دارد: <span class="ltr">Wheel Encoder</span>، <span class="ltr">IMU</span>، دوربین، و شاید <span class="ltr">LiDAR</span>. سوال اصلی این است: وقتی این سنسورها عددهای متفاوتی می‌دهند، ربات باید حرف کدام‌یک را باور کند؟</span>
   </p>
   <p>
-    <span class="en">The right answer is not to trust any single one 100%. You have to combine them intelligently based on each sensor's uncertainty — this is called <span class="ltr">Sensor Fusion</span><sup>9</sup>.</span>
-    <span class="fa">جواب درست، باور ۱۰۰٪ هیچ‌کدام نیست. باید بر اساس میزان عدم‌قطعیت (Uncertainty) هر سنسور، آن‌ها را هوشمندانه ترکیب کرد — این کار را <span class="ltr">Sensor Fusion</span><sup>9</sup> می‌نامند.</span>
+    <span class="en">The right answer is not to trust any single one 100%. You have to combine them intelligently based on each sensor's uncertainty, this is called <span class="ltr">Sensor Fusion</span><sup>9</sup>.</span>
+    <span class="fa">جواب درست، باور ۱۰۰٪ هیچ‌کدام نیست. باید بر اساس میزان عدم‌قطعیت (Uncertainty) هر سنسور، آن‌ها را هوشمندانه ترکیب کرد، این کار را <span class="ltr">Sensor Fusion</span><sup>9</sup> می‌نامند.</span>
   </p>
 
   <h3><span class="en">What is State?</span><span class="fa">State چیست؟</span></h3>
@@ -329,8 +329,8 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
       <span class="fa"><b>Encoder</b>: فقط چرخش چرخ را می‌بیند و از لغزش چرخ (<span class="ltr">Wheel Slip</span>) خبر ندارد. مثال: Encoder می‌گوید ۱٫۰۰ متر رفته‌ای، ولی چون کف لغزنده بوده، واقعیت ۰٫۸۵ متر بوده است.</span>
     </li>
     <li>
-      <span class="en"><b>IMU</b>: has noise, bias, and drift. Example: when the robot is perfectly still, the gyroscope might still read 0.1°/s. If this tiny error is integrated over 600 seconds: 0.1×600=60 — that's 60° of accumulated error, from just a small noise source!</span>
-      <span class="fa"><b>IMU</b>: نویز، بایاس، و Drift دارد. مثال: وقتی ربات کاملاً ثابت است، ژیروسکوپ ممکن است ۰٫۱ درجه بر ثانیه نشان دهد. اگر این خطای کوچک ۶۰۰ ثانیه Integrate شود: 0.1×600=60 — یعنی ۶۰ درجه خطای انباشته، فقط از یک نویز کوچک!</span>
+      <span class="en"><b>IMU</b>: has noise, bias, and drift. Example: when the robot is perfectly still, the gyroscope might still read 0.1°/s. If this tiny error is integrated over 600 seconds: 0.1×600=60, that's 60° of accumulated error, from just a small noise source!</span>
+      <span class="fa"><b>IMU</b>: نویز، بایاس، و Drift دارد. مثال: وقتی ربات کاملاً ثابت است، ژیروسکوپ ممکن است ۰٫۱ درجه بر ثانیه نشان دهد. اگر این خطای کوچک ۶۰۰ ثانیه Integrate شود: 0.1×600=60, یعنی ۶۰ درجه خطای انباشته، فقط از یک نویز کوچک!</span>
     </li>
     <li>
       <span class="en"><b>Camera (Visual Odometry)</b>: struggles in low light, with <span class="ltr">motion blur</span>, blank textureless walls, repetitive texture, moving objects in the scene, or <span class="ltr">occlusion</span>.</span>
@@ -340,8 +340,8 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
 
   <h3><span class="en">Why not just average?</span><span class="fa">چرا فقط میانگین نمی‌گیریم؟</span></h3>
   <p>
-    <span class="en">Suppose the encoder says 1.00m and the camera says 0.91m. A simple average gives 0.955. But if we know the encoder is a bit less trustworthy because of possible slip, it makes sense to weight the camera more heavily — say, landing closer to 0.93. This is exactly what intelligent sensor fusion does: a weighted average based on confidence.</span>
-    <span class="fa">فرض کنید Encoder می‌گوید ۱٫۰۰ متر و دوربین می‌گوید ۰٫۹۱ متر. میانگین ساده ۰٫۹۵۵ می‌شود. اما اگر بدانیم Encoder به‌خاطر احتمال لغزش کمی نامطمئن‌تر است، منطقی است وزن بیشتری به دوربین بدهیم — مثلاً به عددی نزدیک‌تر به ۰٫۹۳ برسیم. این دقیقاً کاری است که Sensor Fusion هوشمند انجام می‌دهد: میانگین‌گیری وزن‌دار بر اساس اعتماد.</span>
+    <span class="en">Suppose the encoder says 1.00m and the camera says 0.91m. A simple average gives 0.955. But if we know the encoder is a bit less trustworthy because of possible slip, it makes sense to weight the camera more heavily, say, landing closer to 0.93. This is exactly what intelligent sensor fusion does: a weighted average based on confidence.</span>
+    <span class="fa">فرض کنید Encoder می‌گوید ۱٫۰۰ متر و دوربین می‌گوید ۰٫۹۱ متر. میانگین ساده ۰٫۹۵۵ می‌شود. اما اگر بدانیم Encoder به‌خاطر احتمال لغزش کمی نامطمئن‌تر است، منطقی است وزن بیشتری به دوربین بدهیم، مثلاً به عددی نزدیک‌تر به ۰٫۹۳ برسیم. این دقیقاً کاری است که Sensor Fusion هوشمند انجام می‌دهد: میانگین‌گیری وزن‌دار بر اساس اعتماد.</span>
   </p>
 
   <h3>Uncertainty</h3>
@@ -350,7 +350,7 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
     <span class="fa">هر سنسور باید علاوه بر مقدار خودش، بگوید «چقدر به این عدد مطمئنم». مثال: سنسور A می‌گوید x=5.2m با عدم‌قطعیت کم؛ سنسور B می‌گوید x=5.8m با عدم‌قطعیت زیاد. نتیجه‌ی نهایی طبیعتاً باید به سنسور A نزدیک‌تر باشد، چون به آن بیشتر اعتماد داریم.</span>
   </p>
 
-  <h2 id="sec-kalman"><span class="en">6. The Kalman Filter — Without the Heavy Math</span><span class="fa">۶. فیلتر کالمن — بدون ریاضیات سنگین</span></h2>
+  <h2 id="sec-kalman"><span class="en">6. The Kalman Filter, Without the Heavy Math</span><span class="fa">۶. فیلتر کالمن، بدون ریاضیات سنگین</span></h2>
   <p>
     <span class="en">The <span class="ltr">Kalman Filter</span><sup>11</sup> implements exactly this weighting logic in a simple, continuous loop:</span>
     <span class="fa"><span class="ltr">Kalman Filter</span><sup>11</sup> دقیقاً همین منطق وزن‌دهی را با یک حلقه‌ی دائمی و ساده پیاده می‌کند:</span>
@@ -392,8 +392,8 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
   <div class="box box-warn">
     <div class="box-title"><span class="en">🧮 Full numerical example</span><span class="fa">🧮 مثال کامل عددی</span></div>
     <p>
-      <span class="en">Suppose the robot was at x=10m. From the motion model, we predict Prediction=11.0m. Now the camera reports Measurement=10.8m. If the camera is reliable (good light, good texture), the final result comes out close to ≈10.82m — near the measurement. But if camera conditions are poor (low light or motion blur), the result leans more toward the prediction, say ≈10.95m.</span>
-      <span class="fa">فرض کنید ربات در x=10m بوده. از مدل حرکتی، پیش‌بینی می‌کنیم Prediction=11.0m. حالا دوربین می‌گوید Measurement=10.8m. اگر دوربین قابل‌اعتماد باشد (نور خوب، بافت خوب)، نتیجه‌ی نهایی چیزی مثل ≈۱۰٫۸۲ متر می‌شود — نزدیک به اندازه‌گیری. اما اگر شرایط دوربین بد باشد (نور کم یا تار حرکتی)، نتیجه بیشتر به سمت پیش‌بینی می‌رود، مثلاً ≈۱۰٫۹۵ متر.</span>
+      <span class="en">Suppose the robot was at x=10m. From the motion model, we predict Prediction=11.0m. Now the camera reports Measurement=10.8m. If the camera is reliable (good light, good texture), the final result comes out close to ≈10.82m, near the measurement. But if camera conditions are poor (low light or motion blur), the result leans more toward the prediction, say ≈10.95m.</span>
+      <span class="fa">فرض کنید ربات در x=10m بوده. از مدل حرکتی، پیش‌بینی می‌کنیم Prediction=11.0m. حالا دوربین می‌گوید Measurement=10.8m. اگر دوربین قابل‌اعتماد باشد (نور خوب، بافت خوب)، نتیجه‌ی نهایی چیزی مثل ≈۱۰٫۸۲ متر می‌شود، نزدیک به اندازه‌گیری. اما اگر شرایط دوربین بد باشد (نور کم یا تار حرکتی)، نتیجه بیشتر به سمت پیش‌بینی می‌رود، مثلاً ≈۱۰٫۹۵ متر.</span>
     </p>
   </div>
 
@@ -404,17 +404,17 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
   </p>
   <p class="ltr">$$ x_{new} = x_{prediction} + K\,(z - x_{prediction}) $$</p>
   <p>
-    <span class="en">where $z$ is the sensor measurement, and the term $(z - x_{prediction})$ is called the <span class="ltr">Innovation</span> or <span class="ltr">Residual</span><sup>13</sup> — meaning "how much did the sensor violate my expectation."</span>
-    <span class="fa">که در آن $z$ اندازه‌گیری سنسور است، و عبارت $(z - x_{prediction})$ را <span class="ltr">Innovation</span> یا <span class="ltr">Residual</span><sup>13</sup> می‌نامیم — یعنی «سنسور چقدر انتظار من را نقض کرد».</span>
+    <span class="en">where $z$ is the sensor measurement, and the term $(z - x_{prediction})$ is called the <span class="ltr">Innovation</span> or <span class="ltr">Residual</span><sup>13</sup>, meaning "how much did the sensor violate my expectation."</span>
+    <span class="fa">که در آن $z$ اندازه‌گیری سنسور است، و عبارت $(z - x_{prediction})$ را <span class="ltr">Innovation</span> یا <span class="ltr">Residual</span><sup>13</sup> می‌نامیم، یعنی «سنسور چقدر انتظار من را نقض کرد».</span>
   </p>
 
   <div class="box box-warn">
     <div class="box-title"><span class="en">🧮 Two numerical examples for K</span><span class="fa">🧮 دو مثال عددی برای K</span></div>
-    <p class="ltr"><span class="en">Example 1: </span><span class="fa">مثال ۱: </span>$x_{pred}=10$, $z=12$, $K=0.2$ → $x_{new}=10+0.2(2)=10.4$ — <span class="en">here we trusted the sensor only a little.</span><span class="fa">اینجا کم به سنسور اعتماد کردیم.</span></p>
-    <p class="ltr"><span class="en">Example 2: same numbers with </span><span class="fa">مثال ۲: همان اعداد با </span>$K=0.8$ → $x_{new}=10+0.8(2)=11.6$ — <span class="en">here we trusted the sensor a lot.</span><span class="fa">اینجا زیاد به سنسور اعتماد کردیم.</span></p>
+    <p class="ltr"><span class="en">Example 1: </span><span class="fa">مثال ۱: </span>$x_{pred}=10$, $z=12$, $K=0.2$ → $x_{new}=10+0.2(2)=10.4$, <span class="en">here we trusted the sensor only a little.</span><span class="fa">اینجا کم به سنسور اعتماد کردیم.</span></p>
+    <p class="ltr"><span class="en">Example 2: same numbers with </span><span class="fa">مثال ۲: همان اعداد با </span>$K=0.8$ → $x_{new}=10+0.8(2)=11.6$, <span class="en">here we trusted the sensor a lot.</span><span class="fa">اینجا زیاد به سنسور اعتماد کردیم.</span></p>
     <p>
-      <span class="en">Simple mental model: <b>small K</b> → trust the prediction more; <b>large K</b> → trust the measurement more. Important note: in a real filter, K isn't chosen arbitrarily — it's computed from the sensor's and model's uncertainties.</span>
-      <span class="fa">مدل ذهنی ساده: <b>K کوچک</b> → بیشتر به پیش‌بینی اعتماد؛ <b>K بزرگ</b> → بیشتر به اندازه‌گیری اعتماد. نکته‌ی مهم: در فیلتر واقعی، K را دلخواه انتخاب نمی‌کنیم — از عدم‌قطعیت‌های سنسور و مدل محاسبه می‌شود.</span>
+      <span class="en">Simple mental model: <b>small K</b> → trust the prediction more; <b>large K</b> → trust the measurement more. Important note: in a real filter, K isn't chosen arbitrarily, it's computed from the sensor's and model's uncertainties.</span>
+      <span class="fa">مدل ذهنی ساده: <b>K کوچک</b> → بیشتر به پیش‌بینی اعتماد؛ <b>K بزرگ</b> → بیشتر به اندازه‌گیری اعتماد. نکته‌ی مهم: در فیلتر واقعی، K را دلخواه انتخاب نمی‌کنیم، از عدم‌قطعیت‌های سنسور و مدل محاسبه می‌شود.</span>
     </p>
   </div>
 
@@ -430,13 +430,13 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
   </p>
   <p class="ltr">$$ x_{new}=x+v\cos(\theta)\Delta t, \quad y_{new}=y+v\sin(\theta)\Delta t, \quad \theta_{new}=\theta+\omega\Delta t $$</p>
   <p>
-    <span class="en">Because sin and cos appear in the equations, the system is <span class="ltr">Nonlinear</span>. The <span class="ltr">Extended Kalman Filter</span><sup>14</sup> (EKF) linearizes this nonlinear model locally around the current state (using a tool called the <span class="ltr">Jacobian</span><sup>15</sup> — just know the name, no need to unpack the full derivation here), then applies the same Kalman filter logic to this linear approximation.</span>
-    <span class="fa">چون sin و cos در معادلات هست، سیستم <span class="ltr">Nonlinear</span> است. <span class="ltr">Extended Kalman Filter</span><sup>14</sup> (EKF) این مدل غیرخطی را دور وضعیت فعلی به‌صورت محلی خطی می‌کند (با ابزاری به نام <span class="ltr">Jacobian</span><sup>15</sup> — فقط اسمش را بدان، لازم نیست مشتق‌گیری کامل را باز کنیم) و سپس همان منطق فیلتر کالمن را روی این تقریب خطی اعمال می‌کند.</span>
+    <span class="en">Because sin and cos appear in the equations, the system is <span class="ltr">Nonlinear</span>. The <span class="ltr">Extended Kalman Filter</span><sup>14</sup> (EKF) linearizes this nonlinear model locally around the current state (using a tool called the <span class="ltr">Jacobian</span><sup>15</sup>, just know the name, no need to unpack the full derivation here), then applies the same Kalman filter logic to this linear approximation.</span>
+    <span class="fa">چون sin و cos در معادلات هست، سیستم <span class="ltr">Nonlinear</span> است. <span class="ltr">Extended Kalman Filter</span><sup>14</sup> (EKF) این مدل غیرخطی را دور وضعیت فعلی به‌صورت محلی خطی می‌کند (با ابزاری به نام <span class="ltr">Jacobian</span><sup>15</sup>, فقط اسمش را بدان، لازم نیست مشتق‌گیری کامل را باز کنیم) و سپس همان منطق فیلتر کالمن را روی این تقریب خطی اعمال می‌کند.</span>
   </p>
 
   <h3>Covariance</h3>
   <p>
-    <span class="en">The state alone isn't enough — we also need its uncertainty. That's the job of the <span class="ltr">Covariance</span><sup>16</sup> matrix ($P$): its diagonal is the variance of each state variable (e.g. $\sigma_x^2, \sigma_y^2, \sigma_\theta^2$), and the off-diagonal entries show correlations between the errors. The EKF doesn't just say "the robot is here" — it says "I estimate it's here, with this much uncertainty."</span>
+    <span class="en">The state alone isn't enough, we also need its uncertainty. That's the job of the <span class="ltr">Covariance</span><sup>16</sup> matrix ($P$): its diagonal is the variance of each state variable (e.g. $\sigma_x^2, \sigma_y^2, \sigma_\theta^2$), and the off-diagonal entries show correlations between the errors. The EKF doesn't just say "the robot is here", it says "I estimate it's here, with this much uncertainty."</span>
     <span class="fa">خود State به‌تنهایی کافی نیست؛ باید عدم‌قطعیت آن را هم داشته باشیم. این کار را ماتریس <span class="ltr">Covariance</span><sup>16</sup> ($P$) انجام می‌دهد: قطر آن واریانس هر متغیر State است (مثلاً $\sigma_x^2, \sigma_y^2, \sigma_\theta^2$)، و عناصر غیرقطر همبستگی بین خطاها را نشان می‌دهند. EKF نه فقط می‌گوید «ربات اینجاست»، بلکه می‌گوید «تخمین می‌زنم اینجاست، با این میزان عدم‌قطعیت».</span>
   </p>
 
@@ -493,15 +493,15 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
   </div>
 
   <p>
-    <span class="en">A real-world scenario: when the camera enters a dark tunnel, Visual Odometry quality drops and the system leans more on the encoder and IMU. When the wheels slip on wet ground, encoder quality drops, and this time the camera helps. We call this behavior <b>Complementary Sensors</b> — sensors that cover each other's weaknesses.</span>
-    <span class="fa">مثال سناریوی واقعی: وقتی دوربین وارد یک تونل تاریک می‌شود، کیفیت Visual Odometry افت می‌کند و سیستم بیشتر روی Encoder و IMU تکیه می‌کند. وقتی چرخ روی زمین خیس می‌لغزد، کیفیت Encoder افت می‌کند و این‌بار دوربین کمک می‌کند. این رفتار را <b>Complementary Sensors</b> می‌نامیم — سنسورهایی که ضعف همدیگر را می‌پوشانند.</span>
+    <span class="en">A real-world scenario: when the camera enters a dark tunnel, Visual Odometry quality drops and the system leans more on the encoder and IMU. When the wheels slip on wet ground, encoder quality drops, and this time the camera helps. We call this behavior <b>Complementary Sensors</b>, sensors that cover each other's weaknesses.</span>
+    <span class="fa">مثال سناریوی واقعی: وقتی دوربین وارد یک تونل تاریک می‌شود، کیفیت Visual Odometry افت می‌کند و سیستم بیشتر روی Encoder و IMU تکیه می‌کند. وقتی چرخ روی زمین خیس می‌لغزد، کیفیت Encoder افت می‌کند و این‌بار دوربین کمک می‌کند. این رفتار را <b>Complementary Sensors</b> می‌نامیم، سنسورهایی که ضعف همدیگر را می‌پوشانند.</span>
   </p>
 
   <div class="box box-warn">
     <div class="box-title"><span class="en">⚠️ Warning: Fusion isn't magic</span><span class="fa">⚠️ هشدار: Fusion جادو نیست</span></div>
     <p>
-      <span class="en">If sensors are misconfigured, if the statistical <span class="ltr">Independence</span> assumption between them is wrong, or if the coordinate transform (Transform/TF) between frames is set up incorrectly, fusion can perform even worse than using a single sensor alone. The famous principle: "Garbage in → sophisticated garbage out" — the garbage you feed in only gets turned into garbage output through fancier math.</span>
-      <span class="fa">اگر سنسورها اشتباه پیکربندی شوند، یا فرض استقلال آماری (<span class="ltr">Independence</span>) بین آن‌ها غلط باشد، یا تبدیل مختصات (Transform/TF) بین فریم‌ها اشتباه بسته شده باشد، Fusion می‌تواند حتی از یک سنسور تنها هم بدتر عمل کند. اصل معروف: «Garbage in → sophisticated garbage out» — زباله‌ی وارد شده، فقط با ریاضیات پیچیده‌تر به زباله‌ی خروجی تبدیل می‌شود.</span>
+      <span class="en">If sensors are misconfigured, if the statistical <span class="ltr">Independence</span> assumption between them is wrong, or if the coordinate transform (Transform/TF) between frames is set up incorrectly, fusion can perform even worse than using a single sensor alone. The famous principle: "Garbage in → sophisticated garbage out", the garbage you feed in only gets turned into garbage output through fancier math.</span>
+      <span class="fa">اگر سنسورها اشتباه پیکربندی شوند، یا فرض استقلال آماری (<span class="ltr">Independence</span>) بین آن‌ها غلط باشد، یا تبدیل مختصات (Transform/TF) بین فریم‌ها اشتباه بسته شده باشد، Fusion می‌تواند حتی از یک سنسور تنها هم بدتر عمل کند. اصل معروف: «Garbage in → sophisticated garbage out», زباله‌ی وارد شده، فقط با ریاضیات پیچیده‌تر به زباله‌ی خروجی تبدیل می‌شود.</span>
     </p>
   </div>
 
@@ -594,7 +594,7 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
 
   <h2 id="sec-try"><span class="en">10. Try it yourself</span><span class="fa">۱۰. امتحانش کن</span></h2>
   <div class="box box-try">
-    <div class="box-title"><span class="en">🧪 Exercise 1 — Computing the Kalman Gain</span><span class="fa">🧪 تمرین ۱ — محاسبه‌ی Kalman Gain</span></div>
+    <div class="box-title"><span class="en">🧪 Exercise 1, Computing the Kalman Gain</span><span class="fa">🧪 تمرین ۱، محاسبه‌ی Kalman Gain</span></div>
     <p>
       <span class="en">Using the Kalman Gain formula, if K=0.5, prediction=10, and measurement=14, what's the final value?</span>
       <span class="fa">با فرمول Kalman Gain، اگر K=0.5، پیش‌بینی=10 و اندازه‌گیری=14 باشد، مقدار نهایی چند می‌شود؟</span>
@@ -603,13 +603,13 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
       <summary><span class="en">Show solution</span><span class="fa">راه‌حل را ببین</span></summary>
       <div class="solution ltr">x_new = 10 + 0.5 × (14 − 10) = 10 + 0.5 × 4 = 12</div>
       <p>
-        <span class="en">That's exactly halfway between the prediction and the measurement — because K=0.5 means equal trust in both.</span>
-        <span class="fa">یعنی دقیقاً وسط پیش‌بینی و اندازه‌گیری — چون K=0.5 یعنی اعتماد برابر به هر دو.</span>
+        <span class="en">That's exactly halfway between the prediction and the measurement, because K=0.5 means equal trust in both.</span>
+        <span class="fa">یعنی دقیقاً وسط پیش‌بینی و اندازه‌گیری، چون K=0.5 یعنی اعتماد برابر به هر دو.</span>
       </p>
     </details>
   </div>
   <div class="box box-try">
-    <div class="box-title"><span class="en">🧪 Exercise 2 — Video frames and Train/Validation</span><span class="fa">🧪 تمرین ۲ — فریم‌های ویدیو و Train/Validation</span></div>
+    <div class="box-title"><span class="en">🧪 Exercise 2, Video frames and Train/Validation</span><span class="fa">🧪 تمرین ۲، فریم‌های ویدیو و Train/Validation</span></div>
     <p>
       <span class="en">Why shouldn't you randomly split frames from a continuous video between train and validation?</span>
       <span class="fa">چرا نباید فریم‌های یک ویدیوی پیوسته را رندوم بین train و validation تقسیم کرد؟</span>
@@ -617,8 +617,8 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
     <details>
       <summary><span class="en">Show solution</span><span class="fa">راه‌حل را ببین</span></summary>
       <p>
-        <span class="en">Because consecutive frames of a video are extremely similar to each other (same scene, same objects, just slightly shifted). If you split randomly, the model effectively sees near-identical copies of the test data during training and gets a falsely high validation score — the same Data Leakage problem we saw in Chapter 7. The whole video should go entirely into one of the two sets.</span>
-        <span class="fa">چون فریم‌های پشت‌سرهم یک ویدیو خیلی شبیه هم‌اند (همان صحنه، همان اشیا، فقط کمی جابه‌جا شده). اگر رندوم تقسیم کنیم، مدل عملاً نسخه‌ی تقریباً یکسانِ داده‌ی تست را در آموزش دیده و امتیاز validation بالای کاذب می‌گیرد — همان مشکل Data Leakage که در فصل ۷ دیدیم. باید کل ویدیو را یک‌جا در یکی از دو دسته گذاشت.</span>
+        <span class="en">Because consecutive frames of a video are extremely similar to each other (same scene, same objects, just slightly shifted). If you split randomly, the model effectively sees near-identical copies of the test data during training and gets a falsely high validation score, the same Data Leakage problem we saw in Chapter 7. The whole video should go entirely into one of the two sets.</span>
+        <span class="fa">چون فریم‌های پشت‌سرهم یک ویدیو خیلی شبیه هم‌اند (همان صحنه، همان اشیا، فقط کمی جابه‌جا شده). اگر رندوم تقسیم کنیم، مدل عملاً نسخه‌ی تقریباً یکسانِ داده‌ی تست را در آموزش دیده و امتیاز validation بالای کاذب می‌گیرد، همان مشکل Data Leakage که در فصل ۷ دیدیم. باید کل ویدیو را یک‌جا در یکی از دو دسته گذاشت.</span>
       </p>
     </details>
   </div>
@@ -660,8 +660,8 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
 
 <footer class="pagefoot wrap">
   <p class="next">
-    <span class="en">Next chapter: we put all of these concepts into a real system on a real robot — ROS 2, cameras, and Real-Time Inference.</span>
-    <span class="fa">فصل بعد: همه‌ی این مفاهیم را داخل یک سیستم واقعی روی ربات پیاده می‌کنیم — ROS 2، دوربین، و Real-Time Inference.</span>
+    <span class="en">Next chapter: we put all of these concepts into a real system on a real robot, ROS 2, cameras, and Real-Time Inference.</span>
+    <span class="fa">فصل بعد: همه‌ی این مفاهیم را داخل یک سیستم واقعی روی ربات پیاده می‌کنیم، ROS 2، دوربین، و Real-Time Inference.</span>
   </p>
   <div class="btnrow">
     <a class="btn primary" href="10-ros2-realtime-inference.html"><span class="en">Next chapter →</span><span class="fa">برو به فصل بعد ←</span></a>

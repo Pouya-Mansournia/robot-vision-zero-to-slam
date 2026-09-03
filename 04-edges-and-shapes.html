@@ -17,7 +17,7 @@
   if (t === 'dark' || t === 'light') { document.documentElement.setAttribute('data-theme', t); }
 })();
 </script>
-<title>Robot Vision: Zero to SLAM — Ch. 04: Edges and Shapes</title>
+<title>Robot Vision: Zero to SLAM · Ch. 04: Edges and Shapes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -194,8 +194,8 @@ footer.chapfoot p{margin:0 0 16px;color:var(--ink-soft)}
   <div class="wrap">
     <h1><span class="en">Edges and Shapes</span><span class="fa">لبه‌ها و شکل‌ها</span></h1>
     <p class="sub">
-      <span class="en">This is where a robot goes from seeing "a bunch of pixels" to understanding "that's a rectangle, that's a circle." Gradients, Sobel, Canny, and contours — four ideas that underpin shape recognition in classical computer vision.</span>
-      <span class="fa">اینجاست که یک ربات از دیدن «یک عالمه پیکسل» به فهمیدن «این یک مستطیل است، آن یک دایره است» می‌رسد. گرادیان، Sobel، Canny و Contour — چهار مفهومی که پایهٔ تشخیص شکل در بینایی ماشین کلاسیک‌اند.</span>
+      <span class="en">This is where a robot goes from seeing "a bunch of pixels" to understanding "that's a rectangle, that's a circle." Gradients, Sobel, Canny, and contours, four ideas that underpin shape recognition in classical computer vision.</span>
+      <span class="fa">اینجاست که یک ربات از دیدن «یک عالمه پیکسل» به فهمیدن «این یک مستطیل است، آن یک دایره است» می‌رسد. گرادیان، Sobel، Canny و Contour, چهار مفهومی که پایهٔ تشخیص شکل در بینایی ماشین کلاسیک‌اند.</span>
     </p>
   </div>
 </header>
@@ -229,10 +229,10 @@ footer.chapfoot p{margin:0 0 16px;color:var(--ink-soft)}
 
 <section id="sec-edge">
   <h2><span class="num">1.</span><span class="en">What Is an Edge?</span><span class="fa">لبه (Edge) یعنی چه؟</span></h2>
-  <p><span class="en">An <strong>edge</strong><sup class="fn" id="fnref-edge"><a href="#fn-edge">[1]</a></sup> is a place in the image where brightness changes sharply and quickly — for example, the boundary between a bright object and a dark background. If we picture the image as a height map where each point's elevation equals its pixel brightness, edges are exactly the places where that map suddenly gets steep — a cliff.</span>
-  <span class="fa">یک <strong>لبه</strong><sup class="fn" id="fnref-edge-fa"><a href="#fn-edge">[۱]</a></sup> جایی در تصویر است که روشنایی به‌شدت و به‌سرعت تغییر می‌کند — مثلاً مرز بین یک شیء روشن و پس‌زمینهٔ تیره. اگر تصویر را مثل یک نقشهٔ ارتفاعی تصور کنیم که ارتفاع هر نقطه برابر روشنایی پیکسل است، لبه‌ها همان جاهایی هستند که این نقشه ناگهان تند می‌شود — یک پرتگاه.</span></p>
-  <p><span class="en">Edges matter a lot because they almost always form the backbone of an object's shape — the border of a box, the line of a road, the edge of an industrial part.</span>
-  <span class="fa">لبه‌ها اهمیت زیادی دارند چون تقریباً همیشه اسکلت اصلی شکل یک شیء را می‌سازند — مرز یک جعبه، خط یک جاده، لبهٔ یک قطعهٔ صنعتی.</span></p>
+  <p><span class="en">An <strong>edge</strong><sup class="fn" id="fnref-edge"><a href="#fn-edge">[1]</a></sup> is a place in the image where brightness changes sharply and quickly, for example, the boundary between a bright object and a dark background. If we picture the image as a height map where each point's elevation equals its pixel brightness, edges are exactly the places where that map suddenly gets steep, a cliff.</span>
+  <span class="fa">یک <strong>لبه</strong><sup class="fn" id="fnref-edge-fa"><a href="#fn-edge">[۱]</a></sup> جایی در تصویر است که روشنایی به‌شدت و به‌سرعت تغییر می‌کند، مثلاً مرز بین یک شیء روشن و پس‌زمینهٔ تیره. اگر تصویر را مثل یک نقشهٔ ارتفاعی تصور کنیم که ارتفاع هر نقطه برابر روشنایی پیکسل است، لبه‌ها همان جاهایی هستند که این نقشه ناگهان تند می‌شود، یک پرتگاه.</span></p>
+  <p><span class="en">Edges matter a lot because they almost always form the backbone of an object's shape, the border of a box, the line of a road, the edge of an industrial part.</span>
+  <span class="fa">لبه‌ها اهمیت زیادی دارند چون تقریباً همیشه اسکلت اصلی شکل یک شیء را می‌سازند، مرز یک جعبه، خط یک جاده، لبهٔ یک قطعهٔ صنعتی.</span></p>
   <div class="diagram">
     <svg viewBox="0 0 520 190" width="100%" style="max-width:520px" role="img" aria-label="A brightness profile spiking sharply at one point">
       <line x1="30" y1="160" x2="490" y2="160" stroke="var(--muted)"></line>
@@ -257,8 +257,8 @@ footer.chapfoot p{margin:0 0 16px;color:var(--ink-soft)}
 
 <section id="sec-gradient">
   <h2><span class="num">2.</span><span class="en">Image Gradient</span><span class="fa">گرادیان تصویر (Gradient)</span></h2>
-  <p><span class="en">The <strong>Gradient</strong><sup class="fn" id="fnref-grad"><a href="#fn-grad">[2]</a></sup> is the image's derivative — "how much brightness changes relative to the neighboring pixel" — along two directions, x (horizontal) and y (vertical):</span>
-  <span class="fa"><strong>Gradient</strong><sup class="fn" id="fnref-grad-fa"><a href="#fn-grad">[۲]</a></sup> یعنی مشتق تصویر — یعنی «چقدر روشنایی نسبت به پیکسل مجاور تغییر می‌کند» — نسبت به دو جهت x (افقی) و y (عمودی):</span></p>
+  <p><span class="en">The <strong>Gradient</strong><sup class="fn" id="fnref-grad"><a href="#fn-grad">[2]</a></sup> is the image's derivative, "how much brightness changes relative to the neighboring pixel", along two directions, x (horizontal) and y (vertical):</span>
+  <span class="fa"><strong>Gradient</strong><sup class="fn" id="fnref-grad-fa"><a href="#fn-grad">[۲]</a></sup> یعنی مشتق تصویر، یعنی «چقدر روشنایی نسبت به پیکسل مجاور تغییر می‌کند», نسبت به دو جهت x (افقی) و y (عمودی):</span></p>
   <div class="formula-block">
     $$ G_x = \frac{\partial I}{\partial x}, \quad G_y = \frac{\partial I}{\partial y} $$
   </div>
@@ -274,22 +274,22 @@ footer.chapfoot p{margin:0 0 16px;color:var(--ink-soft)}
   </div>
   <div class="numex">
     <b><span class="en">Simple numeric example:</span><span class="fa">مثال عددی ساده:</span></b> <span class="en">consider a row of pixels with values <span class="ltr">[10, 10, 200, 200]</span>.</span><span class="fa">یک ردیف پیکسل با مقادیر <span class="ltr">[10, 10, 200, 200]</span> را در نظر بگیر.</span>
-    <p style="margin:8px 0"><span class="en">The difference between the second pixel (10) and the third (200) is <span class="ltr">200 − 10 = 190</span> — a huge jump. That means there's a strong edge exactly there (between pixels 2 and 3). By contrast, the difference between the first and second pixels is zero (both 10) — meaning no edge there at all.</span>
-    <span class="fa">تفاضل بین پیکسل دوم (۱۰) و پیکسل سوم (۲۰۰) برابر <span class="ltr">200 − 10 = 190</span> است — یک تغییر بسیار بزرگ. این یعنی دقیقاً همان‌جا (بین پیکسل دوم و سوم) یک لبهٔ قوی داریم. در مقابل، تفاضل بین پیکسل اول و دوم صفر است (هر دو ۱۰) — یعنی آنجا هیچ لبه‌ای نیست.</span></p>
+    <p style="margin:8px 0"><span class="en">The difference between the second pixel (10) and the third (200) is <span class="ltr">200 − 10 = 190</span>, a huge jump. That means there's a strong edge exactly there (between pixels 2 and 3). By contrast, the difference between the first and second pixels is zero (both 10), meaning no edge there at all.</span>
+    <span class="fa">تفاضل بین پیکسل دوم (۱۰) و پیکسل سوم (۲۰۰) برابر <span class="ltr">200 − 10 = 190</span> است، یک تغییر بسیار بزرگ. این یعنی دقیقاً همان‌جا (بین پیکسل دوم و سوم) یک لبهٔ قوی داریم. در مقابل، تفاضل بین پیکسل اول و دوم صفر است (هر دو ۱۰), یعنی آنجا هیچ لبه‌ای نیست.</span></p>
   </div>
 </section>
 
 <section id="sec-sobel">
   <h2><span class="num">3.</span><span class="en">Sobel Operator</span><span class="fa">Sobel Operator</span></h2>
-  <p><span class="en">Computing an exact derivative on a discrete (pixelated) image isn't really possible, so we use a practical approximation instead: <strong>Sobel</strong><sup class="fn" id="fnref-sobel"><a href="#fn-sobel">[4]</a></sup> — two fixed 3×3 kernels, one for estimating $G_x$ and one for $G_y$, applying the same convolution idea from the previous chapter.</span>
-  <span class="fa">محاسبهٔ دقیق مشتق روی یک تصویر گسسته (پیکسلی) عملاً ممکن نیست، پس از یک تقریب عملی استفاده می‌کنیم: <strong>Sobel</strong><sup class="fn" id="fnref-sobel-fa"><a href="#fn-sobel">[۴]</a></sup> — دو کرنل ۳×۳ ثابت، یکی برای تخمین $G_x$ و یکی برای $G_y$، که همان ایدهٔ Convolution فصل قبل را به کار می‌گیرند.</span></p>
+  <p><span class="en">Computing an exact derivative on a discrete (pixelated) image isn't really possible, so we use a practical approximation instead: <strong>Sobel</strong><sup class="fn" id="fnref-sobel"><a href="#fn-sobel">[4]</a></sup>, two fixed 3×3 kernels, one for estimating $G_x$ and one for $G_y$, applying the same convolution idea from the previous chapter.</span>
+  <span class="fa">محاسبهٔ دقیق مشتق روی یک تصویر گسسته (پیکسلی) عملاً ممکن نیست، پس از یک تقریب عملی استفاده می‌کنیم: <strong>Sobel</strong><sup class="fn" id="fnref-sobel-fa"><a href="#fn-sobel">[۴]</a></sup>, دو کرنل ۳×۳ ثابت، یکی برای تخمین $G_x$ و یکی برای $G_y$، که همان ایدهٔ Convolution فصل قبل را به کار می‌گیرند.</span></p>
   <pre><code>sobelx = cv2.Sobel(gray, cv2.CV_64F, 1, 0, ksize=3)
 sobely = cv2.Sobel(gray, cv2.CV_64F, 0, 1, ksize=3)</code></pre>
   <p><span class="en">The parameters <code class="ltr">1, 0</code> mean "first-order derivative with respect to x, zero-order with respect to y" (i.e., give just $G_x$). The reverse is used for $G_y$. Combining both outputs (per the Magnitude formula above) lets us build a complete map of edge strength.</span>
   <span class="fa">پارامترهای <code class="ltr">1, 0</code> یعنی «مشتق مرتبهٔ اول نسبت به x، مرتبهٔ صفر نسبت به y» (یعنی فقط $G_x$ را بده). برعکسش برای $G_y$ استفاده می‌شود. با ترکیب این دو خروجی (طبق فرمول Magnitude بالا) می‌توانیم نقشهٔ کامل قدرت لبه‌ها را بسازیم.</span></p>
 
   <div class="box box-try">
-    <h4><span class="en">Try It Yourself — Exercise 1</span><span class="fa">امتحانش کن — تمرین ۱</span></h4>
+    <h4><span class="en">Try It Yourself, Exercise 1</span><span class="fa">امتحانش کن، تمرین ۱</span></h4>
     <p style="margin:0 0 8px"><span class="en">Compute the gradient of a simple image with Sobel and look at its magnitude:</span><span class="fa">گرادیان یک تصویر ساده را با Sobel حساب کن و اندازه‌اش را ببین:</span></p>
     <pre><code>import cv2, numpy as np
 gray = cv2.imread("shape.jpg", cv2.IMREAD_GRAYSCALE)
@@ -300,15 +300,15 @@ magnitude = np.uint8(255 * magnitude / magnitude.max())
 cv2.imwrite("gradient.jpg", magnitude)</code></pre>
     <details class="solution">
       <summary><span class="en">What should I expect?</span><span class="fa">چه انتظاری باید داشته باشم؟</span></summary>
-      <p><span class="en">In the output <code class="ltr">gradient.jpg</code>, only edges (object boundaries) appear bright, while uniform regions (background, flat surfaces) stay completely black — because brightness change is near zero there.</span>
-      <span class="fa">در تصویر خروجی <code class="ltr">gradient.jpg</code> فقط لبه‌ها (مرز اشیا) روشن دیده می‌شوند و نواحی یکدست (پس‌زمینه، سطح‌های صاف) کاملاً سیاه می‌مانند — چون آنجا تغییر روشنایی نزدیک صفر است.</span></p>
+      <p><span class="en">In the output <code class="ltr">gradient.jpg</code>, only edges (object boundaries) appear bright, while uniform regions (background, flat surfaces) stay completely black, because brightness change is near zero there.</span>
+      <span class="fa">در تصویر خروجی <code class="ltr">gradient.jpg</code> فقط لبه‌ها (مرز اشیا) روشن دیده می‌شوند و نواحی یکدست (پس‌زمینه، سطح‌های صاف) کاملاً سیاه می‌مانند، چون آنجا تغییر روشنایی نزدیک صفر است.</span></p>
     </details>
   </div>
 </section>
 <section id="sec-canny">
   <h2><span class="num">4.</span><span class="en">Canny Edge Detection</span><span class="fa">Canny Edge Detection</span></h2>
-  <p><span class="en"><strong>Canny</strong><sup class="fn" id="fnref-canny"><a href="#fn-canny">[5]</a></sup> is the most standard, most widely used edge detection algorithm in industry — not just a single kernel, but a four-stage pipeline:</span>
-  <span class="fa"><strong>Canny</strong><sup class="fn" id="fnref-canny-fa"><a href="#fn-canny">[۵]</a></sup> استانداردترین و پرکاربردترین الگوریتم لبه‌یابی در صنعت است — نه فقط یک کرنل ساده، بلکه یک پایپ‌لاین چهار مرحله‌ای:</span></p>
+  <p><span class="en"><strong>Canny</strong><sup class="fn" id="fnref-canny"><a href="#fn-canny">[5]</a></sup> is the most standard, most widely used edge detection algorithm in industry, not just a single kernel, but a four-stage pipeline:</span>
+  <span class="fa"><strong>Canny</strong><sup class="fn" id="fnref-canny-fa"><a href="#fn-canny">[۵]</a></sup> استانداردترین و پرکاربردترین الگوریتم لبه‌یابی در صنعت است، نه فقط یک کرنل ساده، بلکه یک پایپ‌لاین چهار مرحله‌ای:</span></p>
 
   <div class="pipeline">
     <div class="step"><span class="stepnum">1</span><span class="en">Gaussian Blur<br><small style="color:var(--muted)">noise removal</small></span><span class="fa">Gaussian Blur<br><small style="color:var(--muted)">حذف نویز</small></span></div><div class="arrow">←</div>
@@ -317,27 +317,27 @@ cv2.imwrite("gradient.jpg", magnitude)</code></pre>
     <div class="step"><span class="stepnum">4</span>Double Threshold<br><small style="color:var(--muted)">+ Hysteresis</small></div>
   </div>
 
-  <p><strong><span class="en">Stage 1 — Gaussian Blur:</span><span class="fa">مرحلهٔ ۱ — Gaussian Blur:</span></strong> <span class="en">first we clean out noise, since noise itself produces sudden brightness changes that can be mistaken for edges.</span><span class="fa">قبل از هر چیز نویز را پاک می‌کنیم، چون نویز خودش تغییرات ناگهانی روشنایی ایجاد می‌کند و می‌تواند اشتباهاً به‌عنوان لبه شناسایی شود.</span></p>
-  <p><strong><span class="en">Stage 2 — Gradient:</span><span class="fa">مرحلهٔ ۲ — Gradient:</span></strong> <span class="en">using Sobel, the gradient's magnitude and direction are computed at every pixel (as we saw in the previous section).</span><span class="fa">با Sobel، اندازه و جهت گرادیان در هر پیکسل محاسبه می‌شود (همان‌طور که در بخش قبل دیدیم).</span></p>
-  <p><strong><span class="en">Stage 3 — Non-Maximum Suppression</span><span class="fa">مرحلهٔ ۳ — Non-Maximum Suppression</span></strong><sup class="fn" id="fnref-nms"><a href="#fn-nms">[6]</a></sup>: <span class="en">edges usually look "thick" after computing the gradient (several pixels wide). This stage moves perpendicular to the edge and keeps only the strongest pixel; the rest are zeroed. The result is an edge exactly one pixel wide.</span>
+  <p><strong><span class="en">Stage 1, Gaussian Blur:</span><span class="fa">مرحلهٔ ۱، Gaussian Blur:</span></strong> <span class="en">first we clean out noise, since noise itself produces sudden brightness changes that can be mistaken for edges.</span><span class="fa">قبل از هر چیز نویز را پاک می‌کنیم، چون نویز خودش تغییرات ناگهانی روشنایی ایجاد می‌کند و می‌تواند اشتباهاً به‌عنوان لبه شناسایی شود.</span></p>
+  <p><strong><span class="en">Stage 2, Gradient:</span><span class="fa">مرحلهٔ ۲، Gradient:</span></strong> <span class="en">using Sobel, the gradient's magnitude and direction are computed at every pixel (as we saw in the previous section).</span><span class="fa">با Sobel، اندازه و جهت گرادیان در هر پیکسل محاسبه می‌شود (همان‌طور که در بخش قبل دیدیم).</span></p>
+  <p><strong><span class="en">Stage 3, Non-Maximum Suppression</span><span class="fa">مرحلهٔ ۳، Non-Maximum Suppression</span></strong><sup class="fn" id="fnref-nms"><a href="#fn-nms">[6]</a></sup>: <span class="en">edges usually look "thick" after computing the gradient (several pixels wide). This stage moves perpendicular to the edge and keeps only the strongest pixel; the rest are zeroed. The result is an edge exactly one pixel wide.</span>
   <span class="fa">معمولاً لبه‌ها بعد از محاسبهٔ گرادیان «ضخیم» به‌نظر می‌رسند (چند پیکسل عرض دارند). این مرحله در جهت عمود بر لبه حرکت می‌کند و فقط قوی‌ترین پیکسل را نگه می‌دارد؛ بقیه صفر می‌شوند. نتیجه، لبه‌ای باریک به‌ضخامت دقیقاً یک پیکسل است.</span></p>
-  <p><strong><span class="en">Stage 4 — Double Threshold and Hysteresis</span><span class="fa">مرحلهٔ ۴ — Double Threshold و Hysteresis</span></strong><sup class="fn" id="fnref-hyst"><a href="#fn-hyst">[7]</a></sup>: <span class="en">two thresholds are defined — a high one and a low one. Pixels with gradient above the high threshold are definitely "strong edges" and kept. Pixels between the two thresholds are "weak edges" and kept only if connected to a strong edge — this chain-connection rule is called Hysteresis.</span>
-  <span class="fa">دو آستانه تعریف می‌شود — یکی بالا و یکی پایین. پیکسل‌هایی که گرادیانشان بالای آستانهٔ بالا باشد قطعاً «لبهٔ قوی» هستند و نگه داشته می‌شوند. پیکسل‌های بین دو آستانه «لبهٔ ضعیف» محسوب می‌شوند و فقط در صورتی نگه داشته می‌شوند که به یک لبهٔ قوی متصل باشند — این اتصال زنجیره‌ای را Hysteresis می‌گویند.</span></p>
+  <p><strong><span class="en">Stage 4, Double Threshold and Hysteresis</span><span class="fa">مرحلهٔ ۴، Double Threshold و Hysteresis</span></strong><sup class="fn" id="fnref-hyst"><a href="#fn-hyst">[7]</a></sup>: <span class="en">two thresholds are defined, a high one and a low one. Pixels with gradient above the high threshold are definitely "strong edges" and kept. Pixels between the two thresholds are "weak edges" and kept only if connected to a strong edge, this chain-connection rule is called Hysteresis.</span>
+  <span class="fa">دو آستانه تعریف می‌شود، یکی بالا و یکی پایین. پیکسل‌هایی که گرادیانشان بالای آستانهٔ بالا باشد قطعاً «لبهٔ قوی» هستند و نگه داشته می‌شوند. پیکسل‌های بین دو آستانه «لبهٔ ضعیف» محسوب می‌شوند و فقط در صورتی نگه داشته می‌شوند که به یک لبهٔ قوی متصل باشند، این اتصال زنجیره‌ای را Hysteresis می‌گویند.</span></p>
   <pre><code>edges = cv2.Canny(gray, 100, 200)</code></pre>
-  <p><span class="en">In this line, 100 is the low threshold and 200 the high one. These two numbers aren't universal constants — they need trial-and-error tuning on your own images: if you see too many noisy, spurious edges, raise the thresholds; if important edges are missing, lower them.</span>
-  <span class="fa">در این خط، ۱۰۰ آستانهٔ پایین و ۲۰۰ آستانهٔ بالاست. این دو عدد ثابت جهانی نیستند — باید با آزمون‌وخطا روی تصویر خودتان تنظیم شوند: اگر لبه‌های زیادی نویزی و اضافی می‌بینید، آستانه‌ها را بالا ببرید؛ اگر لبه‌های مهم گم می‌شوند، پایین بیاورید.</span></p>
+  <p><span class="en">In this line, 100 is the low threshold and 200 the high one. These two numbers aren't universal constants, they need trial-and-error tuning on your own images: if you see too many noisy, spurious edges, raise the thresholds; if important edges are missing, lower them.</span>
+  <span class="fa">در این خط، ۱۰۰ آستانهٔ پایین و ۲۰۰ آستانهٔ بالاست. این دو عدد ثابت جهانی نیستند، باید با آزمون‌وخطا روی تصویر خودتان تنظیم شوند: اگر لبه‌های زیادی نویزی و اضافی می‌بینید، آستانه‌ها را بالا ببرید؛ اگر لبه‌های مهم گم می‌شوند، پایین بیاورید.</span></p>
 
   <div class="box box-mistake">
     <h4><span class="en">Common Mistake</span><span class="fa">اشتباه رایج</span></h4>
-    <p style="margin:0"><span class="en">1) Forgetting to <strong>Blur</strong> before Canny — the result fills up with noisy, irrelevant edges since noise gets mistaken for edges too. 2) Using a <strong>fixed threshold</strong> on images whose lighting changes over time (say, a mobile robot in a varying-light environment) — in that case you should use Otsu or an adaptive threshold, not a fixed number that only works for one specific lighting condition.</span>
-    <span class="fa">۱) فراموش‌کردن <strong>Blur</strong> قبل از Canny — نتیجه پر از لبه‌های نویزی و بی‌ربط می‌شود چون نویز هم مثل لبه دیده می‌شود. ۲) استفاده از یک <strong>threshold ثابت</strong> روی تصاویری که نورشان در طول زمان تغییر می‌کند (مثلاً یک ربات متحرک در محیط با نور متغیر) — در این حالت باید از Otsu یا adaptive threshold استفاده کرد، نه یک عدد ثابت که فقط برای یک شرایط نوری خاص کار می‌کند.</span></p>
+    <p style="margin:0"><span class="en">1) Forgetting to <strong>Blur</strong> before Canny, the result fills up with noisy, irrelevant edges since noise gets mistaken for edges too. 2) Using a <strong>fixed threshold</strong> on images whose lighting changes over time (say, a mobile robot in a varying-light environment), in that case you should use Otsu or an adaptive threshold, not a fixed number that only works for one specific lighting condition.</span>
+    <span class="fa">۱) فراموش‌کردن <strong>Blur</strong> قبل از Canny, نتیجه پر از لبه‌های نویزی و بی‌ربط می‌شود چون نویز هم مثل لبه دیده می‌شود. ۲) استفاده از یک <strong>threshold ثابت</strong> روی تصاویری که نورشان در طول زمان تغییر می‌کند (مثلاً یک ربات متحرک در محیط با نور متغیر), در این حالت باید از Otsu یا adaptive threshold استفاده کرد، نه یک عدد ثابت که فقط برای یک شرایط نوری خاص کار می‌کند.</span></p>
   </div>
 </section>
 
 <section id="sec-contour">
   <h2><span class="num">5.</span><span class="en">What Is a Contour?</span><span class="fa">Contour (کانتور) چیست؟</span></h2>
-  <p><span class="en">A <strong>Contour</strong><sup class="fn" id="fnref-contour"><a href="#fn-contour">[8]</a></sup> is a continuous curve that traces an object's boundary — usually extracted after edge detection or thresholding. Unlike a raw edge map (just a collection of white/black pixels), a contour is a structured object we can perform geometric calculations on: area, perimeter, center, and more.</span>
-  <span class="fa">یک <strong>Contour</strong><sup class="fn" id="fnref-contour-fa"><a href="#fn-contour">[۸]</a></sup> منحنی پیوسته‌ای است که مرز یک شیء را دنبال می‌کند — معمولاً بعد از لبه‌یابی یا threshold استخراج می‌شود. برخلاف نقشهٔ خام لبه‌ها (که فقط مجموعه‌ای از پیکسل‌های سفید/سیاه است)، یک contour یک شیء ساختاریافته است که می‌توانیم رویش محاسبات هندسی انجام دهیم: مساحت، محیط، مرکز و غیره.</span></p>
+  <p><span class="en">A <strong>Contour</strong><sup class="fn" id="fnref-contour"><a href="#fn-contour">[8]</a></sup> is a continuous curve that traces an object's boundary, usually extracted after edge detection or thresholding. Unlike a raw edge map (just a collection of white/black pixels), a contour is a structured object we can perform geometric calculations on: area, perimeter, center, and more.</span>
+  <span class="fa">یک <strong>Contour</strong><sup class="fn" id="fnref-contour-fa"><a href="#fn-contour">[۸]</a></sup> منحنی پیوسته‌ای است که مرز یک شیء را دنبال می‌کند، معمولاً بعد از لبه‌یابی یا threshold استخراج می‌شود. برخلاف نقشهٔ خام لبه‌ها (که فقط مجموعه‌ای از پیکسل‌های سفید/سیاه است)، یک contour یک شیء ساختاریافته است که می‌توانیم رویش محاسبات هندسی انجام دهیم: مساحت، محیط، مرکز و غیره.</span></p>
   <pre><code>contours, hierarchy = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 cv2.drawContours(image, contours, -1, (0,255,0), 2)</code></pre>
   <p><span class="en"><code class="ltr">cv2.RETR_EXTERNAL</code> means "grab only the outermost contours" (ignore contours nested inside other contours). <code class="ltr">hierarchy</code><sup class="fn" id="fnref-hier"><a href="#fn-hier">[9]</a></sup> keeps track of parent-child relationships between nested contours (for example, a ring with another contour inside it).</span>
@@ -388,7 +388,7 @@ cx = int(M["m10"] / M["m00"])
 cy = int(M["m01"] / M["m00"])</code></pre>
 
   <div class="box box-try">
-    <h4><span class="en">Try It Yourself — Exercise 2</span><span class="fa">امتحانش کن — تمرین ۲</span></h4>
+    <h4><span class="en">Try It Yourself, Exercise 2</span><span class="fa">امتحانش کن، تمرین ۲</span></h4>
     <p style="margin:0 0 8px"><span class="en">Count the objects in a simple binary image:</span><span class="fa">تعداد اشیا در یک تصویر باینری ساده را بشمار:</span></p>
     <pre><code>import cv2, numpy as np
 binary = np.zeros((300,300), np.uint8)
@@ -400,8 +400,8 @@ contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPL
 print("Object count:", len(contours))</code></pre>
     <details class="solution">
       <summary><span class="en">What should I expect?</span><span class="fa">چه انتظاری باید داشته باشم؟</span></summary>
-      <p><span class="en">The output should be <code class="ltr">Object count: 3</code> — because we drew two circles and one rectangle, and <code class="ltr">RETR_EXTERNAL</code> only counts separate outer contours.</span>
-      <span class="fa">خروجی باید <code class="ltr">تعداد اشیا: 3</code> باشد — چون دو دایره و یک مستطیل کشیده‌ایم و <code class="ltr">RETR_EXTERNAL</code> فقط کانتورهای بیرونی جدا از هم را می‌شمارد.</span></p>
+      <p><span class="en">The output should be <code class="ltr">Object count: 3</code>, because we drew two circles and one rectangle, and <code class="ltr">RETR_EXTERNAL</code> only counts separate outer contours.</span>
+      <span class="fa">خروجی باید <code class="ltr">تعداد اشیا: 3</code> باشد، چون دو دایره و یک مستطیل کشیده‌ایم و <code class="ltr">RETR_EXTERNAL</code> فقط کانتورهای بیرونی جدا از هم را می‌شمارد.</span></p>
     </details>
   </div>
 </section>
@@ -421,8 +421,8 @@ print("Object count:", len(contours))</code></pre>
 
 <section id="sec-real-photos">
   <h2><span class="en">From My Own Pipeline: Canny + Contour on a Real Photo</span><span class="fa">از پایپ‌لاین خودم: Canny و Contour روی یک عکس واقعی</span></h2>
-  <p><span class="en">Same idea as before — here is the grayscale → blur → Canny → morphological closing → contour pipeline from this chapter, run end-to-end on a real photo from a personal Classical Computer Vision pipeline project.</span>
-  <span class="fa">همان ایده قبلی — این‌جا پایپ‌لاین خاکستری‌سازی → بلور → Canny → بستن مورفولوژیک → کانتور همین فصل، به‌صورت سرتاسری روی یک عکس واقعی از یک پروژه شخصی Classical Computer Vision Pipeline اجرا شده.</span></p>
+  <p><span class="en">Same idea as before, here is the grayscale → blur → Canny → morphological closing → contour pipeline from this chapter, run end-to-end on a real photo from a personal Classical Computer Vision pipeline project.</span>
+  <span class="fa">همان ایده قبلی، این‌جا پایپ‌لاین خاکستری‌سازی → بلور → Canny → بستن مورفولوژیک → کانتور همین فصل، به‌صورت سرتاسری روی یک عکس واقعی از یک پروژه شخصی Classical Computer Vision Pipeline اجرا شده.</span></p>
   <style>.real-gallery{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:16px 0}</style>
   <div class="real-gallery">
     <figure style="margin:0;flex:1 1 220px;min-width:180px;max-width:260px">
@@ -488,8 +488,8 @@ print("Object count:", len(contours))</code></pre>
 
 <footer class="chapfoot">
   <div class="foot-inner">
-    <p><span class="en">Next chapter: from edges and shapes, we reach "trackable features" — extracting and matching features to recognize an object from different viewpoints.</span>
-    <span class="fa">فصل بعد: از لبه و شکل، به «ویژگی‌های قابل‌ردیابی» می‌رسیم — استخراج و تطبیق ویژگی‌ها برای شناسایی یک شیء از زوایای مختلف.</span></p>
+    <p><span class="en">Next chapter: from edges and shapes, we reach "trackable features", extracting and matching features to recognize an object from different viewpoints.</span>
+    <span class="fa">فصل بعد: از لبه و شکل، به «ویژگی‌های قابل‌ردیابی» می‌رسیم، استخراج و تطبیق ویژگی‌ها برای شناسایی یک شیء از زوایای مختلف.</span></p>
     <div class="foot-btns">
       <a class="btn-primary" href="05-feature-detection.html"><span class="en">Next Chapter »</span><span class="fa">برو به فصل بعد »</span></a>
       <a class="btn-ghost" href="index.html"><span class="en">Back to Book Contents</span><span class="fa">بازگشت به فهرست کتاب</span></a>

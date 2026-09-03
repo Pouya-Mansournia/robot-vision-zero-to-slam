@@ -17,7 +17,7 @@
   if (t === 'dark' || t === 'light') { document.documentElement.setAttribute('data-theme', t); }
 })();
 </script>
-<title>Robot Vision: Zero to SLAM — Ch.1</title>
+<title>Robot Vision: Zero to SLAM · Ch.1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
@@ -159,7 +159,7 @@ sup.fn{color:var(--accent);cursor:default;font-size:.75em}
 <header class="topbar">
   <div class="topbar-inner">
     <a class="book-name" href="index.html"><span class="en">📘 Robot Vision: Zero to SLAM</span><span class="fa">📘 چشم ربات: از صفر تا SLAM</span></a>
-    <span class="chapter-tag"><span class="en">Chapter 01 of 10 — What Is a Digital Image?</span><span class="fa">فصل ۰۱ از ۱۰ — تصویر دیجیتال چیست؟</span></span>
+    <span class="chapter-tag"><span class="en">Chapter 01 of 10 · What Is a Digital Image?</span><span class="fa">فصل ۰۱ از ۱۰ · تصویر دیجیتال چیست؟</span></span>
     <div class="nav-btns">
       <a href="index.html"><span class="en">Book Index</span><span class="fa">فهرست کتاب</span></a>
       <a href="02-opencv-basics.html"><span class="en">Next Chapter ›</span><span class="fa">فصل بعد ›</span></a>
@@ -189,8 +189,8 @@ sup.fn{color:var(--accent);cursor:default;font-size:.75em}
 <div class="hero">
   <h1 class="title"><span class="en">What Is a Digital Image?</span><span class="fa">تصویر دیجیتال چیست؟</span></h1>
   <p class="subtitle">
-    <span class="en">Before a robot can "see," we need to understand what a picture actually is from a computer's point of view. This chapter pulls back the curtain on every digital image's simple secret: it's just a grid of numbers — nothing more, nothing less.</span>
-    <span class="fa">قبل از این‌که یک ربات بتواند «ببیند»، باید بفهمیم از نگاه یک کامپیوتر، عکس اصلاً چیست. این فصل پرده از رازِ ساده‌ی هر تصویر دیجیتال برمی‌دارد: فقط یک جدول از عدد است — نه بیشتر، نه کمتر.</span>
+    <span class="en">Before a robot can "see," we need to understand what a picture actually is from a computer's point of view. This chapter pulls back the curtain on every digital image's simple secret: it's just a grid of numbers, nothing more, nothing less.</span>
+    <span class="fa">قبل از این‌که یک ربات بتواند «ببیند»، باید بفهمیم از نگاه یک کامپیوتر، عکس اصلاً چیست. این فصل پرده از رازِ ساده‌ی هر تصویر دیجیتال برمی‌دارد: فقط یک جدول از عدد است، نه بیشتر، نه کمتر.</span>
   </p>
 </div>
 
@@ -200,8 +200,8 @@ sup.fn{color:var(--accent);cursor:default;font-size:.75em}
     <div class="box box-why">
       <h3><span class="en">Why does this matter?</span><span class="fa">چرا این مهم است؟</span></h3>
       <p>
-        <span class="en">Every computer vision algorithm — from face recognition to a self-driving robot's SLAM — ultimately works on these same numeric grids. If you don't know what an image looks like to a computer, you'll never understand exactly what filters, neural networks, or robot cameras are computing. This chapter is the first brick of the whole book.</span>
-        <span class="fa">هر الگوریتم بینایی ماشین — از تشخیص چهره تا SLAM ربات خودران — در نهایت روی همین جدول‌های عددی کار می‌کند. اگر ندانید یک تصویر از نظر کامپیوتر چه شکلی است، هیچ‌وقت نمی‌فهمید فیلترها، شبکه‌های عصبی یا دوربین‌های رباتیک دقیقاً روی چه چیزی محاسبه انجام می‌دهند. این فصل، آجر اول همه‌ی کتاب است.</span>
+        <span class="en">Every computer vision algorithm, from face recognition to a self-driving robot's SLAM, ultimately works on these same numeric grids. If you don't know what an image looks like to a computer, you'll never understand exactly what filters, neural networks, or robot cameras are computing. This chapter is the first brick of the whole book.</span>
+        <span class="fa">هر الگوریتم بینایی ماشین، از تشخیص چهره تا SLAM ربات خودران، در نهایت روی همین جدول‌های عددی کار می‌کند. اگر ندانید یک تصویر از نظر کامپیوتر چه شکلی است، هیچ‌وقت نمی‌فهمید فیلترها، شبکه‌های عصبی یا دوربین‌های رباتیک دقیقاً روی چه چیزی محاسبه انجام می‌دهند. این فصل، آجر اول همه‌ی کتاب است.</span>
       </p>
     </div>
 
@@ -222,7 +222,7 @@ sup.fn{color:var(--accent);cursor:default;font-size:.75em}
         <figcaption><span class="en">The first row of a 3×3 image: black, black, white</span><span class="fa">سطر اول یک تصویر ۳×۳: سیاه، سیاه، سفید</span></figcaption>
       </div>
       <p>
-        <span class="en">But a computer doesn't see "blackness" or "whiteness" at all — it only sees numbers. This same image is stored like this from the computer's point of view (assuming the full 3×3 image):</span>
+        <span class="en">But a computer doesn't see "blackness" or "whiteness" at all, it only sees numbers. This same image is stored like this from the computer's point of view (assuming the full 3×3 image):</span>
         <span class="fa">ولی کامپیوتر اصلاً «سیاهی» یا «سفیدی» نمی‌بیند؛ او فقط عدد می‌بیند. همین تصویر از دید کامپیوتر این‌طور ذخیره می‌شود (فرض کنید تصویر کامل ۳×۳ باشد):</span>
       </p>
       <pre class="ltr"><code>[
@@ -231,8 +231,8 @@ sup.fn{color:var(--accent);cursor:default;font-size:.75em}
  [0,   0,   0]
 ]</code></pre>
       <p>
-        <span class="en">In a grayscale<sup class="fn">1</sup> image, the number <strong>0</strong> means fully black and <strong>255</strong> means fully white. Every number in between is a shade of gray — the larger the number, the brighter the pixel.</span>
-        <span class="fa">در تصویر خاکستری (grayscale<sup class="fn">۱</sup>)، عدد <strong>۰</strong> یعنی کاملاً سیاه و عدد <strong>۲۵۵</strong> یعنی کاملاً سفید. هر عدد بین این دو، یک سایه از خاکستری است — هرچه عدد بزرگ‌تر، روشن‌تر.</span>
+        <span class="en">In a grayscale<sup class="fn">1</sup> image, the number <strong>0</strong> means fully black and <strong>255</strong> means fully white. Every number in between is a shade of gray, the larger the number, the brighter the pixel.</span>
+        <span class="fa">در تصویر خاکستری (grayscale<sup class="fn">۱</sup>)، عدد <strong>۰</strong> یعنی کاملاً سیاه و عدد <strong>۲۵۵</strong> یعنی کاملاً سفید. هر عدد بین این دو، یک سایه از خاکستری است، هرچه عدد بزرگ‌تر، روشن‌تر.</span>
       </p>
       <p>
         <span class="en">Now the key question: why exactly up to 255? Why not up to 100 or 1000? The answer comes down to a concept called <strong>bit depth<sup class="fn">6</sup></strong>. Computers store information in bits (0 or 1). If we use <em>n</em> bits per pixel, the number of possible levels is:</span>
@@ -241,8 +241,8 @@ sup.fn{color:var(--accent);cursor:default;font-size:.75em}
       <div class="formula-box">
         $$L = 2^{n}$$
         <div class="formula-eg">
-          <span class="en">Numeric example: with <span class="ltr" style="display:inline">n = 8</span> bits (the most common case for ordinary photos), we get <span class="ltr" style="display:inline">L = 2^8 = 256</span> possible gray levels — from 0 to 255 (since counting starts at zero, that's 256 numbers total, ending at 255). With just <span class="ltr" style="display:inline">n = 1</span> bit, <span class="ltr" style="display:inline">L = 2^1 = 2</span> levels — meaning a purely binary image: only absolute black or absolute white, with no gray in between.</span>
-          <span class="fa">مثال عددی: با <span class="ltr">n = 8</span> بیت (رایج‌ترین حالت در عکس‌های معمولی) داریم <span class="ltr">L = 2^8 = 256</span> سطح خاکستری ممکن — یعنی از ۰ تا ۲۵۵ (چون شمارش از صفر شروع می‌شود، ۲۵۶ عدد داریم که آخری‌شان ۲۵۵ است). اگر فقط <span class="ltr">n = 1</span> بیت داشته باشیم، <span class="ltr">L = 2^1 = 2</span> سطح — یعنی تصویر کاملاً باینری: فقط سیاه مطلق یا سفید مطلق، بدون هیچ خاکستری میانی.</span>
+          <span class="en">Numeric example: with <span class="ltr" style="display:inline">n = 8</span> bits (the most common case for ordinary photos), we get <span class="ltr" style="display:inline">L = 2^8 = 256</span> possible gray levels, from 0 to 255 (since counting starts at zero, that's 256 numbers total, ending at 255). With just <span class="ltr" style="display:inline">n = 1</span> bit, <span class="ltr" style="display:inline">L = 2^1 = 2</span> levels, meaning a purely binary image: only absolute black or absolute white, with no gray in between.</span>
+          <span class="fa">مثال عددی: با <span class="ltr">n = 8</span> بیت (رایج‌ترین حالت در عکس‌های معمولی) داریم <span class="ltr">L = 2^8 = 256</span> سطح خاکستری ممکن، یعنی از ۰ تا ۲۵۵ (چون شمارش از صفر شروع می‌شود، ۲۵۶ عدد داریم که آخری‌شان ۲۵۵ است). اگر فقط <span class="ltr">n = 1</span> بیت داشته باشیم، <span class="ltr">L = 2^1 = 2</span> سطح، یعنی تصویر کاملاً باینری: فقط سیاه مطلق یا سفید مطلق، بدون هیچ خاکستری میانی.</span>
         </div>
       </div>
       <p>
@@ -254,8 +254,8 @@ sup.fn{color:var(--accent);cursor:default;font-size:.75em}
     <section id="sec-pixel">
       <h2><span class="num">2.</span> <span class="en">Pixels, Resolution, Grayscale vs. RGB</span><span class="fa">پیکسل، رزولوشن، خاکستری در برابر RGB</span></h2>
       <p>
-        <span class="en">A <strong>pixel<sup class="fn">2</sup></strong> is exactly one cell of this matrix — the smallest unit of a digital image. The more pixels there are, the more detail the image shows.</span>
-        <span class="fa"><strong>پیکسل (Pixel<sup class="fn">۲</sup>)</strong> یعنی دقیقاً یک خانه از این ماتریس — کوچک‌ترین واحد یک تصویر دیجیتال. هرچه تعداد پیکسل‌ها بیشتر باشد، تصویر جزئیات بیشتری نشان می‌دهد.</span>
+        <span class="en">A <strong>pixel<sup class="fn">2</sup></strong> is exactly one cell of this matrix, the smallest unit of a digital image. The more pixels there are, the more detail the image shows.</span>
+        <span class="fa"><strong>پیکسل (Pixel<sup class="fn">۲</sup>)</strong> یعنی دقیقاً یک خانه از این ماتریس، کوچک‌ترین واحد یک تصویر دیجیتال. هرچه تعداد پیکسل‌ها بیشتر باشد، تصویر جزئیات بیشتری نشان می‌دهد.</span>
       </p>
       <p>
         <span class="en"><strong>Resolution<sup class="fn">3</sup></strong> is the number of rows multiplied by the number of columns. For example, an image with a resolution of 1920×1080 (the common Full HD resolution) has this many pixels:</span>
@@ -264,8 +264,8 @@ sup.fn{color:var(--accent);cursor:default;font-size:.75em}
       <div class="formula-box">
         $$1920 \times 1080 = 2{,}073{,}600 \text{ pixels}$$
         <div class="formula-eg">
-          <span class="en">That's about 2.07 million pixels — what the camera world calls "2 megapixels."</span>
-          <span class="fa">یعنی حدود ۲٫۰۷ میلیون پیکسل — همان چیزی که در دنیای دوربین به آن «۲ مگاپیکسل» می‌گویند.</span>
+          <span class="en">That's about 2.07 million pixels, what the camera world calls "2 megapixels."</span>
+          <span class="fa">یعنی حدود ۲٫۰۷ میلیون پیکسل، همان چیزی که در دنیای دوربین به آن «۲ مگاپیکسل» می‌گویند.</span>
         </div>
       </div>
       <h3><span class="en">Grayscale vs. Color Images</span><span class="fa">تصویر خاکستری در برابر تصویر رنگی</span></h3>
@@ -307,8 +307,8 @@ sup.fn{color:var(--accent);cursor:default;font-size:.75em}
       </p>
       <pre class="ltr"><code>(1080, 1920, 3)</code></pre>
       <p>
-        <span class="en">An important and often confusing point: the order is <strong>height (rows)</strong> first, then <strong>width (columns)</strong>, and finally the <strong>number of color channels<sup class="fn">5</sup></strong>. Many people expect width to come first (since we usually say "1920×1080," i.e. width×height), but the NumPy/OpenCV convention is the opposite, because these libraries see an image as "an array of rows" — exactly like reading a table row by row.</span>
-        <span class="fa">نکته‌ی مهم و اغلب گیج‌کننده: ترتیب اول <strong>ارتفاع (height/rows)</strong> است، بعد <strong>عرض (width/columns)</strong>، و در آخر <strong>تعداد کانال‌های رنگی (channel<sup class="fn">۵</sup>)</strong>. خیلی‌ها انتظار دارند اول عرض بیاید (چون معمولاً «۱۹۲۰×۱۰۸۰» می‌گوییم، یعنی عرض×ارتفاع)، اما این قرارداد NumPy و OpenCV برعکس است، چون این کتابخانه‌ها تصویر را به‌صورت «آرایه‌ای از سطرها» می‌بینند — دقیقاً مثل این‌که یک جدول را ردیف‌به‌ردیف بخوانید.</span>
+        <span class="en">An important and often confusing point: the order is <strong>height (rows)</strong> first, then <strong>width (columns)</strong>, and finally the <strong>number of color channels<sup class="fn">5</sup></strong>. Many people expect width to come first (since we usually say "1920×1080," i.e. width×height), but the NumPy/OpenCV convention is the opposite, because these libraries see an image as "an array of rows", exactly like reading a table row by row.</span>
+        <span class="fa">نکته‌ی مهم و اغلب گیج‌کننده: ترتیب اول <strong>ارتفاع (height/rows)</strong> است، بعد <strong>عرض (width/columns)</strong>، و در آخر <strong>تعداد کانال‌های رنگی (channel<sup class="fn">۵</sup>)</strong>. خیلی‌ها انتظار دارند اول عرض بیاید (چون معمولاً «۱۹۲۰×۱۰۸۰» می‌گوییم، یعنی عرض×ارتفاع)، اما این قرارداد NumPy و OpenCV برعکس است، چون این کتابخانه‌ها تصویر را به‌صورت «آرایه‌ای از سطرها» می‌بینند، دقیقاً مثل این‌که یک جدول را ردیف‌به‌ردیف بخوانید.</span>
       </p>
 
       <div class="box box-mistake">
@@ -326,8 +326,8 @@ sup.fn{color:var(--accent);cursor:default;font-size:.75em}
       <div class="formula-box">
         $$1080 \times 1920 \times 3 \text{ bytes} \approx 6.2 \text{ MB}$$
         <div class="formula-eg">
-          <span class="en">So a raw, uncompressed Full HD frame (bgr8) takes about 6.2 MB of memory. Interestingly, a JPG file at the same resolution is usually only a few hundred kilobytes — because the JPG format <strong>compresses</strong> the image and throws away some less-important information.</span>
-          <span class="fa">یعنی یک فریم خام و فشرده‌نشده (bgr8) با رزولوشن Full HD، حدود ۶٫۲ مگابایت حافظه می‌گیرد. جالب است بدانید یک فایل JPG با همین رزولوشن معمولاً فقط چند صد کیلوبایت است — چون فرمت JPG تصویر را <strong>فشرده</strong> (compress) می‌کند و بخشی از اطلاعات کم‌اهمیت را حذف می‌کند.</span>
+          <span class="en">So a raw, uncompressed Full HD frame (bgr8) takes about 6.2 MB of memory. Interestingly, a JPG file at the same resolution is usually only a few hundred kilobytes, because the JPG format <strong>compresses</strong> the image and throws away some less-important information.</span>
+          <span class="fa">یعنی یک فریم خام و فشرده‌نشده (bgr8) با رزولوشن Full HD، حدود ۶٫۲ مگابایت حافظه می‌گیرد. جالب است بدانید یک فایل JPG با همین رزولوشن معمولاً فقط چند صد کیلوبایت است، چون فرمت JPG تصویر را <strong>فشرده</strong> (compress) می‌کند و بخشی از اطلاعات کم‌اهمیت را حذف می‌کند.</span>
         </div>
       </div>
     </section>
@@ -356,8 +356,8 @@ sup.fn{color:var(--accent);cursor:default;font-size:.75em}
         <figcaption><span class="en">The continuous spectrum of gray values in an 8-bit image</span><span class="fa">طیف پیوسته‌ی مقدارهای خاکستری در یک تصویر ۸ بیتی</span></figcaption>
       </div>
       <p>
-        <span class="en">The formula for the number of possible levels is the same one we saw above: <span class="ltr" style="display:inline">$L = 2^{bits}$</span>. For example, with 12 bits, $L = 2^{12} = 4096$ gray levels — much higher precision than the usual 256 levels.</span>
-        <span class="fa">فرمول تعداد سطوح ممکن، همان چیزی است که بالاتر دیدیم: <span class="ltr" style="display:inline">$L = 2^{bits}$</span>. مثلاً با ۱۲ بیت، $L = 2^{12} = 4096$ سطح خاکستری — دقت بسیار بالاتری نسبت به ۲۵۶ سطح معمولی.</span>
+        <span class="en">The formula for the number of possible levels is the same one we saw above: <span class="ltr" style="display:inline">$L = 2^{bits}$</span>. For example, with 12 bits, $L = 2^{12} = 4096$ gray levels, much higher precision than the usual 256 levels.</span>
+        <span class="fa">فرمول تعداد سطوح ممکن، همان چیزی است که بالاتر دیدیم: <span class="ltr" style="display:inline">$L = 2^{bits}$</span>. مثلاً با ۱۲ بیت، $L = 2^{12} = 4096$ سطح خاکستری، دقت بسیار بالاتری نسبت به ۲۵۶ سطح معمولی.</span>
       </p>
     </section>
 
@@ -390,12 +390,12 @@ color_img[40:60, 40:60] = [0, 0, 255]  # BGR: red</code></pre>
       <p><span class="en">A few important notes about this code:</span><span class="fa">چند نکته‌ی مهم درباره‌ی این کد:</span></p>
       <ul>
         <li>
-          <span class="en"><code class="ltr">dtype=np.uint8</code> means the data type is an "unsigned 8-bit integer<sup class="fn">9</sup>" — it can only hold whole numbers from 0 to 255, no negatives and no decimals.</span>
-          <span class="fa"><code class="ltr">dtype=np.uint8</code> یعنی نوع داده «عدد صحیح بدون علامت ۸ بیتی» (unsigned 8-bit integer<sup class="fn">۹</sup>) — یعنی فقط اعداد صحیح بین ۰ تا ۲۵۵ را می‌تواند نگه دارد، نه منفی و نه اعشاری.</span>
+          <span class="en"><code class="ltr">dtype=np.uint8</code> means the data type is an "unsigned 8-bit integer<sup class="fn">9</sup>", it can only hold whole numbers from 0 to 255, no negatives and no decimals.</span>
+          <span class="fa"><code class="ltr">dtype=np.uint8</code> یعنی نوع داده «عدد صحیح بدون علامت ۸ بیتی» (unsigned 8-bit integer<sup class="fn">۹</sup>), یعنی فقط اعداد صحیح بین ۰ تا ۲۵۵ را می‌تواند نگه دارد، نه منفی و نه اعشاری.</span>
         </li>
         <li>
-          <span class="en"><code class="ltr">crop = img[0:3, 0:3]</code> is a simple example of a <strong>Crop<sup class="fn">11</sup></strong> — cutting out part of an image, which in NumPy is nothing more than ordinary array slicing.</span>
-          <span class="fa"><code class="ltr">crop = img[0:3, 0:3]</code> یک نمونه‌ی ساده از <strong>Crop<sup class="fn">۱۱</sup></strong> است — یعنی برش زدن بخشی از تصویر، که در NumPy چیزی نیست جز slicing معمولی آرایه.</span>
+          <span class="en"><code class="ltr">crop = img[0:3, 0:3]</code> is a simple example of a <strong>Crop<sup class="fn">11</sup></strong>, cutting out part of an image, which in NumPy is nothing more than ordinary array slicing.</span>
+          <span class="fa"><code class="ltr">crop = img[0:3, 0:3]</code> یک نمونه‌ی ساده از <strong>Crop<sup class="fn">۱۱</sup></strong> است، یعنی برش زدن بخشی از تصویر، که در NumPy چیزی نیست جز slicing معمولی آرایه.</span>
         </li>
         <li>
           <span class="en">The last line creates a fully black 100×100 color image, then colors a 20×20 square in the middle red (in BGR order, which we'll explain fully in the next chapter).</span>
@@ -412,15 +412,15 @@ color_img[40:60, 40:60] = [0, 0, 255]  # BGR: red</code></pre>
         <pre class="ltr"><code>&gt;&gt;&gt; np.uint8(250) + np.uint8(10)
 4   # not 260! because 260 - 256 = 4</code></pre>
         <p>
-          <span class="en">This bug is very common in real image processing — for example, when you try to increase an image's brightness and suddenly bright pixels turn dark instead of brighter!</span>
-          <span class="fa">این باگ در پردازش تصویر واقعی خیلی رایج است — مثلاً وقتی می‌خواهید روشنایی یک تصویر را زیاد کنید و ناگهان پیکسل‌های روشن به‌جای سفیدتر شدن، تیره می‌شوند!</span>
+          <span class="en">This bug is very common in real image processing, for example, when you try to increase an image's brightness and suddenly bright pixels turn dark instead of brighter!</span>
+          <span class="fa">این باگ در پردازش تصویر واقعی خیلی رایج است، مثلاً وقتی می‌خواهید روشنایی یک تصویر را زیاد کنید و ناگهان پیکسل‌های روشن به‌جای سفیدتر شدن، تیره می‌شوند!</span>
         </p>
       </div>
 
       <h3><span class="en">What Is Resize? (Conceptually)</span><span class="fa">Resize چیست؟ (مفهومی)</span></h3>
       <p>
-        <span class="en">Resize means changing the number of rows/columns of an image — for example, shrinking a 1920×1080 photo down to 320×240. Mathematically, the computer has to guess what values the new pixels should have (since the number of pixels increases or decreases). It does this with techniques like interpolation. We'll practice the hands-on details of resizing with OpenCV in Chapter 2.</span>
-        <span class="fa">Resize یعنی تغییر تعداد سطر/ستون یک تصویر — مثلاً کوچک کردن یک عکس ۱۹۲۰×۱۰۸۰ به ۳۲۰×۲۴۰. از نظر ریاضی، کامپیوتر باید حدس بزند پیکسل‌های جدید چه مقداری داشته باشند (چون تعداد پیکسل‌ها کم یا زیاد می‌شود). این کار را با تکنیک‌هایی مثل درون‌یابی (interpolation) انجام می‌دهد. جزئیات عملی resize را در فصل ۲ با OpenCV تمرین می‌کنیم.</span>
+        <span class="en">Resize means changing the number of rows/columns of an image, for example, shrinking a 1920×1080 photo down to 320×240. Mathematically, the computer has to guess what values the new pixels should have (since the number of pixels increases or decreases). It does this with techniques like interpolation. We'll practice the hands-on details of resizing with OpenCV in Chapter 2.</span>
+        <span class="fa">Resize یعنی تغییر تعداد سطر/ستون یک تصویر، مثلاً کوچک کردن یک عکس ۱۹۲۰×۱۰۸۰ به ۳۲۰×۲۴۰. از نظر ریاضی، کامپیوتر باید حدس بزند پیکسل‌های جدید چه مقداری داشته باشند (چون تعداد پیکسل‌ها کم یا زیاد می‌شود). این کار را با تکنیک‌هایی مثل درون‌یابی (interpolation) انجام می‌دهد. جزئیات عملی resize را در فصل ۲ با OpenCV تمرین می‌کنیم.</span>
       </p>
     </section>
 
@@ -452,14 +452,14 @@ print(m)
       <div class="box box-try">
         <h3><span class="en">🧪 Try It Yourself #2</span><span class="fa">🧪 امتحانش کن #۲</span></h3>
         <p>
-          <span class="en">Imagine a color image with a resolution of 640×480. Guess what the NumPy array's shape would be, and compute the total count of numbers stored in memory (not the pixel count — the total numbers, including channels).</span>
+          <span class="en">Imagine a color image with a resolution of 640×480. Guess what the NumPy array's shape would be, and compute the total count of numbers stored in memory (not the pixel count, the total numbers, including channels).</span>
           <span class="fa">یک تصویر فرضی رنگی با رزولوشن ۶۴۰×۴۸۰ داریم. حدس بزن shape آرایه‌ی NumPy آن چیست، و تعداد کل عددهایی که در حافظه ذخیره می‌شوند را حساب کن (نه تعداد پیکسل، بلکه تعداد کل عددها با احتساب کانال‌ها).</span>
         </p>
         <details>
           <summary><span class="en">Show solution</span><span class="fa">راه‌حل را نشان بده</span></summary>
           <p style="margin:10px 0 0">
-            <span class="en">The shape is <code class="ltr">(480, 640, 3)</code> — remember, height comes first, then width.</span>
-            <span class="fa">shape برابر است با <code class="ltr">(480, 640, 3)</code> — یادتان باشد اول ارتفاع، بعد عرض.</span>
+            <span class="en">The shape is <code class="ltr">(480, 640, 3)</code>, remember, height comes first, then width.</span>
+            <span class="fa">shape برابر است با <code class="ltr">(480, 640, 3)</code>, یادتان باشد اول ارتفاع، بعد عرض.</span>
           </p>
           <div class="formula-box">
             $$640 \times 480 \times 3 = 921{,}600$$
@@ -481,8 +481,8 @@ print(m)
           <span class="fa"><strong>۱.</strong> فکر کردن به shape به‌صورت <code class="ltr">(width, height)</code> به‌جای ترتیب درست <code class="ltr">(height, width, channels)</code>.</span>
         </p>
         <p>
-          <span class="en"><strong>2.</strong> Forgetting that OpenCV reads images in <strong>BGR</strong> order by default, not RGB — we'll unpack this fully in Chapter 2.</span>
-          <span class="fa"><strong>۲.</strong> غافل شدن از این‌که OpenCV تصویر را به‌صورت پیش‌فرض به ترتیب <strong>BGR</strong> می‌خواند، نه RGB — این موضوع را در فصل ۲ کامل باز می‌کنیم.</span>
+          <span class="en"><strong>2.</strong> Forgetting that OpenCV reads images in <strong>BGR</strong> order by default, not RGB, we'll unpack this fully in Chapter 2.</span>
+          <span class="fa"><strong>۲.</strong> غافل شدن از این‌که OpenCV تصویر را به‌صورت پیش‌فرض به ترتیب <strong>BGR</strong> می‌خواند، نه RGB, این موضوع را در فصل ۲ کامل باز می‌کنیم.</span>
         </p>
       </div>
     </section>
@@ -527,8 +527,8 @@ print(m)
     <div>
       <div class="lbl"><span class="en">Next Chapter</span><span class="fa">فصل بعد</span></div>
       <strong>
-        <span class="en">Chapter 2: OpenCV from Scratch — read, display, and draw on your first real image.</span>
-        <span class="fa">فصل ۲: OpenCV از صفر — اولین‌بار عکس بخوانید، نمایش دهید و روی آن شکل بکشید.</span>
+        <span class="en">Chapter 2: OpenCV from Scratch, read, display, and draw on your first real image.</span>
+        <span class="fa">فصل ۲: OpenCV از صفر، اولین‌بار عکس بخوانید، نمایش دهید و روی آن شکل بکشید.</span>
       </strong>
     </div>
     <div class="foot-btns">

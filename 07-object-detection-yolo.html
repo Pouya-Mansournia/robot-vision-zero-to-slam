@@ -17,7 +17,7 @@
   if (t === 'dark' || t === 'light') { document.documentElement.setAttribute('data-theme', t); }
 })();
 </script>
-<title>Robot Vision: Zero to SLAM — Ch. 07 Object Detection &amp; YOLO</title>
+<title>Robot Vision: Zero to SLAM · Ch. 07 Object Detection &amp; YOLO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -126,7 +126,7 @@ footer.end{margin-top:3rem;padding:2rem 0;border-top:1px solid var(--line);text-
 <div class="wrap topbar">
 <div>
 <a class="book-name" href="index.html"><span class="en">Robot Vision: Zero to SLAM 🤖👁️</span><span class="fa">چشم ربات: از صفر تا SLAM 🤖👁️</span></a>
-<span class="chnum"><span class="en">— Chapter 07 of 10</span><span class="fa">— فصل ۰۷ از ۱۰</span></span>
+<span class="chnum"><span class="en">, Chapter 07 of 10</span><span class="fa">, فصل ۰۷ از ۱۰</span></span>
 </div>
 <nav class="navbtns">
 <a href="06-camera-geometry-3d-vision.html"><span class="en">← Previous</span><span class="fa">← فصل قبل</span></a>
@@ -142,8 +142,8 @@ footer.end{margin-top:3rem;padding:2rem 0;border-top:1px solid var(--line);text-
 <div class="hero">
 <h1><span class="en">Object Detection: From "What" to "Where and How Many" 📦</span><span class="fa">تشخیص اشیا: از «چیست» به «کجاست و چندتاست» 📦</span></h1>
 <p class="lead">
-<span class="en">In this chapter we'll learn how an AI model can look at a warehouse photo and both say "there's a person here" and point exactly to where — all with the YOLO model family, running at a speed robotics actually needs.</span>
-<span class="fa">در این فصل یاد می‌گیریم چطور یک مدل هوش مصنوعی می‌تواند در یک عکس انبار، هم بگوید «اینجا آدم است» و هم دقیقاً نشانش دهد — و همه اینها را با خانواده مدل‌های YOLO با سرعتی مناسب رباتیک انجام می‌دهیم.</span>
+<span class="en">In this chapter we'll learn how an AI model can look at a warehouse photo and both say "there's a person here" and point exactly to where, all with the YOLO model family, running at a speed robotics actually needs.</span>
+<span class="fa">در این فصل یاد می‌گیریم چطور یک مدل هوش مصنوعی می‌تواند در یک عکس انبار، هم بگوید «اینجا آدم است» و هم دقیقاً نشانش دهد، و همه اینها را با خانواده مدل‌های YOLO با سرعتی مناسب رباتیک انجام می‌دهیم.</span>
 </p>
 </div>
 <div class="layout">
@@ -177,18 +177,18 @@ footer.end{margin-top:3rem;padding:2rem 0;border-top:1px solid var(--line);text-
 <div class="why">
 <b><span class="en">Why does this matter?</span><span class="fa">چرا این مهم است؟</span></b>
 <br>
-<span class="en">A mobile robot in a warehouse can't just know "this is a picture of a warehouse" — it needs to know exactly where a person is standing, where a forklift is moving, so it can choose a safe path. Object Detection is what gives the robot "location," not just a "label."</span>
-<span class="fa">یک ربات متحرک در انبار فقط دانستن «این یک عکس از انبار است» به کارش نمی‌آید — باید دقیقاً بداند کجا آدم ایستاده، کجا فورک‌لیفت در حال حرکت است، تا مسیرش را امن انتخاب کند. Object Detection همان چیزی است که به ربات «مکان» می‌دهد، نه فقط «برچسب».</span>
+<span class="en">A mobile robot in a warehouse can't just know "this is a picture of a warehouse", it needs to know exactly where a person is standing, where a forklift is moving, so it can choose a safe path. Object Detection is what gives the robot "location," not just a "label."</span>
+<span class="fa">یک ربات متحرک در انبار فقط دانستن «این یک عکس از انبار است» به کارش نمی‌آید، باید دقیقاً بداند کجا آدم ایستاده، کجا فورک‌لیفت در حال حرکت است، تا مسیرش را امن انتخاب کند. Object Detection همان چیزی است که به ربات «مکان» می‌دهد، نه فقط «برچسب».</span>
 </div>
 
 <section id="sec-classvsdet">
 <h2><span class="en">1. Classification vs. Detection</span><span class="fa">۱. تفاوت Classification با Detection</span></h2>
 <p>
-<span class="en"><b>Classification</b> only says "this image is a dog" — one label for the whole picture. <b>Detection</b><sup id="fn-det-ref"><a href="#fn-det">1</a></sup> goes further: it says "there's a dog here, boxed like this, and a cat over in that corner too." That is, it gives both location (Where) and type (What) for every object separately, for several objects at once in the same picture.</span>
-<span class="fa"><b>Classification</b> فقط می‌گوید «این تصویر یک سگ است» — یک برچسب برای کل عکس. اما <b>Detection</b><sup id="fn-det-ref-fa"><a href="#fn-det">۱</a></sup> فراتر می‌رود: می‌گوید «یک سگ اینجاست، با این باکس دور آن، و یک گربه هم آن گوشه است». یعنی هم مکان (Where) و هم نوع (What) هر شیء را جدا جدا می‌دهد، آن هم برای چند شیء همزمان در یک عکس.</span>
+<span class="en"><b>Classification</b> only says "this image is a dog", one label for the whole picture. <b>Detection</b><sup id="fn-det-ref"><a href="#fn-det">1</a></sup> goes further: it says "there's a dog here, boxed like this, and a cat over in that corner too." That is, it gives both location (Where) and type (What) for every object separately, for several objects at once in the same picture.</span>
+<span class="fa"><b>Classification</b> فقط می‌گوید «این تصویر یک سگ است», یک برچسب برای کل عکس. اما <b>Detection</b><sup id="fn-det-ref-fa"><a href="#fn-det">۱</a></sup> فراتر می‌رود: می‌گوید «یک سگ اینجاست، با این باکس دور آن، و یک گربه هم آن گوشه است». یعنی هم مکان (Where) و هم نوع (What) هر شیء را جدا جدا می‌دهد، آن هم برای چند شیء همزمان در یک عکس.</span>
 </p>
 <p>
-<span class="en">For a mobile robot in a warehouse, this distinction is critical: simply knowing "there's a person in this photo" isn't enough — the robot needs to know exactly where in the scene that person is, so it can adjust its path.</span>
+<span class="en">For a mobile robot in a warehouse, this distinction is critical: simply knowing "there's a person in this photo" isn't enough, the robot needs to know exactly where in the scene that person is, so it can adjust its path.</span>
 <span class="fa">برای یک ربات متحرک در انبار، این تفاوت حیاتی است: صرفاً دانستن «در این عکس آدم هست» کافی نیست؛ ربات باید بداند آن آدم دقیقاً کجای صحنه است تا بتواند مسیرش را تغییر دهد.</span>
 </p>
 </section>
@@ -200,16 +200,16 @@ footer.end{margin-top:3rem;padding:2rem 0;border-top:1px solid var(--line);text-
 <span class="fa"><b>Bounding Box</b><sup><a href="#fn-bbox">۲</a></sup> یعنی مستطیلی که دور یک شیء کشیده می‌شود تا مکانش را مشخص کند. معمولاً با ۴ عدد توصیف می‌شود:</span>
 </p>
 <ul>
-<li><span class="ltr" style="display:inline-block">x_min, y_min, x_max, y_max</span> — <span class="en">the top-left and bottom-right corners of the rectangle</span><span class="fa">گوشه بالا-چپ و پایین-راست مستطیل</span></li>
-<li><span class="en">or</span><span class="fa">یا</span> <span class="ltr" style="display:inline-block">center_x, center_y, width, height</span> — <span class="en">the box center plus width and height (the format YOLO itself uses)</span><span class="fa">مرکز باکس به‌همراه عرض و ارتفاع (فرمتی که خود YOLO از آن استفاده می‌کند)</span></li>
+<li><span class="ltr" style="display:inline-block">x_min, y_min, x_max, y_max</span>, <span class="en">the top-left and bottom-right corners of the rectangle</span><span class="fa">گوشه بالا-چپ و پایین-راست مستطیل</span></li>
+<li><span class="en">or</span><span class="fa">یا</span> <span class="ltr" style="display:inline-block">center_x, center_y, width, height</span>, <span class="en">the box center plus width and height (the format YOLO itself uses)</span><span class="fa">مرکز باکس به‌همراه عرض و ارتفاع (فرمتی که خود YOLO از آن استفاده می‌کند)</span></li>
 </ul>
 </section>
 
 <section id="sec-iou">
 <h2><span class="en">3. IoU (Intersection over Union)</span><span class="fa">۳. IoU (Intersection over Union)</span></h2>
 <p>
-<span class="en"><b>IoU</b><sup><a href="#fn-iou">3</a></sup> is a metric for measuring how much two boxes overlap — for example, the box a model predicted versus the true box (Ground Truth) a human labeled.</span>
-<span class="fa"><b>IoU</b><sup><a href="#fn-iou">۳</a></sup> معیاری است برای اندازه‌گیری میزان هم‌پوشانی دو باکس — مثلاً باکسی که مدل پیش‌بینی کرده در برابر باکس واقعی (Ground Truth) که انسان لیبل زده.</span>
+<span class="en"><b>IoU</b><sup><a href="#fn-iou">3</a></sup> is a metric for measuring how much two boxes overlap, for example, the box a model predicted versus the true box (Ground Truth) a human labeled.</span>
+<span class="fa"><b>IoU</b><sup><a href="#fn-iou">۳</a></sup> معیاری است برای اندازه‌گیری میزان هم‌پوشانی دو باکس، مثلاً باکسی که مدل پیش‌بینی کرده در برابر باکس واقعی (Ground Truth) که انسان لیبل زده.</span>
 </p>
 <div class="formula-box">
 $$ IoU = \frac{\text{Intersection Area}}{\text{Union Area}} $$
@@ -268,8 +268,8 @@ $$ Precision = \frac{TP}{TP+FP}, \quad Recall = \frac{TP}{TP+FN} $$
 <span class="fa">یعنی مدل ۷۳٪ از چیزهایی که «نفر» نامید واقعاً نفر بودند (Precision)، و از کل ۱۰ نفر واقعی، ۸۰٪شان را پیدا کرد (Recall). این دو معیار معمولاً با هم بده‌بستان دارند.</span>
 </p>
 <p>
-<span class="en"><b>mAP</b><sup><a href="#fn-map">5</a></sup> (mean Average Precision), in short, is the average Precision across several IoU thresholds and over all classes — the standard metric used to compare different object detection models.</span>
-<span class="fa"><b>mAP</b><sup><a href="#fn-map">۵</a></sup> (mean Average Precision) به‌طور خلاصه میانگین Precision در چند آستانه مختلف IoU و روی همه کلاس‌هاست — معیار استانداردی که برای مقایسه مدل‌های مختلف تشخیص اشیا استفاده می‌شود.</span>
+<span class="en"><b>mAP</b><sup><a href="#fn-map">5</a></sup> (mean Average Precision), in short, is the average Precision across several IoU thresholds and over all classes, the standard metric used to compare different object detection models.</span>
+<span class="fa"><b>mAP</b><sup><a href="#fn-map">۵</a></sup> (mean Average Precision) به‌طور خلاصه میانگین Precision در چند آستانه مختلف IoU و روی همه کلاس‌هاست، معیار استانداردی که برای مقایسه مدل‌های مختلف تشخیص اشیا استفاده می‌شود.</span>
 </p>
 </section>
 
@@ -287,14 +287,14 @@ results = model("warehouse.jpg")</code></pre>
 <section id="sec-dataset">
 <h2><span class="en">Datasets and Labels</span><span class="fa">دیتاست و Label</span></h2>
 <p>
-<span class="en">A Dataset isn't just a collection of images; it also needs <b>Labels</b> (or Annotations<sup><a href="#fn-ann">7</a></sup>) — meaning for every object in every image, its class and exact box location must be specified. For instance, in a warehouse dataset we'd have classes like <code class="ltr">person</code>, <code class="ltr">forklift</code>, and <code class="ltr">pallet</code>.</span>
-<span class="fa">یک Dataset فقط مجموعه‌ای از عکس نیست؛ باید <b>Label</b> (یا Annotation<sup><a href="#fn-ann">۷</a></sup>) هم داشته باشد — یعنی برای هر شیء در هر عکس، کلاس آن و مکان دقیق باکسش مشخص شده باشد. مثلاً در یک دیتاست انبار، کلاس‌هایی مثل <code class="ltr">person</code>، <code class="ltr">forklift</code> و <code class="ltr">pallet</code> خواهیم داشت.</span>
+<span class="en">A Dataset isn't just a collection of images; it also needs <b>Labels</b> (or Annotations<sup><a href="#fn-ann">7</a></sup>), meaning for every object in every image, its class and exact box location must be specified. For instance, in a warehouse dataset we'd have classes like <code class="ltr">person</code>, <code class="ltr">forklift</code>, and <code class="ltr">pallet</code>.</span>
+<span class="fa">یک Dataset فقط مجموعه‌ای از عکس نیست؛ باید <b>Label</b> (یا Annotation<sup><a href="#fn-ann">۷</a></sup>) هم داشته باشد، یعنی برای هر شیء در هر عکس، کلاس آن و مکان دقیق باکسش مشخص شده باشد. مثلاً در یک دیتاست انبار، کلاس‌هایی مثل <code class="ltr">person</code>، <code class="ltr">forklift</code> و <code class="ltr">pallet</code> خواهیم داشت.</span>
 </p>
 <p><span class="en">The YOLO label format looks like this:</span><span class="fa">فرمت Label در YOLO این شکلی است:</span></p>
 <pre class="ltr" dir="ltr"><code>class_id center_x center_y width height</code></pre>
 <p>
-<span class="en">where the coordinates are <b>Normalized</b><sup><a href="#fn-norm">8</a></sup> — meaning between 0 and 1, relative to the full image's width and height (for example <span class="ltr" style="display:inline-block">center_x=0.5</span> means exactly the middle of the image width). A concrete example of one label line:</span>
-<span class="fa">که مختصات <b>Normalize</b><sup><a href="#fn-norm">۸</a></sup> شده‌اند — یعنی بین ۰ و ۱، نسبت به عرض و ارتفاع کل تصویر (مثلاً <span class="ltr" style="display:inline-block">center_x=0.5</span> یعنی دقیقاً وسط عرض تصویر). مثال دقیق یک خط Label:</span>
+<span class="en">where the coordinates are <b>Normalized</b><sup><a href="#fn-norm">8</a></sup>, meaning between 0 and 1, relative to the full image's width and height (for example <span class="ltr" style="display:inline-block">center_x=0.5</span> means exactly the middle of the image width). A concrete example of one label line:</span>
+<span class="fa">که مختصات <b>Normalize</b><sup><a href="#fn-norm">۸</a></sup> شده‌اند، یعنی بین ۰ و ۱، نسبت به عرض و ارتفاع کل تصویر (مثلاً <span class="ltr" style="display:inline-block">center_x=0.5</span> یعنی دقیقاً وسط عرض تصویر). مثال دقیق یک خط Label:</span>
 </p>
 <pre class="ltr" dir="ltr"><code>0 0.52 0.44 0.18 0.60</code></pre>
 <p><span class="en">That means: class number 0, box center at 52% of the image width and 44% of the height, with 18% width and 60% height.</span><span class="fa">یعنی: کلاس شماره ۰، مرکز باکس در ۵۲٪ عرض و ۴۴٪ ارتفاع تصویر، با عرض ۱۸٪ و ارتفاع ۶۰٪ تصویر.</span></p>
@@ -356,8 +356,8 @@ model.train(data="data.yaml", epochs=50, imgsz=640)</code></pre>
 <ul>
 <li><span class="en">Always try a pretrained model first; if it works, you're done.</span><span class="fa">اول همیشه مدل Pretrained را امتحان کن؛ اگر جواب داد، کارت تمام است.</span></li>
 <li>
-<span class="en">When you have specific, custom classes — like "Digikala plastic pallet," a custom rack, a particular AGV model, damaged packaging, or a warehouse sign — the general-purpose model simply doesn't know these classes; this is where a custom dataset is necessary.</span>
-<span class="fa">وقتی کلاس‌های خاص و سفارشی داری — مثلاً «پالت پلاستیکی دیجی‌کالا»، قفسهٔ سفارشی، یک مدل خاص AGV، بسته‌بندی آسیب‌دیده یا تابلوی انبار — مدل عمومی اصلاً این کلاس‌ها را نمی‌شناسد؛ اینجا دیتاست اختصاصی لازم است.</span>
+<span class="en">When you have specific, custom classes, like "Digikala plastic pallet," a custom rack, a particular AGV model, damaged packaging, or a warehouse sign, the general-purpose model simply doesn't know these classes; this is where a custom dataset is necessary.</span>
+<span class="fa">وقتی کلاس‌های خاص و سفارشی داری، مثلاً «پالت پلاستیکی دیجی‌کالا»، قفسهٔ سفارشی، یک مدل خاص AGV، بسته‌بندی آسیب‌دیده یا تابلوی انبار، مدل عمومی اصلاً این کلاس‌ها را نمی‌شناسد؛ اینجا دیتاست اختصاصی لازم است.</span>
 </li>
 <li>
 <span class="en">Even for a common class like <code class="ltr">person</code>, if your environment's conditions are unusual (a ceiling camera at a strange angle, a very dark warehouse, uncommon PPE clothing, heavy occlusion, or people far from the camera), a custom dataset from your own environment is still very valuable.</span>
@@ -389,8 +389,8 @@ model.train(data="data.yaml", epochs=50, imgsz=640)</code></pre>
 <div class="warn">
 <b>⚠️ <span class="en">Common and Dangerous Mistake: Data Leakage</span><span class="fa">اشتباه رایج و خطرناک: Data Leakage</span></b><sup><a href="#fn-leak">13</a></sup>
 <p>
-<span class="en">Suppose you have a 10-minute video at 30 frames per second: that's 18,000 frames. If you randomly split these frames between Train and Validation, frame number 100 and frame number 101 are nearly the same image (only 33 milliseconds apart!). The result: the model sees in Validation something it has already seen almost exactly in Train; the mAP number might show 98%, but this is completely misleading — the model's real performance on genuinely new data can be far lower.</span>
-<span class="fa">فرض کن یک ویدیوی ۱۰ دقیقه‌ای با ۳۰ فریم بر ثانیه داری: یعنی ۱۸,۰۰۰ فریم. اگر این فریم‌ها را به‌صورت تصادفی بین Train و Validation تقسیم کنی، فریم شمارهٔ ۱۰۰ و فریم شمارهٔ ۱۰۱ تقریباً همان تصویرند (فقط ۳۳ میلی‌ثانیه فاصله زمانی!). نتیجه: مدل در Validation چیزی می‌بیند که تقریباً عیناً در Train هم دیده بود؛ عدد mAP ممکن است ۹۸٪ نشان دهد، اما این کاملاً گمراه‌کننده است — عملکرد واقعی مدل روی داده‌ی واقعاً جدید می‌تواند خیلی پایین‌تر باشد.</span>
+<span class="en">Suppose you have a 10-minute video at 30 frames per second: that's 18,000 frames. If you randomly split these frames between Train and Validation, frame number 100 and frame number 101 are nearly the same image (only 33 milliseconds apart!). The result: the model sees in Validation something it has already seen almost exactly in Train; the mAP number might show 98%, but this is completely misleading, the model's real performance on genuinely new data can be far lower.</span>
+<span class="fa">فرض کن یک ویدیوی ۱۰ دقیقه‌ای با ۳۰ فریم بر ثانیه داری: یعنی ۱۸,۰۰۰ فریم. اگر این فریم‌ها را به‌صورت تصادفی بین Train و Validation تقسیم کنی، فریم شمارهٔ ۱۰۰ و فریم شمارهٔ ۱۰۱ تقریباً همان تصویرند (فقط ۳۳ میلی‌ثانیه فاصله زمانی!). نتیجه: مدل در Validation چیزی می‌بیند که تقریباً عیناً در Train هم دیده بود؛ عدد mAP ممکن است ۹۸٪ نشان دهد، اما این کاملاً گمراه‌کننده است، عملکرد واقعی مدل روی داده‌ی واقعاً جدید می‌تواند خیلی پایین‌تر باشد.</span>
 </p>
 <p>
 <b><span class="en">The correct fix:</span><span class="fa">راه‌حل درست:</span></b>
@@ -402,8 +402,8 @@ model.train(data="data.yaml", epochs=50, imgsz=640)</code></pre>
 <section id="sec-history">
 <h2><span class="en">History and Versions of YOLO</span><span class="fa">تاریخچه و نسخه‌های YOLO</span></h2>
 <p>
-<span class="en">YOLO isn't a single model, but a family of architectures that has evolved over time: YOLOv1 → v2 → v3 → ... → v5 → v8 → v9/v10 → YOLO11 → YOLO26. Important note: not all of these versions were built by one single team — the YOLO ecosystem has several different research and implementation branches. Today the Ultralytics library supports versions v3, v5, v6, v8, v9, v10, YOLO11, YOLO12, and YOLO26.</span>
-<span class="fa">YOLO یک مدل واحد نیست، بلکه خانواده‌ای از معماری‌هاست که در طول زمان تکامل پیدا کرده: YOLOv1 → v2 → v3 → ... → v5 → v8 → v9/v10 → YOLO11 → YOLO26. نکتهٔ مهم: همهٔ این نسخه‌ها را یک تیم واحد نساخته — اکوسیستم YOLO شاخه‌های پژوهشی و پیاده‌سازی مختلفی دارد. امروز کتابخانهٔ Ultralytics از نسخه‌های v3، v5، v6، v8، v9، v10، YOLO11، YOLO12 و YOLO26 پشتیبانی می‌کند.</span>
+<span class="en">YOLO isn't a single model, but a family of architectures that has evolved over time: YOLOv1 → v2 → v3 → ... → v5 → v8 → v9/v10 → YOLO11 → YOLO26. Important note: not all of these versions were built by one single team, the YOLO ecosystem has several different research and implementation branches. Today the Ultralytics library supports versions v3, v5, v6, v8, v9, v10, YOLO11, YOLO12, and YOLO26.</span>
+<span class="fa">YOLO یک مدل واحد نیست، بلکه خانواده‌ای از معماری‌هاست که در طول زمان تکامل پیدا کرده: YOLOv1 → v2 → v3 → ... → v5 → v8 → v9/v10 → YOLO11 → YOLO26. نکتهٔ مهم: همهٔ این نسخه‌ها را یک تیم واحد نساخته، اکوسیستم YOLO شاخه‌های پژوهشی و پیاده‌سازی مختلفی دارد. امروز کتابخانهٔ Ultralytics از نسخه‌های v3، v5، v6، v8، v9، v10، YOLO11، YOLO12 و YOLO26 پشتیبانی می‌کند.</span>
 </p>
 <p>
 <span class="en">Recommendation for learning: <b>YOLO11</b> is a mature, production-ready base and great for learning the concepts; <b>YOLO26</b> (introduced January 2026) is the newest generation, with an end-to-end design optimized for edge deployment, and is recommended for new projects. In terms of code and API, the difference is minimal:</span>
@@ -424,8 +424,8 @@ YOLO("yolo26n.pt")   # newest generation, optimized for edge</code></pre>
 <span class="fa">هر خانواده از مدل‌ها (مثلاً yolo26) در چند اندازه عرضه می‌شود: <b>n</b> (Nano)، <b>s</b> (Small)، <b>m</b> (Medium)، <b>l</b> (Large)، <b>x</b> (Extra Large). هرچه جلوتر برویم، تعداد پارامتر و محاسبات و حافظهٔ مورد نیاز بیشتر می‌شود؛ دقت بالقوه بالاتر می‌رود اما سرعت کمتر می‌شود.</span>
 </p>
 <p>
-<span class="en">Real numeric example: in the official YOLO26 benchmark on COCO, the <code class="ltr">n</code> model has about 2.4 million parameters and the <code class="ltr">x</code> model about 55.7 million — x is more accurate but also has higher latency.</span>
-<span class="fa">مثال عددی واقعی: در Benchmark رسمی YOLO26 روی COCO، مدل <code class="ltr">n</code> حدود ۲.۴ میلیون پارامتر دارد و مدل <code class="ltr">x</code> حدود ۵۵.۷ میلیون پارامتر — دقت x بالاتر است اما تأخیر (Latency) هم بیشتر.</span>
+<span class="en">Real numeric example: in the official YOLO26 benchmark on COCO, the <code class="ltr">n</code> model has about 2.4 million parameters and the <code class="ltr">x</code> model about 55.7 million, x is more accurate but also has higher latency.</span>
+<span class="fa">مثال عددی واقعی: در Benchmark رسمی YOLO26 روی COCO، مدل <code class="ltr">n</code> حدود ۲.۴ میلیون پارامتر دارد و مدل <code class="ltr">x</code> حدود ۵۵.۷ میلیون پارامتر، دقت x بالاتر است اما تأخیر (Latency) هم بیشتر.</span>
 </p>
 <div class="svgwrap">
 <div class="barchart">
@@ -441,8 +441,8 @@ YOLO("yolo26n.pt")   # newest generation, optimized for edge</code></pre>
 </p>
 </div>
 <p>
-<span class="en">Practical recommendation for an <b>Edge</b><sup><a href="#fn-edge">14</a></sup> device like an AMR robot: always start with <code class="ltr">n</code> or <code class="ltr">s</code>; only move toward m/l/x if accuracy isn't enough — never the other way around.</span>
-<span class="fa">توصیهٔ عملی برای یک دستگاه Edge<sup><a href="#fn-edge">۱۴</a></sup> مثل یک ربات AMR: همیشه اول با <code class="ltr">n</code> یا <code class="ltr">s</code> شروع کن؛ فقط اگر دقت کافی نبود به سمت m/l/x برو — نه برعکس.</span>
+<span class="en">Practical recommendation for an <b>Edge</b><sup><a href="#fn-edge">14</a></sup> device like an AMR robot: always start with <code class="ltr">n</code> or <code class="ltr">s</code>; only move toward m/l/x if accuracy isn't enough, never the other way around.</span>
+<span class="fa">توصیهٔ عملی برای یک دستگاه Edge<sup><a href="#fn-edge">۱۴</a></sup> مثل یک ربات AMR: همیشه اول با <code class="ltr">n</code> یا <code class="ltr">s</code> شروع کن؛ فقط اگر دقت کافی نبود به سمت m/l/x برو، نه برعکس.</span>
 </p>
 </section>
 
@@ -527,7 +527,7 @@ YOLO("yolo26n.pt")   # newest generation, optimized for edge</code></pre>
 </section>
 
 <details class="try">
-<summary>🧪 <span class="en">Try it yourself — Exercise 1: Calculate IoU with hypothetical numbers</span><span class="fa">امتحانش کن — تمرین ۱: محاسبهٔ IoU با اعداد فرضی</span></summary>
+<summary>🧪 <span class="en">Try it yourself, Exercise 1: Calculate IoU with hypothetical numbers</span><span class="fa">امتحانش کن، تمرین ۱: محاسبهٔ IoU با اعداد فرضی</span></summary>
 <p style="margin-top:.8rem">
 <span class="en">Suppose the ground-truth box and the predicted box have an intersection area of 30 square units, and their union area is 120 square units. What's the IoU? Does this count as a "correct" detection (threshold 0.5)?</span>
 <span class="fa">فرض کن باکس واقعی و باکس پیش‌بینی‌شده اشتراکی به مساحت ۳۰ واحد مربع دارند و مساحت اجتماعشان ۱۲۰ واحد مربع است. IoU چقدر است؟ آیا این تشخیص «درست» حساب می‌شود (آستانهٔ ۰.۵)؟</span>
@@ -543,7 +543,7 @@ YOLO("yolo26n.pt")   # newest generation, optimized for edge</code></pre>
 </details>
 
 <details class="try">
-<summary>🧪 <span class="en">Try it yourself — Exercise 2: Write a data.yaml for 2 classes</span><span class="fa">امتحانش کن — تمرین ۲: نوشتن data.yaml برای ۲ کلاس</span></summary>
+<summary>🧪 <span class="en">Try it yourself, Exercise 2: Write a data.yaml for 2 classes</span><span class="fa">امتحانش کن، تمرین ۲: نوشتن data.yaml برای ۲ کلاس</span></summary>
 <p style="margin-top:.8rem">
 <span class="en">Write a <code class="ltr">data.yaml</code> file for a hypothetical dataset with two classes, <code class="ltr">box</code> and <code class="ltr">robot</code>.</span>
 <span class="fa">یک فایل <code class="ltr">data.yaml</code> برای دیتاستی فرضی با دو کلاس <code class="ltr">box</code> و <code class="ltr">robot</code> بنویس.</span>
@@ -563,8 +563,8 @@ names:
 
 <section id="sec-real-photos">
   <h2><span class="en">A Real Detection: Finding a Red Ball</span><span class="fa">یک تشخیص واقعی: پیدا کردن یک توپ قرمز</span></h2>
-  <p><span class="en">Two ways to find the same object in the same photo — classical color segmentation (Chapter 3's thresholding, but in HSV color space) versus a pretrained YOLO model. Both are legitimate engineering choices; which one you pick depends on your latency budget, your hardware, and how much the target's appearance varies.</span>
-  <span class="fa">دو روش برای پیدا کردن همان شیء در همان عکس — segmentation کلاسیک بر پایه رنگ (همان thresholding فصل ۳، ولی در فضای رنگی HSV) در برابر یک مدل YOLO از‌پیش‌آموزش‌دیده. هر دو انتخاب مهندسی معتبری هستند؛ اینکه کدام را انتخاب کنی به بودجه Latency، سخت‌افزار، و میزان تغییرپذیری ظاهر هدف بستگی دارد.</span></p>
+  <p><span class="en">Two ways to find the same object in the same photo, classical color segmentation (Chapter 3's thresholding, but in HSV color space) versus a pretrained YOLO model. Both are legitimate engineering choices; which one you pick depends on your latency budget, your hardware, and how much the target's appearance varies.</span>
+  <span class="fa">دو روش برای پیدا کردن همان شیء در همان عکس، segmentation کلاسیک بر پایه رنگ (همان thresholding فصل ۳، ولی در فضای رنگی HSV) در برابر یک مدل YOLO از‌پیش‌آموزش‌دیده. هر دو انتخاب مهندسی معتبری هستند؛ اینکه کدام را انتخاب کنی به بودجه Latency، سخت‌افزار، و میزان تغییرپذیری ظاهر هدف بستگی دارد.</span></p>
   <style>.real-gallery{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:16px 0}</style>
   <div class="real-gallery">
     <figure style="margin:0;flex:1 1 220px;min-width:180px;max-width:260px">
@@ -588,8 +588,8 @@ names:
       <figcaption style="color:var(--muted);font-size:12.5px;margin-top:6px;text-align:center"><span class="en">YOLO result: learned detection</span><span class="fa">نتیجه YOLO: تشخیص یادگرفته‌شده</span></figcaption>
     </figure>
   </div>
-  <p><span class="en">Color segmentation is nearly free computationally and needs zero training data — but it only works because a red ball is reliably red. A YOLO model costs more compute but generalizes to objects that don't have one distinctive color, which is exactly the trade-off this whole chapter has been building toward.</span>
-  <span class="fa">Segmentation رنگی تقریباً بدون هزینه محاسباتی است و به هیچ داده آموزشی نیاز ندارد — اما فقط به این خاطر کار می‌کند که یک توپ قرمز همیشه قرمز است. یک مدل YOLO هزینه محاسباتی بیشتری دارد ولی به اشیایی که یک رنگ متمایز ندارند هم تعمیم پیدا می‌کند — دقیقاً همان trade-off ای که کل این فصل داشت به آن می‌رسید.</span></p>
+  <p><span class="en">Color segmentation is nearly free computationally and needs zero training data, but it only works because a red ball is reliably red. A YOLO model costs more compute but generalizes to objects that don't have one distinctive color, which is exactly the trade-off this whole chapter has been building toward.</span>
+  <span class="fa">Segmentation رنگی تقریباً بدون هزینه محاسباتی است و به هیچ داده آموزشی نیاز ندارد، اما فقط به این خاطر کار می‌کند که یک توپ قرمز همیشه قرمز است. یک مدل YOLO هزینه محاسباتی بیشتری دارد ولی به اشیایی که یک رنگ متمایز ندارند هم تعمیم پیدا می‌کند، دقیقاً همان trade-off ای که کل این فصل داشت به آن می‌رسید.</span></p>
 </section>
 
 <section id="sec-glossary">
@@ -606,7 +606,7 @@ names:
 <dt id="fn-map">5. mAP</dt>
 <dd><span class="en">Average Precision across several IoU thresholds and all classes; the standard metric for comparing models.</span><span class="fa">میانگین Precision در چند آستانهٔ IoU و روی همهٔ کلاس‌ها؛ معیار استاندارد مقایسه مدل‌ها.</span></dd>
 <dt id="fn-yolo">6. YOLO</dt>
-<dd><span class="en">You Only Look Once — a family of object-detection models with fast, single-pass prediction.</span><span class="fa">You Only Look Once — خانواده مدل‌های تشخیص اشیا با پیش‌بینی یک‌مرحله‌ای و سریع.</span></dd>
+<dd><span class="en">You Only Look Once, a family of object-detection models with fast, single-pass prediction.</span><span class="fa">You Only Look Once, خانواده مدل‌های تشخیص اشیا با پیش‌بینی یک‌مرحله‌ای و سریع.</span></dd>
 <dt id="fn-ann">7. Annotation / Labeling</dt>
 <dd><span class="en">The process of manually marking the class and location of objects in images to build a dataset.</span><span class="fa">فرایند مشخص کردن دستی کلاس و مکان اشیا در عکس‌ها برای ساخت دیتاست.</span></dd>
 <dt id="fn-norm">8. Normalize (coordinates)</dt>
@@ -626,7 +626,7 @@ names:
 <dt id="fn-edge">14. Edge Device</dt>
 <dd><span class="en">A small, low-power computing device (like an onboard robot computer) that runs the model.</span><span class="fa">دستگاه محاسباتی کوچک و کم‌مصرف (مثل کامپیوتر روی‌برد یک ربات) که مدل روی آن اجرا می‌شود.</span></dd>
 <dt id="fn-obb">15. OBB (Oriented Bounding Box)</dt>
-<dd><span class="en">A box that has a rotation angle in addition to location — for rotated objects such as a car seen from above.</span><span class="fa">باکسی که علاوه بر مکان، زاویهٔ چرخش هم دارد — برای اشیای چرخیده مثل خودرو از بالا.</span></dd>
+<dd><span class="en">A box that has a rotation angle in addition to location, for rotated objects such as a car seen from above.</span><span class="fa">باکسی که علاوه بر مکان، زاویهٔ چرخش هم دارد، برای اشیای چرخیده مثل خودرو از بالا.</span></dd>
 <dt id="fn-coco">COCO</dt>
 <dd><span class="en">A large, well-known public dataset with 80 common classes, the most widely used object-detection benchmark.</span><span class="fa">یک دیتاست بزرگ و معروف عمومی با ۸۰ کلاس رایج، پرکاربردترین بنچمارک تشخیص اشیا.</span></dd>
 </dl>
@@ -634,8 +634,8 @@ names:
 
 <footer class="end">
 <p>
-<span class="en">Next chapter: in Chapter 8 we head into the heart of deep learning for computer vision — CNNs, Segmentation, and why Transfer Learning is so powerful.</span>
-<span class="fa">فصل بعد: در فصل ۸ به قلب یادگیری عمیق بینایی ماشین می‌رویم — CNN، Segmentation و اینکه چرا Transfer Learning اینقدر قدرتمند است.</span>
+<span class="en">Next chapter: in Chapter 8 we head into the heart of deep learning for computer vision, CNNs, Segmentation, and why Transfer Learning is so powerful.</span>
+<span class="fa">فصل بعد: در فصل ۸ به قلب یادگیری عمیق بینایی ماشین می‌رویم، CNN، Segmentation و اینکه چرا Transfer Learning اینقدر قدرتمند است.</span>
 </p>
 <div class="endbtns">
 <a href="08-deep-learning-vision.html"><span class="en">Go to Next Chapter →</span><span class="fa">برو به فصل بعد →</span></a>

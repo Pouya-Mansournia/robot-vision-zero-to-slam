@@ -17,7 +17,7 @@
   if (t === 'dark' || t === 'light') { document.documentElement.setAttribute('data-theme', t); }
 })();
 </script>
-<title>Robot Vision: Zero to SLAM — Ch. 10</title>
+<title>Robot Vision: Zero to SLAM · Ch. 10</title>
 <style>
 :root{
   --bg:#f4f1e8; --bg-alt:#eae5d6; --panel:#ffffff; --ink:#1b2430; --ink-soft:#4a5568;
@@ -153,7 +153,7 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
   <div class="wrap">
     <div>
       <a class="brand" href="index.html"><span class="en">Robot Vision: Zero to SLAM 🤖👁</span><span class="fa">چشم ربات: از صفر تا SLAM 🤖👁</span></a>
-      <span class="chapnum"><span class="en">— Chapter 10 of 10 (final)</span><span class="fa">— فصل ۱۰ از ۱۰ (فصل پایانی)</span></span>
+      <span class="chapnum"><span class="en">, Chapter 10 of 10 (final)</span><span class="fa">, فصل ۱۰ از ۱۰ (فصل پایانی)</span></span>
     </div>
     <div class="navlinks">
       <a href="09-robot-vision-slam-fusion.html"><span class="en">← Previous</span><span class="fa">← فصل قبل</span></a>
@@ -174,8 +174,8 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
   <span class="finalbadge"><span class="en">🏁 Final chapter of the book</span><span class="fa">🏁 فصل پایانی کتاب</span></span>
   <h1><span class="en">ROS 2 + Camera + Real-Time Inference</span><span class="fa">ROS 2 + دوربین + Real-Time Inference</span></h1>
   <p class="sub">
-    <span class="en">It's time to pour everything we've learned since Chapter 1 into one real system on one real robot — with proper software architecture, and careful engineering of speed and latency. This chapter is the bridge between "algorithm on paper" and "robot that actually works."</span>
-    <span class="fa">وقت آن رسیده همه‌ی چیزهایی که از فصل ۱ یاد گرفتیم را داخل یک سیستم واقعی روی یک ربات واقعی بریزیم — با معماری نرم‌افزار درست، و با مهندسی دقیق سرعت و تاخیر. این فصل، پلی است بین «الگوریتم روی کاغذ» و «ربات که واقعاً کار می‌کند».</span>
+    <span class="en">It's time to pour everything we've learned since Chapter 1 into one real system on one real robot, with proper software architecture, and careful engineering of speed and latency. This chapter is the bridge between "algorithm on paper" and "robot that actually works."</span>
+    <span class="fa">وقت آن رسیده همه‌ی چیزهایی که از فصل ۱ یاد گرفتیم را داخل یک سیستم واقعی روی یک ربات واقعی بریزیم، با معماری نرم‌افزار درست، و با مهندسی دقیق سرعت و تاخیر. این فصل، پلی است بین «الگوریتم روی کاغذ» و «ربات که واقعاً کار می‌کند».</span>
   </p>
 </div>
 
@@ -216,8 +216,8 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
   <div class="box box-why">
     <div class="box-title"><span class="en">🎯 Why this matters</span><span class="fa">🎯 چرا این مهم است؟</span></div>
     <p>
-      <span class="en">A flawless algorithm on paper is dangerous on a real robot if its software architecture is a mess or it responds 300 milliseconds too late. This chapter gives you two vital things: (1) a clean architecture (ROS 2) that lets multiple consumers of camera data coexist without tangling into each other, and (2) an engineering mindset about speed — not just "how accurate is the model" but "how fast and reliably does the whole system respond."</span>
-      <span class="fa">یک الگوریتم بی‌نقص روی کاغذ، اگر معماری نرم‌افزارش درهم باشد یا ۳۰۰ میلی‌ثانیه دیر جواب بدهد، روی یک ربات واقعی خطرناک است. این فصل دو چیز حیاتی می‌دهد: (۱) یک معماری تمیز (ROS 2) که چند مصرف‌کننده‌ی داده‌ی دوربین را بدون درهم‌تنیدگی مدیریت می‌کند، و (۲) نگاه مهندسی به سرعت — نه فقط «مدل چقدر دقیق است» بلکه «سیستم چقدر سریع و قابل‌اعتماد جواب می‌دهد».</span>
+      <span class="en">A flawless algorithm on paper is dangerous on a real robot if its software architecture is a mess or it responds 300 milliseconds too late. This chapter gives you two vital things: (1) a clean architecture (ROS 2) that lets multiple consumers of camera data coexist without tangling into each other, and (2) an engineering mindset about speed, not just "how accurate is the model" but "how fast and reliably does the whole system respond."</span>
+      <span class="fa">یک الگوریتم بی‌نقص روی کاغذ، اگر معماری نرم‌افزارش درهم باشد یا ۳۰۰ میلی‌ثانیه دیر جواب بدهد، روی یک ربات واقعی خطرناک است. این فصل دو چیز حیاتی می‌دهد: (۱) یک معماری تمیز (ROS 2) که چند مصرف‌کننده‌ی داده‌ی دوربین را بدون درهم‌تنیدگی مدیریت می‌کند، و (۲) نگاه مهندسی به سرعت، نه فقط «مدل چقدر دقیق است» بلکه «سیستم چقدر سریع و قابل‌اعتماد جواب می‌دهد».</span>
     </p>
   </div>
 
@@ -232,12 +232,12 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
   <h2 id="sec-node-topic"><span class="en">2. Node & Topic</span><span class="fa">۲. Node و Topic</span></h2>
   <ul>
     <li>
-      <span class="en"><b><span class="ltr">Node</span><sup>2</sup></b>: a small program with one clear responsibility — <code class="ltr">camera_node</code>, <code class="ltr">yolo_node</code>, <code class="ltr">navigation_node</code> — instead of one giant program doing everything.</span>
-      <span class="fa"><b><span class="ltr">Node</span><sup>2</sup></b>: یک برنامه‌ی کوچک با یک مسئولیت مشخص — <code class="ltr">camera_node</code>، <code class="ltr">yolo_node</code>، <code class="ltr">navigation_node</code> — به‌جای یک برنامه‌ی غول‌پیکر که همه‌کار انجام می‌دهد.</span>
+      <span class="en"><b><span class="ltr">Node</span><sup>2</sup></b>: a small program with one clear responsibility, <code class="ltr">camera_node</code>, <code class="ltr">yolo_node</code>, <code class="ltr">navigation_node</code>, instead of one giant program doing everything.</span>
+      <span class="fa"><b><span class="ltr">Node</span><sup>2</sup></b>: یک برنامه‌ی کوچک با یک مسئولیت مشخص، <code class="ltr">camera_node</code>، <code class="ltr">yolo_node</code>، <code class="ltr">navigation_node</code>, به‌جای یک برنامه‌ی غول‌پیکر که همه‌کار انجام می‌دهد.</span>
     </li>
     <li>
-      <span class="en"><b><span class="ltr">Topic</span><sup>3</sup></b>: a data channel, e.g. <code class="ltr">/camera/image_raw</code>. The Camera Node publishes; the YOLO Node subscribes; neither needs to know about the other — this is called <span class="ltr">Decoupling</span>.</span>
-      <span class="fa"><b><span class="ltr">Topic</span><sup>3</sup></b>: یک کانال داده، مثلاً <code class="ltr">/camera/image_raw</code>. Camera Node منتشر می‌کند، YOLO Node مشترک می‌شود؛ هیچ‌کدام لازم نیست طرف مقابل را بشناسد — این را <span class="ltr">Decoupling</span> می‌نامیم.</span>
+      <span class="en"><b><span class="ltr">Topic</span><sup>3</sup></b>: a data channel, e.g. <code class="ltr">/camera/image_raw</code>. The Camera Node publishes; the YOLO Node subscribes; neither needs to know about the other, this is called <span class="ltr">Decoupling</span>.</span>
+      <span class="fa"><b><span class="ltr">Topic</span><sup>3</sup></b>: یک کانال داده، مثلاً <code class="ltr">/camera/image_raw</code>. Camera Node منتشر می‌کند، YOLO Node مشترک می‌شود؛ هیچ‌کدام لازم نیست طرف مقابل را بشناسد، این را <span class="ltr">Decoupling</span> می‌نامیم.</span>
     </li>
   </ul>
 
@@ -283,13 +283,13 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
 
   <h2 id="sec-message"><span class="en">3. Message & sensor_msgs/Image</span><span class="fa">۳. Message و sensor_msgs/Image</span></h2>
   <p>
-    <span class="en">A Topic is just a channel; the data type must also be defined — this is called a <span class="ltr">Message</span><sup>4</sup>. For images, the message type is <code class="ltr">sensor_msgs/msg/Image</code><sup>5</sup>, which includes these fields: <code class="ltr">header</code> (containing <code class="ltr">stamp</code> and <code class="ltr">frame_id</code>), <code class="ltr">height</code>, <code class="ltr">width</code>, <code class="ltr">encoding</code> (e.g. <code class="ltr">bgr8</code>), <code class="ltr">step</code>, and <code class="ltr">data</code> (raw pixel bytes).</span>
-    <span class="fa">Topic فقط یک کانال است؛ باید نوع داده هم مشخص شود — این را <span class="ltr">Message</span><sup>4</sup> می‌نامیم. برای تصویر، نوع پیام <code class="ltr">sensor_msgs/msg/Image</code><sup>5</sup> است که شامل این فیلدهاست: <code class="ltr">header</code> (شامل <code class="ltr">stamp</code> و <code class="ltr">frame_id</code>)، <code class="ltr">height</code>، <code class="ltr">width</code>، <code class="ltr">encoding</code> (مثلاً <code class="ltr">bgr8</code>)، <code class="ltr">step</code>، و <code class="ltr">data</code> (بایت‌های خام پیکسل).</span>
+    <span class="en">A Topic is just a channel; the data type must also be defined, this is called a <span class="ltr">Message</span><sup>4</sup>. For images, the message type is <code class="ltr">sensor_msgs/msg/Image</code><sup>5</sup>, which includes these fields: <code class="ltr">header</code> (containing <code class="ltr">stamp</code> and <code class="ltr">frame_id</code>), <code class="ltr">height</code>, <code class="ltr">width</code>, <code class="ltr">encoding</code> (e.g. <code class="ltr">bgr8</code>), <code class="ltr">step</code>, and <code class="ltr">data</code> (raw pixel bytes).</span>
+    <span class="fa">Topic فقط یک کانال است؛ باید نوع داده هم مشخص شود، این را <span class="ltr">Message</span><sup>4</sup> می‌نامیم. برای تصویر، نوع پیام <code class="ltr">sensor_msgs/msg/Image</code><sup>5</sup> است که شامل این فیلدهاست: <code class="ltr">header</code> (شامل <code class="ltr">stamp</code> و <code class="ltr">frame_id</code>)، <code class="ltr">height</code>، <code class="ltr">width</code>، <code class="ltr">encoding</code> (مثلاً <code class="ltr">bgr8</code>)، <code class="ltr">step</code>، و <code class="ltr">data</code> (بایت‌های خام پیکسل).</span>
   </p>
   <ul>
     <li>
-      <span class="en"><b>stamp</b>: exactly when this measurement was taken — vital for Sensor Fusion, since different sensors run at different rates: camera 30Hz, IMU 200Hz, LiDAR 10Hz, encoder 100Hz.</span>
-      <span class="fa"><b>stamp</b>: دقیقاً چه زمانی این اندازه‌گیری گرفته شده — حیاتی برای Sensor Fusion، چون سنسورهای مختلف با نرخ‌های متفاوت کار می‌کنند: دوربین ۳۰Hz، IMU ۲۰۰Hz، LiDAR ۱۰Hz، Encoder ۱۰۰Hz.</span>
+      <span class="en"><b>stamp</b>: exactly when this measurement was taken, vital for Sensor Fusion, since different sensors run at different rates: camera 30Hz, IMU 200Hz, LiDAR 10Hz, encoder 100Hz.</span>
+      <span class="fa"><b>stamp</b>: دقیقاً چه زمانی این اندازه‌گیری گرفته شده، حیاتی برای Sensor Fusion، چون سنسورهای مختلف با نرخ‌های متفاوت کار می‌کنند: دوربین ۳۰Hz، IMU ۲۰۰Hz، LiDAR ۱۰Hz، Encoder ۱۰۰Hz.</span>
     </li>
     <li>
       <span class="en"><b>frame_id</b>: which coordinate frame this data belongs to, e.g. <code class="ltr">camera_optical_frame</code>.</span>
@@ -299,8 +299,8 @@ sup{color:var(--accent);cursor:default;font-size:.75em}
 
   <h2 id="sec-camerainfo">4. CameraInfo</h2>
   <p>
-    <span class="en">The image alone isn't enough; camera calibration data — the camera matrix K and distortion coefficients from Chapter 6 — is carried over <code class="ltr">sensor_msgs/msg/CameraInfo</code><sup>6</sup>. To go from a pixel to the 3D world (Pixel + Depth + CameraInfo → XYZ), this information is essential.</span>
-    <span class="fa">فقط تصویر کافی نیست؛ اطلاعات کالیبراسیون دوربین — ماتریس دوربین K و ضرایب اعوجاج که در فصل ۶ دیدیم — از طریق <code class="ltr">sensor_msgs/msg/CameraInfo</code><sup>6</sup> منتقل می‌شود. برای رفتن از پیکسل به دنیای سه‌بعدی (Pixel + Depth + CameraInfo → XYZ) این اطلاعات ضروری است.</span>
+    <span class="en">The image alone isn't enough; camera calibration data, the camera matrix K and distortion coefficients from Chapter 6, is carried over <code class="ltr">sensor_msgs/msg/CameraInfo</code><sup>6</sup>. To go from a pixel to the 3D world (Pixel + Depth + CameraInfo → XYZ), this information is essential.</span>
+    <span class="fa">فقط تصویر کافی نیست؛ اطلاعات کالیبراسیون دوربین، ماتریس دوربین K و ضرایب اعوجاج که در فصل ۶ دیدیم، از طریق <code class="ltr">sensor_msgs/msg/CameraInfo</code><sup>6</sup> منتقل می‌شود. برای رفتن از پیکسل به دنیای سه‌بعدی (Pixel + Depth + CameraInfo → XYZ) این اطلاعات ضروری است.</span>
   </p>
 
   <h2 id="sec-cvbridge">5. cv_bridge</h2>
@@ -346,8 +346,8 @@ if __name__ == "__main__":
 
   <h2 id="sec-yolo-node"><span class="en">6. Adding YOLO inside a Node</span><span class="fa">۶. افزودن YOLO داخل یک Node</span></h2>
   <p>
-    <span class="en">Crucial point: the model must be loaded only once, in <code class="ltr">__init__</code>, not inside every callback — otherwise it gets reloaded for every frame, which is a speed disaster:</span>
-    <span class="fa">نکته‌ی حیاتی: مدل باید فقط یک‌بار در <code class="ltr">__init__</code> بارگذاری شود، نه داخل هر Callback — وگرنه برای هر فریم دوباره Load می‌شود که فاجعه‌ی سرعت است:</span>
+    <span class="en">Crucial point: the model must be loaded only once, in <code class="ltr">__init__</code>, not inside every callback, otherwise it gets reloaded for every frame, which is a speed disaster:</span>
+    <span class="fa">نکته‌ی حیاتی: مدل باید فقط یک‌بار در <code class="ltr">__init__</code> بارگذاری شود، نه داخل هر Callback, وگرنه برای هر فریم دوباره Load می‌شود که فاجعه‌ی سرعت است:</span>
   </p>
   <pre class="ltr"><code>class YoloNode(Node):
     def __init__(self):
@@ -367,9 +367,9 @@ if __name__ == "__main__":
     <span class="fa">جریان: Camera → ROS Image → Callback → cv_bridge → NumPy Image → YOLO → Detections.</span>
   </p>
 
-  <h2 id="sec-modular"><span class="en">7. Modular architecture — YOLO shouldn't control the motor</span><span class="fa">۷. معماری Modular — YOLO نباید موتور را کنترل کند</span></h2>
+  <h2 id="sec-modular"><span class="en">7. Modular architecture, YOLO shouldn't control the motor</span><span class="fa">۷. معماری Modular, YOLO نباید موتور را کنترل کند</span></h2>
   <p><span class="en">Bad design:</span><span class="fa">طراحی بد:</span></p>
-  <pre class="ltr"><code>if person: motor.stop()   # directly inside the YOLO Node — bad!</code></pre>
+  <pre class="ltr"><code>if person: motor.stop()   # directly inside the YOLO Node, bad!</code></pre>
   <p><span class="en">Good design separates responsibilities:</span><span class="fa">طراحی درست، مسئولیت‌ها را جدا می‌کند:</span></p>
   <div class="pipe">
     <div class="node">Camera Node</div><div class="arrow">→</div>
@@ -386,14 +386,14 @@ if __name__ == "__main__":
 
   <h2 id="sec-rgbd"><span class="en">8. RGB-D and the Synchronization problem</span><span class="fa">۸. RGB-D و مسئله‌ی Synchronization</span></h2>
   <p>
-    <span class="en">Depth cameras have several separate Topics: <code class="ltr">/camera/color/image_raw</code>, <code class="ltr">/camera/depth/image_raw</code>, <code class="ltr">/camera/color/camera_info</code>. To combine RGB (YOLO says where) + Depth (how far) + CameraInfo (convert to XYZ), the timestamps of the two Topics must be close to each other — this is called <span class="ltr">Time Synchronization</span><sup>8</sup>. If the robot or the object moves quickly, RGB and Depth captured at two different moments no longer belong to the same scene, and the combined result is wrong.</span>
-    <span class="fa">دوربین‌های عمق چند Topic جدا دارند: <code class="ltr">/camera/color/image_raw</code>، <code class="ltr">/camera/depth/image_raw</code>، <code class="ltr">/camera/color/camera_info</code>. برای ترکیب RGB (YOLO می‌گوید کجا) + Depth (چقدر دور) + CameraInfo (تبدیل به XYZ)، باید timestamp دو Topic نزدیک هم باشند — این را <span class="ltr">Time Synchronization</span><sup>8</sup> می‌نامیم. اگر ربات یا شیء سریع حرکت کند، RGB و Depth گرفته‌شده در دو لحظه‌ی متفاوت دیگر متعلق به یک صحنه نیستند و نتیجه‌ی ترکیب اشتباه می‌شود.</span>
+    <span class="en">Depth cameras have several separate Topics: <code class="ltr">/camera/color/image_raw</code>, <code class="ltr">/camera/depth/image_raw</code>, <code class="ltr">/camera/color/camera_info</code>. To combine RGB (YOLO says where) + Depth (how far) + CameraInfo (convert to XYZ), the timestamps of the two Topics must be close to each other, this is called <span class="ltr">Time Synchronization</span><sup>8</sup>. If the robot or the object moves quickly, RGB and Depth captured at two different moments no longer belong to the same scene, and the combined result is wrong.</span>
+    <span class="fa">دوربین‌های عمق چند Topic جدا دارند: <code class="ltr">/camera/color/image_raw</code>، <code class="ltr">/camera/depth/image_raw</code>، <code class="ltr">/camera/color/camera_info</code>. برای ترکیب RGB (YOLO می‌گوید کجا) + Depth (چقدر دور) + CameraInfo (تبدیل به XYZ)، باید timestamp دو Topic نزدیک هم باشند، این را <span class="ltr">Time Synchronization</span><sup>8</sup> می‌نامیم. اگر ربات یا شیء سریع حرکت کند، RGB و Depth گرفته‌شده در دو لحظه‌ی متفاوت دیگر متعلق به یک صحنه نیستند و نتیجه‌ی ترکیب اشتباه می‌شود.</span>
   </p>
 
   <h2 id="sec-qos"><span class="en">9. QoS and the Queue problem</span><span class="fa">۹. QoS و مسئله‌ی Queue</span></h2>
   <p>
-    <span class="en">The camera produces 30 frames per second, but YOLO might only be able to process 10. If we keep every frame in a <span class="ltr">Queue</span>, YOLO gradually falls behind — when the camera is at frame 300, the model is still processing frame 250 — meaning the detection result is stale and useless. ROS 2's <span class="ltr">QoS (Quality of Service)</span><sup>9</sup> concept makes this tunable, usually favoring "the latest frame" over "all the old frames."</span>
-    <span class="fa">دوربین با ۳۰ فریم بر ثانیه تولید می‌کند، اما YOLO شاید فقط ۱۰ فریم بر ثانیه بتواند پردازش کند. اگر همه‌ی فریم‌ها را در صف (<span class="ltr">Queue</span>) نگه داریم، YOLO رفته‌رفته عقب می‌افتد — وقتی دوربین در فریم ۳۰۰ است، مدل هنوز فریم ۲۵۰ را پردازش می‌کند — یعنی نتیجه‌ی تشخیص، قدیمی و بی‌فایده می‌شود. مفهوم <span class="ltr">QoS (Quality of Service)</span><sup>9</sup> در ROS 2 این را قابل‌تنظیم می‌کند تا معمولاً «تازه‌ترین فریم» به‌جای «همه‌ی فریم‌های قدیمی» در اولویت باشد.</span>
+    <span class="en">The camera produces 30 frames per second, but YOLO might only be able to process 10. If we keep every frame in a <span class="ltr">Queue</span>, YOLO gradually falls behind, when the camera is at frame 300, the model is still processing frame 250, meaning the detection result is stale and useless. ROS 2's <span class="ltr">QoS (Quality of Service)</span><sup>9</sup> concept makes this tunable, usually favoring "the latest frame" over "all the old frames."</span>
+    <span class="fa">دوربین با ۳۰ فریم بر ثانیه تولید می‌کند، اما YOLO شاید فقط ۱۰ فریم بر ثانیه بتواند پردازش کند. اگر همه‌ی فریم‌ها را در صف (<span class="ltr">Queue</span>) نگه داریم، YOLO رفته‌رفته عقب می‌افتد، وقتی دوربین در فریم ۳۰۰ است، مدل هنوز فریم ۲۵۰ را پردازش می‌کند، یعنی نتیجه‌ی تشخیص، قدیمی و بی‌فایده می‌شود. مفهوم <span class="ltr">QoS (Quality of Service)</span><sup>9</sup> در ROS 2 این را قابل‌تنظیم می‌کند تا معمولاً «تازه‌ترین فریم» به‌جای «همه‌ی فریم‌های قدیمی» در اولویت باشد.</span>
   </p>
 
   <h2 id="sec-fps-latency"><span class="en">10. FPS vs. Latency</span><span class="fa">۱۰. FPS در برابر Latency</span></h2>
@@ -406,8 +406,8 @@ if __name__ == "__main__":
       <b><span class="ltr">Latency</span><sup>11</sup></b>: از لحظه‌ی گرفتن داده‌ی سنسور تا لحظه‌ای که نتیجه‌ی قابل‌استفاده به سیستم می‌رسد چقدر طول می‌کشد.</span>
     </p>
     <p>
-      <span class="en">A system can have high FPS and bad latency at the same time (e.g. with a large batch) — the two metrics are quite different, and for robotics, latency is usually the more important one.</span>
-      <span class="fa">یک سیستم می‌تواند FPS بالا و Latency بد داشته باشد هم‌زمان (مثلاً با Batch بزرگ) — این دو معیار کاملاً متفاوت‌اند و برای رباتیک، Latency معمولاً مهم‌تر است.</span>
+      <span class="en">A system can have high FPS and bad latency at the same time (e.g. with a large batch), the two metrics are quite different, and for robotics, latency is usually the more important one.</span>
+      <span class="fa">یک سیستم می‌تواند FPS بالا و Latency بد داشته باشد هم‌زمان (مثلاً با Batch بزرگ), این دو معیار کاملاً متفاوت‌اند و برای رباتیک، Latency معمولاً مهم‌تر است.</span>
     </p>
   </div>
 
@@ -432,20 +432,20 @@ if __name__ == "__main__":
     <div class="latbar-row"><div class="latbar-label">Postprocessing</div><div class="latbar-track"><div class="latbar-fill" style="width:7%"></div></div><div class="latbar-val">5 ms</div></div>
     <div class="latbar-row"><div class="latbar-label">Depth processing</div><div class="latbar-track"><div class="latbar-fill" style="width:11%"></div></div><div class="latbar-val">8 ms</div></div>
     <div class="latbar-row"><div class="latbar-label">TF</div><div class="latbar-track"><div class="latbar-fill" style="width:3%"></div></div><div class="latbar-val">2 ms</div></div>
-    <div class="svgcap"><span class="en">The latency pipeline — each bar's length is proportional to that stage's share of the total 69 ms.</span><span class="fa">پایپ‌لاین Latency — طول هر میله متناسب با سهم آن مرحله از کل ۶۹ میلی‌ثانیه است.</span></div>
+    <div class="svgcap"><span class="en">The latency pipeline, each bar's length is proportional to that stage's share of the total 69 ms.</span><span class="fa">پایپ‌لاین Latency, طول هر میله متناسب با سهم آن مرحله از کل ۶۹ میلی‌ثانیه است.</span></div>
   </div>
 
   <p><span class="en">Why does this number matter? A simple physics formula:</span><span class="fa">چرا این عدد مهم است؟ فرمول فیزیکی ساده:</span></p>
   <p class="ltr">$$ d = v \times t $$</p>
   <p class="ltr">
-    <span class="en">If the robot moves at $v=2\,m/s$ and Latency=69ms=0.069s: $d = 2 \times 0.069 = 0.138m$ — that's 13.8 cm. By the time a decision is made, the robot has already moved 13.8 cm past where the image was captured. With Latency=300ms: $d = 2 \times 0.3 = 0.6m$ — 60 cm! That distance can be the difference between a safe stop and a collision.</span>
-    <span class="fa">اگر ربات با $v=2\,m/s$ حرکت کند و Latency=69ms=0.069s باشد: $d = 2 \times 0.069 = 0.138m$ — یعنی ۱۳٫۸ سانتی‌متر. وقتی تصمیم گرفته می‌شود، ربات از جایی که تصویر گرفته شده، ۱۳٫۸ سانتی‌متر جلوتر رفته است. با Latency=300ms: $d = 2 \times 0.3 = 0.6m$ — یعنی ۶۰ سانتی‌متر! این فاصله می‌تواند تفاوت بین توقف امن و برخورد باشد.</span>
+    <span class="en">If the robot moves at $v=2\,m/s$ and Latency=69ms=0.069s: $d = 2 \times 0.069 = 0.138m$, that's 13.8 cm. By the time a decision is made, the robot has already moved 13.8 cm past where the image was captured. With Latency=300ms: $d = 2 \times 0.3 = 0.6m$, 60 cm! That distance can be the difference between a safe stop and a collision.</span>
+    <span class="fa">اگر ربات با $v=2\,m/s$ حرکت کند و Latency=69ms=0.069s باشد: $d = 2 \times 0.069 = 0.138m$, یعنی ۱۳٫۸ سانتی‌متر. وقتی تصمیم گرفته می‌شود، ربات از جایی که تصویر گرفته شده، ۱۳٫۸ سانتی‌متر جلوتر رفته است. با Latency=300ms: $d = 2 \times 0.3 = 0.6m$, یعنی ۶۰ سانتی‌متر! این فاصله می‌تواند تفاوت بین توقف امن و برخورد باشد.</span>
   </p>
 
   <h2 id="sec-batch"><span class="en">11. Throughput with Batching vs. Latency</span><span class="fa">۱۱. Throughput با Batch در برابر Latency</span></h2>
   <p>
-    <span class="en">A large batch (say, 16 images at once on a GPU) boosts throughput — e.g. 16 images in 160ms is 100 FPS — but a single image may have to wait for the batch to fill up. For real-time robotics, <b>Batch Size=1</b> and low latency are usually the priority, not high throughput.</span>
-    <span class="fa">یک Batch بزرگ (مثلاً ۱۶ تصویر هم‌زمان روی GPU) Throughput را بالا می‌برد — مثلاً ۱۶ تصویر در ۱۶۰ میلی‌ثانیه یعنی ۱۰۰ FPS — اما یک تصویر منفرد ممکن است مدتی منتظر پرشدن Batch بماند. برای رباتیک Real-Time معمولاً <b>Batch Size=1</b> و اولویت با Latency پایین است، نه Throughput بالا.</span>
+    <span class="en">A large batch (say, 16 images at once on a GPU) boosts throughput, e.g. 16 images in 160ms is 100 FPS, but a single image may have to wait for the batch to fill up. For real-time robotics, <b>Batch Size=1</b> and low latency are usually the priority, not high throughput.</span>
+    <span class="fa">یک Batch بزرگ (مثلاً ۱۶ تصویر هم‌زمان روی GPU) Throughput را بالا می‌برد، مثلاً ۱۶ تصویر در ۱۶۰ میلی‌ثانیه یعنی ۱۰۰ FPS, اما یک تصویر منفرد ممکن است مدتی منتظر پرشدن Batch بماند. برای رباتیک Real-Time معمولاً <b>Batch Size=1</b> و اولویت با Latency پایین است، نه Throughput بالا.</span>
   </p>
 
   <h2 id="sec-dropping"><span class="en">12. Frame Dropping instead of Queueing</span><span class="fa">۱۲. Frame Dropping به‌جای صف‌کردن</span></h2>
@@ -457,7 +457,7 @@ if __name__ == "__main__":
   <h2 id="sec-tradeoff"><span class="en">13. Resolution & Model Size as a Trade-off</span><span class="fa">۱۳. Resolution و Model Size به‌عنوان Trade-off</span></h2>
   <ul>
     <li>
-      <span class="en">Higher resolution (e.g. 1280×1280 = 1,638,400 pixels vs. 640×640 = 409,600 pixels — 4× more) → small objects are seen better, but compute, memory, and latency all go up.</span>
+      <span class="en">Higher resolution (e.g. 1280×1280 = 1,638,400 pixels vs. 640×640 = 409,600 pixels, 4× more) → small objects are seen better, but compute, memory, and latency all go up.</span>
       <span class="fa">Resolution بالاتر (مثلاً ۱۲۸۰×۱۲۸۰ = ۱٬۶۳۸٬۴۰۰ پیکسل در برابر ۶۴۰×۶۴۰ = ۴۰۹٬۶۰۰ پیکسل، یعنی ۴ برابر) → شیء کوچک بهتر دیده می‌شود، ولی محاسبات، حافظه و Latency بالا می‌رود.</span>
     </li>
     <li>
@@ -466,8 +466,8 @@ if __name__ == "__main__":
     </li>
   </ul>
   <p>
-    <span class="en">The right question is never "which model is the best"; it's "which model fits my hardware, my latency budget, and my accuracy needs?" Example: Model A (Recall=96%, Latency=25ms) vs. Model B (Recall=97.5%, Latency=220ms). The bigger number doesn't automatically win — you have to look at the system's overall requirements, and in <span class="ltr">Safety-Critical</span> systems, a final decision is never made from just these two numbers alone.</span>
-    <span class="fa">سوال درست هیچ‌وقت «کدام مدل بهترین است» نیست؛ سوال درست این است: «کدام مدل برای سخت‌افزار من، بودجه‌ی Latency من، و نیاز دقت من مناسب است؟» مثال: مدل A (Recall=96%, Latency=25ms) در برابر مدل B (Recall=97.5%, Latency=220ms). عدد بزرگ‌تر همیشه برنده نیست — باید کل نیاز سیستم را دید، و در سیستم‌های <span class="ltr">Safety-Critical</span> هرگز فقط با این دو عدد تصمیم نهایی گرفته نمی‌شود.</span>
+    <span class="en">The right question is never "which model is the best"; it's "which model fits my hardware, my latency budget, and my accuracy needs?" Example: Model A (Recall=96%, Latency=25ms) vs. Model B (Recall=97.5%, Latency=220ms). The bigger number doesn't automatically win, you have to look at the system's overall requirements, and in <span class="ltr">Safety-Critical</span> systems, a final decision is never made from just these two numbers alone.</span>
+    <span class="fa">سوال درست هیچ‌وقت «کدام مدل بهترین است» نیست؛ سوال درست این است: «کدام مدل برای سخت‌افزار من، بودجه‌ی Latency من، و نیاز دقت من مناسب است؟» مثال: مدل A (Recall=96%, Latency=25ms) در برابر مدل B (Recall=97.5%, Latency=220ms). عدد بزرگ‌تر همیشه برنده نیست، باید کل نیاز سیستم را دید، و در سیستم‌های <span class="ltr">Safety-Critical</span> هرگز فقط با این دو عدد تصمیم نهایی گرفته نمی‌شود.</span>
   </p>
 
   <h2 id="sec-cpu-gpu"><span class="en">14. CPU vs. GPU</span><span class="fa">۱۴. CPU در برابر GPU</span></h2>
@@ -504,11 +504,11 @@ if __name__ == "__main__":
 
   <h2 id="sec-edge"><span class="en">17. Edge Devices vs. Cloud</span><span class="fa">۱۷. Edge Device در برابر Cloud</span></h2>
   <p>
-    <span class="en">For critical, moment-to-moment perception, we usually don't want to send every frame to the cloud — because of network latency, connection dropouts, bandwidth limits, privacy, and reliability. So inference runs on the robot's own computer (<span class="ltr">Edge</span><sup>15</sup>); the cloud is better suited for things like <span class="ltr">Fleet Analytics</span>, model management, logging, and long-term training.</span>
-    <span class="fa">برای Perception حیاتی و لحظه‌ای، معمولاً نمی‌خواهیم هر فریم را به Cloud بفرستیم — به‌خاطر Network Latency، قطعی اتصال، محدودیت Bandwidth، حریم خصوصی و پایداری. بنابراین Inference روی خود کامپیوتر ربات (<span class="ltr">Edge</span><sup>15</sup>) اجرا می‌شود؛ Cloud برای کارهایی مثل تحلیل ناوگان (<span class="ltr">Fleet Analytics</span>)، مدیریت مدل، لاگ، و آموزش بلندمدت مناسب‌تر است.</span>
+    <span class="en">For critical, moment-to-moment perception, we usually don't want to send every frame to the cloud, because of network latency, connection dropouts, bandwidth limits, privacy, and reliability. So inference runs on the robot's own computer (<span class="ltr">Edge</span><sup>15</sup>); the cloud is better suited for things like <span class="ltr">Fleet Analytics</span>, model management, logging, and long-term training.</span>
+    <span class="fa">برای Perception حیاتی و لحظه‌ای، معمولاً نمی‌خواهیم هر فریم را به Cloud بفرستیم، به‌خاطر Network Latency، قطعی اتصال، محدودیت Bandwidth، حریم خصوصی و پایداری. بنابراین Inference روی خود کامپیوتر ربات (<span class="ltr">Edge</span><sup>15</sup>) اجرا می‌شود؛ Cloud برای کارهایی مثل تحلیل ناوگان (<span class="ltr">Fleet Analytics</span>)، مدیریت مدل، لاگ، و آموزش بلندمدت مناسب‌تر است.</span>
   </p>
 
-  <h2 id="sec-profiling"><span class="en">18. Profiling — the golden rule</span><span class="fa">۱۸. Profiling — اصل طلایی</span></h2>
+  <h2 id="sec-profiling"><span class="en">18. Profiling, the golden rule</span><span class="fa">۱۸. Profiling, اصل طلایی</span></h2>
   <p>
     <span class="en">"Don't optimize what you haven't measured." <span class="ltr">Profiling</span><sup>16</sup> means precisely measuring how long each stage takes. A cautionary example: you might think YOLO is slow, but profiling could reveal the real problem is somewhere else entirely:</span>
     <span class="fa">«چیزی را که اندازه نگرفته‌ای، بهینه نکن.» <span class="ltr">Profiling</span><sup>16</sup> یعنی دقیقاً اندازه‌گیری کنیم هر مرحله چقدر زمان می‌برد. مثال هشداردهنده: ممکن است فکر کنید YOLO کند است، ولی Profiling نشان دهد مشکل اصلی جای دیگری است:</span>
@@ -530,8 +530,8 @@ end = time.perf_counter()
 latency_ms = (end - start) * 1000
 print(f"Inference: {latency_ms:.2f} ms")</code></pre>
   <p>
-    <span class="en">But an important caveat: this only measures the model's own latency. For robotics, <b>End-to-End Latency</b> — from sensor timestamp to the moment of decision — matters more.</span>
-    <span class="fa">اما تاکید مهم: این فقط Latency خود مدل است. برای رباتیک، <b>End-to-End Latency</b> — از timestamp سنسور تا لحظه‌ی تصمیم — مهم‌تر است.</span>
+    <span class="en">But an important caveat: this only measures the model's own latency. For robotics, <b>End-to-End Latency</b>, from sensor timestamp to the moment of decision, matters more.</span>
+    <span class="fa">اما تاکید مهم: این فقط Latency خود مدل است. برای رباتیک، <b>End-to-End Latency</b>, از timestamp سنسور تا لحظه‌ی تصمیم، مهم‌تر است.</span>
   </p>
 
   <h2 id="sec-realtime-arch"><span class="en">19. A better Real-Time architecture</span><span class="fa">۱۹. معماری Real-Time بهتر</span></h2>
@@ -544,20 +544,20 @@ print(f"Inference: {latency_ms:.2f} ms")</code></pre>
     <div class="node">Tracker/Planner</div>
   </div>
   <p>
-    <span class="en">If inference falls behind, the old frame is discarded and only the newest frame gets processed — the same Frame Dropping principle we saw earlier, now applied at the whole-system architecture level.</span>
-    <span class="fa">اگر Inference عقب بیفتد، فریم قدیمی دور ریخته می‌شود و فقط جدیدترین فریم پردازش می‌شود — همان اصل Frame Dropping که دیدیم، این‌بار در سطح معماری کل سیستم.</span>
+    <span class="en">If inference falls behind, the old frame is discarded and only the newest frame gets processed, the same Frame Dropping principle we saw earlier, now applied at the whole-system architecture level.</span>
+    <span class="fa">اگر Inference عقب بیفتد، فریم قدیمی دور ریخته می‌شود و فقط جدیدترین فریم پردازش می‌شود، همان اصل Frame Dropping که دیدیم، این‌بار در سطح معماری کل سیستم.</span>
   </p>
 
   <h2 id="sec-track">20. Detect → Track → Track → Track → Re-detect</h2>
   <p>
-    <span class="en">You don't need to run heavy Detection on every single frame. You can run full Detection every few frames, and in between run only lightweight <span class="ltr">Tracking</span> (using Optical Flow from Chapters 5/9) — this combination cuts computation drastically while still following objects.</span>
-    <span class="fa">لازم نیست هر فریم را با مدل سنگین Detection پردازش کرد. می‌توان هر چند فریم یک‌بار Detection کامل زد، و بین آن‌ها فقط <span class="ltr">Tracking</span> سبک (با Optical Flow از فصل ۹/۵) اجرا کرد — این ترکیب، محاسبات را به‌شدت کاهش می‌دهد در حالی که همچنان اشیا را دنبال می‌کند.</span>
+    <span class="en">You don't need to run heavy Detection on every single frame. You can run full Detection every few frames, and in between run only lightweight <span class="ltr">Tracking</span> (using Optical Flow from Chapters 5/9), this combination cuts computation drastically while still following objects.</span>
+    <span class="fa">لازم نیست هر فریم را با مدل سنگین Detection پردازش کرد. می‌توان هر چند فریم یک‌بار Detection کامل زد، و بین آن‌ها فقط <span class="ltr">Tracking</span> سبک (با Optical Flow از فصل ۹/۵) اجرا کرد، این ترکیب، محاسبات را به‌شدت کاهش می‌دهد در حالی که همچنان اشیا را دنبال می‌کند.</span>
   </p>
 
   <h2 id="sec-stack"><span class="en">21. The Full AMR Perception Stack</span><span class="fa">۲۱. کل AMR Perception Stack</span></h2>
   <p>
-    <span class="en">Now it's time to see everything in one complete diagram — this picture summarizes the entire "vision brain" of an autonomous mobile robot:</span>
-    <span class="fa">حالا وقتش است همه‌چیز را در یک نمودار کامل ببینیم — این تصویر خلاصه‌ی کل «مغز بینایی» یک ربات متحرک خودران است:</span>
+    <span class="en">Now it's time to see everything in one complete diagram, this picture summarizes the entire "vision brain" of an autonomous mobile robot:</span>
+    <span class="fa">حالا وقتش است همه‌چیز را در یک نمودار کامل ببینیم، این تصویر خلاصه‌ی کل «مغز بینایی» یک ربات متحرک خودران است:</span>
   </p>
 
   <div class="svgbox">
@@ -634,8 +634,8 @@ print(f"Inference: {latency_ms:.2f} ms")</code></pre>
       <defs><marker id="arrow10c_fa" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="var(--muted)"/></marker></defs>
     </svg>
     <div class="svgcap">
-      <span class="en">Three parallel paths — Perception (center), Sensor Fusion (left), SLAM (right) — all converge on "Robot Coordinates" and flow into Planning → Control → Motors.</span>
-      <span class="fa">سه مسیر موازی — Perception (وسط)، Sensor Fusion (چپ)، SLAM (راست) — همه در «Robot Coordinates» به‌هم می‌رسند و به Planning → Control → Motors می‌رسند.</span>
+      <span class="en">Three parallel paths, Perception (center), Sensor Fusion (left), SLAM (right), all converge on "Robot Coordinates" and flow into Planning → Control → Motors.</span>
+      <span class="fa">سه مسیر موازی، Perception (وسط)، Sensor Fusion (چپ)، SLAM (راست), همه در «Robot Coordinates» به‌هم می‌رسند و به Planning → Control → Motors می‌رسند.</span>
     </div>
   </div>
 
@@ -643,8 +643,8 @@ print(f"Inference: {latency_ms:.2f} ms")</code></pre>
 
   <h2 id="sec-journey"><span class="en">22. The Book's Full Journey, Start to Finish 🎉</span><span class="fa">۲۲. مسیر کامل کتاب از ابتدا تا انتها 🎉</span></h2>
   <p>
-    <span class="en">Now that we've reached the end, let's look back. This is the path we walked from Chapter 1 to right here — twenty-one steps, from a single humble pixel to a robot that truly sees, understands, and moves:</span>
-    <span class="fa">حالا که به آخر رسیدیم، بیایید یک نگاه به عقب بیندازیم. این مسیری است که از فصل ۱ تا همین‌جا طی کردیم — بیست‌ویک قدم، از یک عدد ساده‌ی پیکسل تا یک ربات که واقعاً می‌بیند، می‌فهمد، و حرکت می‌کند:</span>
+    <span class="en">Now that we've reached the end, let's look back. This is the path we walked from Chapter 1 to right here, twenty-one steps, from a single humble pixel to a robot that truly sees, understands, and moves:</span>
+    <span class="fa">حالا که به آخر رسیدیم، بیایید یک نگاه به عقب بیندازیم. این مسیری است که از فصل ۱ تا همین‌جا طی کردیم، بیست‌ویک قدم، از یک عدد ساده‌ی پیکسل تا یک ربات که واقعاً می‌بیند، می‌فهمد، و حرکت می‌کند:</span>
   </p>
 
   <div class="svgbox">
@@ -728,14 +728,14 @@ print(f"Inference: {latency_ms:.2f} ms")</code></pre>
   <div class="finalbox">
     <h3><span class="en">🎉 Congratulations! "Robot Vision" is complete</span><span class="fa">🎉 تبریک! کتاب «چشم ربات» تمام شد</span></h3>
     <p>
-      <span class="en">This is no longer a scattered pile of algorithms. You started from a single pixel, turned it into a matrix, played with filters, edges, and contours, extracted features, understood camera geometry, learned how a neural network sees and learns, and now you know how to bring all of it together inside a real robot — with the right architecture and the right speed. What you've built is a genuine <b>robotics Perception Stack</b> — exactly what runs behind the eyes of every real autonomous robot. Now it's your turn to build something nobody has built yet.</span>
-      <span class="fa">این دیگر مجموعه‌ای از الگوریتم‌های پراکنده نیست. تو از یک پیکسل تنها شروع کردی، آن را تبدیل به ماتریس کردی، با فیلتر و لبه و کانتور بازی کردی، ویژگی استخراج کردی، هندسه‌ی دوربین را فهمیدی، یاد گرفتی یک شبکه‌ی عصبی چطور می‌بیند و یاد می‌گیرد، و حالا می‌دانی چطور همه‌ی این‌ها را در دل یک ربات واقعی، با معماری درست و سرعت درست، به کار بگیری. آنچه ساختی یک <b>Perception Stack واقعی رباتیک</b> است — دقیقاً همان چیزی که پشت چشم‌های هر ربات خودران واقعی کار می‌کند. حالا نوبت توست که با این ابزارها، چیزی بسازی که هنوز کسی نساخته.</span>
+      <span class="en">This is no longer a scattered pile of algorithms. You started from a single pixel, turned it into a matrix, played with filters, edges, and contours, extracted features, understood camera geometry, learned how a neural network sees and learns, and now you know how to bring all of it together inside a real robot, with the right architecture and the right speed. What you've built is a genuine <b>robotics Perception Stack</b>, exactly what runs behind the eyes of every real autonomous robot. Now it's your turn to build something nobody has built yet.</span>
+      <span class="fa">این دیگر مجموعه‌ای از الگوریتم‌های پراکنده نیست. تو از یک پیکسل تنها شروع کردی، آن را تبدیل به ماتریس کردی، با فیلتر و لبه و کانتور بازی کردی، ویژگی استخراج کردی، هندسه‌ی دوربین را فهمیدی، یاد گرفتی یک شبکه‌ی عصبی چطور می‌بیند و یاد می‌گیرد، و حالا می‌دانی چطور همه‌ی این‌ها را در دل یک ربات واقعی، با معماری درست و سرعت درست، به کار بگیری. آنچه ساختی یک <b>Perception Stack واقعی رباتیک</b> است، دقیقاً همان چیزی که پشت چشم‌های هر ربات خودران واقعی کار می‌کند. حالا نوبت توست که با این ابزارها، چیزی بسازی که هنوز کسی نساخته.</span>
     </p>
   </div>
 
   <h2 id="sec-try"><span class="en">23. Try it yourself</span><span class="fa">۲۳. امتحانش کن</span></h2>
   <div class="box box-try">
-    <div class="box-title"><span class="en">🧪 Exercise 1 — Distance traveled due to latency</span><span class="fa">🧪 تمرین ۱ — فاصله‌ی جابه‌جایی با Latency</span></div>
+    <div class="box-title"><span class="en">🧪 Exercise 1, Distance traveled due to latency</span><span class="fa">🧪 تمرین ۱، فاصله‌ی جابه‌جایی با Latency</span></div>
     <p>
       <span class="en">Using $d=v\times t$, if Latency=150ms and the robot's speed is 1.5 m/s, how far has the robot moved before the detection reaches it?</span>
       <span class="fa">با فرمول $d=v\times t$، اگر Latency=150ms و سرعت ربات ۱٫۵ متر بر ثانیه باشد، ربات چقدر جابه‌جا شده قبل از اینکه Detection به آن برسد؟</span>
@@ -744,13 +744,13 @@ print(f"Inference: {latency_ms:.2f} ms")</code></pre>
       <summary><span class="en">Show solution</span><span class="fa">راه‌حل را ببین</span></summary>
       <div class="solution ltr">d = 1.5 × 0.150 = 0.225 m</div>
       <p>
-        <span class="en">That's 22.5 cm — by the time the decision reaches it, the robot has already traveled this far past where the image was captured.</span>
-        <span class="fa">یعنی ۲۲٫۵ سانتی‌متر — ربات وقتی تصمیم به آن می‌رسد، از جایی که تصویر گرفته شده، این‌قدر جلوتر رفته است.</span>
+        <span class="en">That's 22.5 cm, by the time the decision reaches it, the robot has already traveled this far past where the image was captured.</span>
+        <span class="fa">یعنی ۲۲٫۵ سانتی‌متر، ربات وقتی تصمیم به آن می‌رسد، از جایی که تصویر گرفته شده، این‌قدر جلوتر رفته است.</span>
       </p>
     </details>
   </div>
   <div class="box box-try">
-    <div class="box-title"><span class="en">🧪 Exercise 2 — Design a Profiling table</span><span class="fa">🧪 تمرین ۲ — طراحی یک جدول Profiling</span></div>
+    <div class="box-title"><span class="en">🧪 Exercise 2, Design a Profiling table</span><span class="fa">🧪 تمرین ۲، طراحی یک جدول Profiling</span></div>
     <p>
       <span class="en">Build a hypothetical profiling table that sums to 80ms total latency, and say which stage has the biggest share.</span>
       <span class="fa">یک جدول Profiling فرضی بساز که مجموع Latency را ۸۰ میلی‌ثانیه کند، و بگو کدام مرحله بیشترین سهم را دارد.</span>
@@ -768,8 +768,8 @@ print(f"Inference: {latency_ms:.2f} ms")</code></pre>
         <tr><td><b><span class="en">Total</span><span class="fa">مجموع</span></b></td><td class="ltr" style="text-align:left"><b>80 ms</b></td></tr>
       </table></div>
       <p>
-        <span class="en">In this example, Inference eats up 40ms — half of the entire latency budget — making it the first candidate for optimization (e.g. via quantization or a smaller model).</span>
-        <span class="fa">در این نمونه، Inference با ۴۰ میلی‌ثانیه نیمی از کل بودجه‌ی Latency را می‌خورد — اولین کاندید برای بهینه‌سازی (مثلاً با Quantization یا مدل کوچک‌تر) همین مرحله است.</span>
+        <span class="en">In this example, Inference eats up 40ms, half of the entire latency budget, making it the first candidate for optimization (e.g. via quantization or a smaller model).</span>
+        <span class="fa">در این نمونه، Inference با ۴۰ میلی‌ثانیه نیمی از کل بودجه‌ی Latency را می‌خورد، اولین کاندید برای بهینه‌سازی (مثلاً با Quantization یا مدل کوچک‌تر) همین مرحله است.</span>
       </p>
     </details>
   </div>
@@ -810,8 +810,8 @@ print(f"Inference: {latency_ms:.2f} ms")</code></pre>
 
 <footer class="pagefoot wrap">
   <p class="next">
-    <span class="en">This was the final chapter of "Robot Vision." From a pixel to a complete robot — we finished the journey together.</span>
-    <span class="fa">این آخرین فصل کتاب «چشم ربات» بود. از پیکسل تا یک ربات کامل — مسیر را با هم تمام کردیم.</span>
+    <span class="en">This was the final chapter of "Robot Vision." From a pixel to a complete robot, we finished the journey together.</span>
+    <span class="fa">این آخرین فصل کتاب «چشم ربات» بود. از پیکسل تا یک ربات کامل، مسیر را با هم تمام کردیم.</span>
   </p>
   <div class="btnrow">
     <a class="btn primary big" href="index.html"><span class="en">🏠 Back to book index</span><span class="fa">🏠 بازگشت به فهرست کتاب</span></a>

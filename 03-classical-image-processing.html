@@ -17,7 +17,7 @@
   if (t === 'dark' || t === 'light') { document.documentElement.setAttribute('data-theme', t); }
 })();
 </script>
-<title>Robot Vision: Zero to SLAM — Ch. 03: Classical Image Processing</title>
+<title>Robot Vision: Zero to SLAM · Ch. 03: Classical Image Processing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -194,8 +194,8 @@ footer.chapfoot p{margin:0 0 16px;color:var(--ink-soft)}
   <div class="wrap">
     <h1><span class="en">Classical Image Processing</span><span class="fa">پردازش تصویر کلاسیک</span></h1>
     <p class="sub">
-      <span class="en">Filtering, thresholding, and morphology — the simple, fast tools that still run before any neural network ever sees a raw image, cleaning out noise and isolating the object we actually care about.</span>
-      <span class="fa">فیلتر، آستانه‌گذاری و مورفولوژی — ابزارهای ساده و سریعی که هنوز هم قبل از هر شبکهٔ عصبی، اولین کاری‌اند که روی یک تصویر خام انجام می‌دهیم تا نویز را پاک کنیم و شیء موردنظر را از پس‌زمینه جدا کنیم.</span>
+      <span class="en">Filtering, thresholding, and morphology, the simple, fast tools that still run before any neural network ever sees a raw image, cleaning out noise and isolating the object we actually care about.</span>
+      <span class="fa">فیلتر، آستانه‌گذاری و مورفولوژی، ابزارهای ساده و سریعی که هنوز هم قبل از هر شبکهٔ عصبی، اولین کاری‌اند که روی یک تصویر خام انجام می‌دهیم تا نویز را پاک کنیم و شیء موردنظر را از پس‌زمینه جدا کنیم.</span>
     </p>
   </div>
 </header>
@@ -224,15 +224,15 @@ footer.chapfoot p{margin:0 0 16px;color:var(--ink-soft)}
 <div class="box box-why">
   <h4><span class="en">Why this chapter matters</span><span class="fa">چرا این فصل مهم است؟</span></h4>
   <p style="margin:0">
-    <span class="en">Imagine your robot's camera just grabbed a noisy, dim shot of a part on a conveyor belt. Jump straight to shape detection and the result is garbage. This chapter teaches you how to "clean" an image before any analysis — exactly what every computer vision engineer does every single day.</span>
-    <span class="fa">فرض کن دوربین رباتت یک عکس نویزی و کم‌نور از یک قطعه روی نوار نقاله گرفته. اگر مستقیم بروی سراغ تشخیص شکل، نتیجه افتضاح می‌شود. این فصل یاد می‌دهد چطور قبل از هر تحلیلی، تصویر را «تمیز» کنی — دقیقاً کاری که هر مهندس بینایی ماشین هر روز انجام می‌دهد.</span>
+    <span class="en">Imagine your robot's camera just grabbed a noisy, dim shot of a part on a conveyor belt. Jump straight to shape detection and the result is garbage. This chapter teaches you how to "clean" an image before any analysis, exactly what every computer vision engineer does every single day.</span>
+    <span class="fa">فرض کن دوربین رباتت یک عکس نویزی و کم‌نور از یک قطعه روی نوار نقاله گرفته. اگر مستقیم بروی سراغ تشخیص شکل، نتیجه افتضاح می‌شود. این فصل یاد می‌دهد چطور قبل از هر تحلیلی، تصویر را «تمیز» کنی، دقیقاً کاری که هر مهندس بینایی ماشین هر روز انجام می‌دهد.</span>
   </p>
 </div>
 
 <section id="sec-why">
   <h2><span class="num">1.</span><span class="en">Why Filter?</span><span class="fa">چرا فیلتر کردن؟</span></h2>
-  <p><span class="en">Every image a real camera captures is imperfect. Low light, sensor jitter, dust on the lens, even the camera's own electronics — all of it introduces "noise": random pixels whose color doesn't match their surroundings.</span>
-  <span class="fa">هر تصویری که از یک دوربین واقعی می‌گیریم، کامل نیست. نور کم، لرزش سنسور، گرد و غبار روی لنز، یا حتی خودِ مدار الکترونیکی دوربین — همه باعث می‌شوند تصویر «نویز» داشته باشد: پیکسل‌های تصادفی که رنگشان با محیط اطرافشان همخوانی ندارد.</span></p>
+  <p><span class="en">Every image a real camera captures is imperfect. Low light, sensor jitter, dust on the lens, even the camera's own electronics, all of it introduces "noise": random pixels whose color doesn't match their surroundings.</span>
+  <span class="fa">هر تصویری که از یک دوربین واقعی می‌گیریم، کامل نیست. نور کم، لرزش سنسور، گرد و غبار روی لنز، یا حتی خودِ مدار الکترونیکی دوربین، همه باعث می‌شوند تصویر «نویز» داشته باشد: پیکسل‌های تصادفی که رنگشان با محیط اطرافشان همخوانی ندارد.</span></p>
   <p><span class="en">Filtering means applying a simple mathematical operation to this raw image so that:</span>
   <span class="fa">فیلتر کردن یعنی روی این تصویر خام یک عملیات ریاضی ساده اعمال کنیم تا:</span></p>
   <ul>
@@ -240,14 +240,14 @@ footer.chapfoot p{margin:0 0 16px;color:var(--ink-soft)}
     <li><span class="en">The image is prepared for later steps like edge detection or object recognition</span><span class="fa">تصویر برای مراحل بعدی مثل لبه‌یابی یا تشخیص شیء آماده شود</span></li>
     <li><span class="en">Contrast improves so important details stand out more</span><span class="fa">کنتراست بهتر شود تا جزئیات مهم بیشتر دیده شوند</span></li>
   </ul>
-  <p><span class="en">Every one of these filters — from the simplest blur to the most sophisticated neural network — is built on a single idea: <strong>Convolution</strong>. So let's start there.</span>
-  <span class="fa">همهٔ این فیلترها — از ساده‌ترین بلور گرفته تا پیچیده‌ترین شبکهٔ عصبی — بر پایهٔ یک ایده‌ی واحد ساخته شده‌اند: <strong>Convolution</strong>. پس اول برویم سراغ همین مفهوم.</span></p>
+  <p><span class="en">Every one of these filters, from the simplest blur to the most sophisticated neural network, is built on a single idea: <strong>Convolution</strong>. So let's start there.</span>
+  <span class="fa">همهٔ این فیلترها، از ساده‌ترین بلور گرفته تا پیچیده‌ترین شبکهٔ عصبی، بر پایهٔ یک ایده‌ی واحد ساخته شده‌اند: <strong>Convolution</strong>. پس اول برویم سراغ همین مفهوم.</span></p>
 </section>
 
 <section id="sec-conv">
   <h2><span class="num">2.</span><span class="en">What Is Convolution / a Kernel?</span><span class="fa">Convolution / کرنل چیست؟</span></h2>
-  <p><span class="en">A <strong>kernel</strong><sup class="fn" id="fnref-kernel"><a href="#fn-kernel">[2]</a></sup> is a small grid of numbers — say 3×3 or 5×5 — that slides across the image like a tiny window. At every position, each pixel under the kernel is multiplied by the matching number in the kernel, all the products are summed, and the result replaces the center pixel. This operation is called <strong>Convolution</strong><sup class="fn" id="fnref-conv"><a href="#fn-conv">[1]</a></sup>.</span>
-  <span class="fa">یک <strong>کرنل</strong><sup class="fn" id="fnref-kernel-fa"><a href="#fn-kernel">[۲]</a></sup> (Kernel) یک جدول کوچک از اعداد است — مثلاً ۳×۳ یا ۵×۵ — که مثل یک پنجرهٔ کوچک روی تصویر می‌لغزد. در هر موقعیت، مقدار هر پیکسل زیر کرنل در عدد متناظرش در کرنل ضرب می‌شود، همهٔ حاصل‌ضرب‌ها با هم جمع می‌شوند، و نتیجه جایگزین پیکسل مرکزی می‌شود. این عملیات را <strong>Convolution</strong><sup class="fn" id="fnref-conv-fa"><a href="#fn-conv">[۱]</a></sup> می‌نامند.</span></p>
+  <p><span class="en">A <strong>kernel</strong><sup class="fn" id="fnref-kernel"><a href="#fn-kernel">[2]</a></sup> is a small grid of numbers, say 3×3 or 5×5, that slides across the image like a tiny window. At every position, each pixel under the kernel is multiplied by the matching number in the kernel, all the products are summed, and the result replaces the center pixel. This operation is called <strong>Convolution</strong><sup class="fn" id="fnref-conv"><a href="#fn-conv">[1]</a></sup>.</span>
+  <span class="fa">یک <strong>کرنل</strong><sup class="fn" id="fnref-kernel-fa"><a href="#fn-kernel">[۲]</a></sup> (Kernel) یک جدول کوچک از اعداد است، مثلاً ۳×۳ یا ۵×۵، که مثل یک پنجرهٔ کوچک روی تصویر می‌لغزد. در هر موقعیت، مقدار هر پیکسل زیر کرنل در عدد متناظرش در کرنل ضرب می‌شود، همهٔ حاصل‌ضرب‌ها با هم جمع می‌شوند، و نتیجه جایگزین پیکسل مرکزی می‌شود. این عملیات را <strong>Convolution</strong><sup class="fn" id="fnref-conv-fa"><a href="#fn-conv">[۱]</a></sup> می‌نامند.</span></p>
 
   <div class="formula-block">
     $$ (I * K)(x,y) = \sum_{i}\sum_{j} I(x+i, y+j)\cdot K(i,j) $$
@@ -309,7 +309,7 @@ footer.chapfoot p{margin:0 0 16px;color:var(--ink-soft)}
   </div>
 
   <div class="numex">
-    <b><span class="en">Full numeric example — a simple 3×3 blur kernel:</span><span class="fa">مثال عددی کامل — یک کرنل بلور سادهٔ ۳×۳:</span></b>
+    <b><span class="en">Full numeric example, a simple 3×3 blur kernel:</span><span class="fa">مثال عددی کامل، یک کرنل بلور سادهٔ ۳×۳:</span></b>
     <p style="margin:8px 0"><span class="en">Suppose we have this blur kernel where all 9 cells equal <span class="ltr">1/9</span>, and this 3×3 patch was lifted from a grayscale image:</span>
     <span class="fa">فرض کنیم این کرنل بلور را داریم که هر ۹ خانه‌اش برابر <span class="ltr">1/9</span> است، و این ناحیهٔ ۳×۳ را از تصویر خاکستری برداشته‌ایم:</span></p>
     <div class="tbl-wrap">
@@ -319,38 +319,38 @@ footer.chapfoot p{margin:0 0 16px;color:var(--ink-soft)}
         <tr><td>48</td><td>58</td><td>62</td></tr>
       </table>
     </div>
-    <p style="margin:8px 0"><span class="en">The center pixel is 200 (much brighter than its neighbors — likely noise). The convolution result:</span>
-    <span class="fa">پیکسل مرکزی مقدار ۲۰۰ دارد (خیلی روشن‌تر از همسایه‌هایش — شاید نویز باشد). حاصل کانولوشن:</span></p>
+    <p style="margin:8px 0"><span class="en">The center pixel is 200 (much brighter than its neighbors, likely noise). The convolution result:</span>
+    <span class="fa">پیکسل مرکزی مقدار ۲۰۰ دارد (خیلی روشن‌تر از همسایه‌هایش، شاید نویز باشد). حاصل کانولوشن:</span></p>
     <p class="ltr" style="direction:ltr;text-align:left">
       (50+60+55+45+200+52+48+58+62) / 9 = 630 / 9 = <b>70</b>
     </p>
-    <p style="margin:8px 0"><span class="en">The center pixel dropped from 200 to 70 — exactly what blurring does: it "smooths" each pixel's value using the average of its neighbors, dampening sudden outliers (noise).</span>
-    <span class="fa">پیکسل مرکزی از ۲۰۰ به ۷۰ کاهش پیدا کرد — دقیقاً همان چیزی که بلور انجام می‌دهد: مقدار هر پیکسل را با میانگین همسایه‌هایش «نرم» می‌کند و پرت‌های ناگهانی (نویز) را کم اثر می‌کند.</span></p>
+    <p style="margin:8px 0"><span class="en">The center pixel dropped from 200 to 70, exactly what blurring does: it "smooths" each pixel's value using the average of its neighbors, dampening sudden outliers (noise).</span>
+    <span class="fa">پیکسل مرکزی از ۲۰۰ به ۷۰ کاهش پیدا کرد، دقیقاً همان چیزی که بلور انجام می‌دهد: مقدار هر پیکسل را با میانگین همسایه‌هایش «نرم» می‌کند و پرت‌های ناگهانی (نویز) را کم اثر می‌کند.</span></p>
   </div>
 
   <div class="box box-mistake">
     <h4><span class="en">Common Mistake</span><span class="fa">اشتباه رایج</span></h4>
-    <p style="margin:0"><span class="en">Kernel size must always be <strong>odd</strong> (3, 5, 7, ...) — a single pixel needs to sit exactly at the center for "center" to even mean anything. A 4×4 or 6×6 kernel has no clear center, and most libraries (OpenCV included) reject such sizes or throw an error.</span>
-    <span class="fa">اندازهٔ کرنل باید همیشه <strong>فرد</strong> باشد (۳، ۵، ۷، ...) — چون باید یک پیکسل دقیقاً وسط کرنل بیفتد تا «مرکز» مشخص باشد. کرنل ۴×۴ یا ۶×۶ مرکز مشخصی ندارد و اکثر کتابخانه‌ها (از جمله OpenCV) چنین مقداری را قبول نمی‌کنند یا خطا می‌دهند.</span></p>
+    <p style="margin:0"><span class="en">Kernel size must always be <strong>odd</strong> (3, 5, 7, ...), a single pixel needs to sit exactly at the center for "center" to even mean anything. A 4×4 or 6×6 kernel has no clear center, and most libraries (OpenCV included) reject such sizes or throw an error.</span>
+    <span class="fa">اندازهٔ کرنل باید همیشه <strong>فرد</strong> باشد (۳، ۵، ۷، ...), چون باید یک پیکسل دقیقاً وسط کرنل بیفتد تا «مرکز» مشخص باشد. کرنل ۴×۴ یا ۶×۶ مرکز مشخصی ندارد و اکثر کتابخانه‌ها (از جمله OpenCV) چنین مقداری را قبول نمی‌کنند یا خطا می‌دهند.</span></p>
   </div>
 </section>
 <section id="sec-gauss">
   <h2><span class="num">3.</span><span class="en">Gaussian Blur</span><span class="fa">Gaussian Blur</span></h2>
-  <p><span class="en">In the example above, every neighbor had equal weight (1/9). But it makes more sense for pixels <strong>closer</strong> to the center to have more influence, and farther pixels less. That's exactly what <strong>Gaussian Blur</strong><sup class="fn" id="fnref-gb"><a href="#fn-gb">[3]</a></sup> does — using a two-dimensional normal (Gaussian) distribution:</span>
-  <span class="fa">در مثال بالا همهٔ همسایه‌ها وزن یکسان (۱/۹) داشتند. اما منطقی‌تر است که پیکسل‌های <strong>نزدیک‌تر</strong> به مرکز، تأثیر بیشتری داشته باشند و پیکسل‌های دورتر تأثیر کمتر. این دقیقاً کاری است که <strong>Gaussian Blur</strong><sup class="fn" id="fnref-gb-fa"><a href="#fn-gb">[۳]</a></sup> انجام می‌دهد — با استفاده از توزیع نرمال (گاوسی) دوبعدی:</span></p>
+  <p><span class="en">In the example above, every neighbor had equal weight (1/9). But it makes more sense for pixels <strong>closer</strong> to the center to have more influence, and farther pixels less. That's exactly what <strong>Gaussian Blur</strong><sup class="fn" id="fnref-gb"><a href="#fn-gb">[3]</a></sup> does, using a two-dimensional normal (Gaussian) distribution:</span>
+  <span class="fa">در مثال بالا همهٔ همسایه‌ها وزن یکسان (۱/۹) داشتند. اما منطقی‌تر است که پیکسل‌های <strong>نزدیک‌تر</strong> به مرکز، تأثیر بیشتری داشته باشند و پیکسل‌های دورتر تأثیر کمتر. این دقیقاً کاری است که <strong>Gaussian Blur</strong><sup class="fn" id="fnref-gb-fa"><a href="#fn-gb">[۳]</a></sup> انجام می‌دهد، با استفاده از توزیع نرمال (گاوسی) دوبعدی:</span></p>
   <div class="formula-block">
     $$ G(x,y) = \frac{1}{2\pi\sigma^2} e^{-\frac{x^2+y^2}{2\sigma^2}} $$
   </div>
   <p><span class="en">Here $(x,y)$ is a cell's distance from the kernel center, and $\sigma$<sup class="fn" id="fnref-sigma"><a href="#fn-sigma">[4]</a></sup> (sigma) controls how "spread out" and intense the blur is: a small sigma means a mild blur limited to close neighbors, a large sigma means a heavy blur that pulls in a much wider range of pixels.</span>
   <span class="fa">اینجا $(x,y)$ فاصلهٔ یک خانه از مرکز کرنل است، و $\sigma$<sup class="fn" id="fnref-sigma-fa"><a href="#fn-sigma">[۴]</a></sup> (سیگما) کنترل می‌کند بلور چقدر «پخش» و شدید باشد: سیگمای کوچک یعنی بلور ملایم و محدود به همسایه‌های نزدیک، سیگمای بزرگ یعنی بلور شدید که دامنهٔ وسیع‌تری از پیکسل‌ها را درگیر می‌کند.</span></p>
-  <p><span class="en">In practice you never compute this formula by hand — one line of OpenCV is enough:</span>
-  <span class="fa">در عمل نیازی نیست این فرمول را دستی حساب کنید — OpenCV یک خط کد کافی است:</span></p>
+  <p><span class="en">In practice you never compute this formula by hand, one line of OpenCV is enough:</span>
+  <span class="fa">در عمل نیازی نیست این فرمول را دستی حساب کنید، OpenCV یک خط کد کافی است:</span></p>
   <pre><code>blurred = cv2.GaussianBlur(image, (5,5), 0)</code></pre>
   <p><span class="en">Here <code class="ltr">(5,5)</code> is the kernel size (must be odd) and the last argument (0) means "compute sigma automatically from the kernel size."</span>
   <span class="fa">اینجا <code class="ltr">(5,5)</code> اندازهٔ کرنل است (باید فرد باشد) و عدد آخر (۰) یعنی «سیگما را خودت از روی اندازهٔ کرنل حساب کن».</span></p>
 
   <div class="box box-try">
-    <h4><span class="en">Try It Yourself — Exercise 1</span><span class="fa">امتحانش کن — تمرین ۱</span></h4>
+    <h4><span class="en">Try It Yourself, Exercise 1</span><span class="fa">امتحانش کن، تمرین ۱</span></h4>
     <p style="margin:0 0 8px"><span class="en">Blur any image with three different sigma values and compare:</span><span class="fa">یک عکس دلخواه را با سه مقدار سیگمای متفاوت بلور کن و مقایسه کن:</span></p>
     <pre><code>import cv2
 img = cv2.imread("part.jpg")
@@ -371,9 +371,9 @@ cv2.imwrite("heavy.jpg", blur_heavy)</code></pre>
 <section id="sec-median">
   <h2><span class="num">4.</span><span class="en">Median Filter</span><span class="fa">Median Filter</span></h2>
   <p><span class="en">Gaussian Blur is great for "soft" noise, but it doesn't do well against a specific kind called <strong>salt-and-pepper noise</strong><sup class="fn" id="fnref-sp"><a href="#fn-sp">[6]</a></sup> (scattered fully white or fully black pixels), because averaging drags that outlier pixel into the calculation and smears its effect onto neighbors.</span>
-  <span class="fa">Gaussian Blur برای نویزهای «نرم» عالی است، اما برای نوعی نویز خاص به‌نام <strong>نویز نمک‌وفلفل</strong><sup class="fn" id="fnref-sp-fa"><a href="#fn-sp">[۶]</a></sup> (Salt-and-pepper — پیکسل‌های کاملاً سفید یا کاملاً سیاه پراکنده در تصویر) عملکرد خوبی ندارد، چون میانگین‌گیری همان پیکسل پرت را هم وارد محاسبه می‌کند و اثرش را در همسایه‌ها پخش می‌کند.</span></p>
-  <p><span class="en"><strong>Median Filter</strong><sup class="fn" id="fnref-median"><a href="#fn-median">[5]</a></sup> returns just the <strong>median</strong> (the middle value once sorted) of the neighborhood, instead of a weighted average. Since a fully white or black pixel usually doesn't land in the middle of the sorted list, it's naturally dropped — and unlike Gaussian, it damages real edges far less.</span>
-  <span class="fa"><strong>Median Filter</strong><sup class="fn" id="fnref-median-fa"><a href="#fn-median">[۵]</a></sup> به‌جای میانگین وزن‌دار، فقط <strong>میانهٔ</strong> (median — مقدار وسط وقتی مرتب‌شان کنیم) مقادیر همسایگی را برمی‌گرداند. چون یک پیکسل کاملاً سفید یا سیاه معمولاً در میانهٔ لیست مرتب‌شده قرار نمی‌گیرد، به‌طور طبیعی حذف می‌شود — و برخلاف گاوسی، لبه‌های واقعی تصویر را هم کمتر خراب می‌کند.</span></p>
+  <span class="fa">Gaussian Blur برای نویزهای «نرم» عالی است، اما برای نوعی نویز خاص به‌نام <strong>نویز نمک‌وفلفل</strong><sup class="fn" id="fnref-sp-fa"><a href="#fn-sp">[۶]</a></sup> (Salt-and-pepper, پیکسل‌های کاملاً سفید یا کاملاً سیاه پراکنده در تصویر) عملکرد خوبی ندارد، چون میانگین‌گیری همان پیکسل پرت را هم وارد محاسبه می‌کند و اثرش را در همسایه‌ها پخش می‌کند.</span></p>
+  <p><span class="en"><strong>Median Filter</strong><sup class="fn" id="fnref-median"><a href="#fn-median">[5]</a></sup> returns just the <strong>median</strong> (the middle value once sorted) of the neighborhood, instead of a weighted average. Since a fully white or black pixel usually doesn't land in the middle of the sorted list, it's naturally dropped, and unlike Gaussian, it damages real edges far less.</span>
+  <span class="fa"><strong>Median Filter</strong><sup class="fn" id="fnref-median-fa"><a href="#fn-median">[۵]</a></sup> به‌جای میانگین وزن‌دار، فقط <strong>میانهٔ</strong> (median, مقدار وسط وقتی مرتب‌شان کنیم) مقادیر همسایگی را برمی‌گرداند. چون یک پیکسل کاملاً سفید یا سیاه معمولاً در میانهٔ لیست مرتب‌شده قرار نمی‌گیرد، به‌طور طبیعی حذف می‌شود، و برخلاف گاوسی، لبه‌های واقعی تصویر را هم کمتر خراب می‌کند.</span></p>
   <pre><code>median = cv2.medianBlur(image, 5)</code></pre>
 
   <div class="numex">
@@ -385,8 +385,8 @@ cv2.imwrite("heavy.jpg", blur_heavy)</code></pre>
         <tr><td>37</td><td>40</td><td>43</td></tr>
       </table>
     </div>
-    <p style="margin:8px 0"><span class="en">Sorting the 9 values: <span class="ltr">37, 38, 39, 40, 40, 41, 42, 43, 255</span> — the middle (5th) value is <b>40</b>. The Median Filter corrects the center pixel from 255 to 40, and the noisy pixel is fully removed, without smearing across neighbors the way Gaussian would.</span>
-    <span class="fa">مرتب‌سازی ۹ مقدار: <span class="ltr">37, 38, 39, 40, 40, 41, 42, 43, 255</span> — مقدار وسط (پنجمین عدد) برابر <b>۴۰</b> است. Median Filter مقدار پیکسل مرکزی را از ۲۵۵ به ۴۰ اصلاح می‌کند و پیکسل نویزی کاملاً حذف می‌شود، بدون آن‌که مثل گاوسی روی همسایه‌ها اثر بگذارد.</span></p>
+    <p style="margin:8px 0"><span class="en">Sorting the 9 values: <span class="ltr">37, 38, 39, 40, 40, 41, 42, 43, 255</span>, the middle (5th) value is <b>40</b>. The Median Filter corrects the center pixel from 255 to 40, and the noisy pixel is fully removed, without smearing across neighbors the way Gaussian would.</span>
+    <span class="fa">مرتب‌سازی ۹ مقدار: <span class="ltr">37, 38, 39, 40, 40, 41, 42, 43, 255</span>, مقدار وسط (پنجمین عدد) برابر <b>۴۰</b> است. Median Filter مقدار پیکسل مرکزی را از ۲۵۵ به ۴۰ اصلاح می‌کند و پیکسل نویزی کاملاً حذف می‌شود، بدون آن‌که مثل گاوسی روی همسایه‌ها اثر بگذارد.</span></p>
   </div>
 
   <div class="box box-mistake">
@@ -398,8 +398,8 @@ cv2.imwrite("heavy.jpg", blur_heavy)</code></pre>
 
 <section id="sec-thresh">
   <h2><span class="num">5.</span><span class="en">Thresholding</span><span class="fa">آستانه‌گذاری (Thresholding)</span></h2>
-  <p><span class="en"><strong>Thresholding</strong><sup class="fn" id="fnref-th"><a href="#fn-th">[7]</a></sup> means converting a grayscale image (each pixel a value from 0 to 255) into a fully black-and-white <strong>binary</strong> image — a crucial step before many classical algorithms, like finding contours.</span>
-  <span class="fa"><strong>Thresholding</strong><sup class="fn" id="fnref-th-fa"><a href="#fn-th">[۷]</a></sup> یعنی یک تصویر خاکستری (که هر پیکسلش عددی بین ۰ تا ۲۵۵ دارد) را به یک تصویر <strong>باینری</strong> کاملاً سیاه‌وسفید تبدیل کنیم — یک قدم حیاتی قبل از خیلی از الگوریتم‌های کلاسیک مثل پیدا کردن کانتور.</span></p>
+  <p><span class="en"><strong>Thresholding</strong><sup class="fn" id="fnref-th"><a href="#fn-th">[7]</a></sup> means converting a grayscale image (each pixel a value from 0 to 255) into a fully black-and-white <strong>binary</strong> image, a crucial step before many classical algorithms, like finding contours.</span>
+  <span class="fa"><strong>Thresholding</strong><sup class="fn" id="fnref-th-fa"><a href="#fn-th">[۷]</a></sup> یعنی یک تصویر خاکستری (که هر پیکسلش عددی بین ۰ تا ۲۵۵ دارد) را به یک تصویر <strong>باینری</strong> کاملاً سیاه‌وسفید تبدیل کنیم، یک قدم حیاتی قبل از خیلی از الگوریتم‌های کلاسیک مثل پیدا کردن کانتور.</span></p>
   <pre><code>gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 _, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)</code></pre>
   <p><span class="en">The rule is simple: any pixel above 127 becomes 255 (pure white), and anything below becomes 0 (pure black).</span>
@@ -408,8 +408,8 @@ _, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)</code></pre>
     <b><span class="en">Numeric example:</span><span class="fa">مثال عددی:</span></b> <span class="en">a pixel of 150 → since 150 > 127, the output is <b>255</b>. A pixel of 90 → since it's below 127, the output is <b>0</b>.</span>
     <span class="fa">اگر پیکسلی ۱۵۰ باشد → چون ۱۵۰ > ۱۲۷ است، خروجی <b>۲۵۵</b> می‌شود. اگر پیکسلی ۹۰ باشد → چون کمتر از ۱۲۷ است، خروجی <b>۰</b> می‌شود.</span>
   </div>
-  <p><span class="en">The problem with the fixed value 127 is that it isn't right for every image — a dark image may have no pixel above 127 at all, turning everything black. This is where <strong>Otsu's method</strong><sup class="fn" id="fnref-otsu"><a href="#fn-otsu">[8]</a></sup> helps: instead of guessing a threshold ourselves, the algorithm analyzes the image's histogram and finds the best threshold on its own (the point that splits the image into "bright" and "dark" groups with maximum separation):</span>
-  <span class="fa">مشکل عدد ثابت ۱۲۷ این است که برای همهٔ تصاویر مناسب نیست — یک تصویر تاریک ممکن است اصلاً پیکسل بالای ۱۲۷ نداشته باشد و همه‌چیز سیاه شود. اینجاست که <strong>Otsu's method</strong><sup class="fn" id="fnref-otsu-fa"><a href="#fn-otsu">[۸]</a></sup> به کمک می‌آید: به‌جای این‌که خودمان عدد آستانه را حدس بزنیم، الگوریتم با تحلیل هیستوگرام تصویر، بهترین آستانه را خودش پیدا می‌کند (جایی که تصویر را به دو گروه «روشن» و «تاریک» با بیشترین جدایی تقسیم می‌کند):</span></p>
+  <p><span class="en">The problem with the fixed value 127 is that it isn't right for every image, a dark image may have no pixel above 127 at all, turning everything black. This is where <strong>Otsu's method</strong><sup class="fn" id="fnref-otsu"><a href="#fn-otsu">[8]</a></sup> helps: instead of guessing a threshold ourselves, the algorithm analyzes the image's histogram and finds the best threshold on its own (the point that splits the image into "bright" and "dark" groups with maximum separation):</span>
+  <span class="fa">مشکل عدد ثابت ۱۲۷ این است که برای همهٔ تصاویر مناسب نیست، یک تصویر تاریک ممکن است اصلاً پیکسل بالای ۱۲۷ نداشته باشد و همه‌چیز سیاه شود. اینجاست که <strong>Otsu's method</strong><sup class="fn" id="fnref-otsu-fa"><a href="#fn-otsu">[۸]</a></sup> به کمک می‌آید: به‌جای این‌که خودمان عدد آستانه را حدس بزنیم، الگوریتم با تحلیل هیستوگرام تصویر، بهترین آستانه را خودش پیدا می‌کند (جایی که تصویر را به دو گروه «روشن» و «تاریک» با بیشترین جدایی تقسیم می‌کند):</span></p>
   <pre><code>_, binary_otsu = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)</code></pre>
   <p><span class="en">Notice that when using <code class="ltr">THRESH_OTSU</code>, the 0 value (or any initial value) is ignored, since the function itself computes the optimal threshold.</span>
   <span class="fa">توجه کن که وقتی از <code class="ltr">THRESH_OTSU</code> استفاده می‌کنیم، عدد ۱۲۷ (یا هر عدد اولیه) نادیده گرفته می‌شود چون خود تابع آستانهٔ بهینه را محاسبه می‌کند.</span></p>
@@ -464,8 +464,8 @@ _, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)</code></pre>
       <span class="fa">تصویر تاریک (چپ): بیشتر پیکسل‌ها نزدیک صفر جمع شده‌اند. بعد از equalize (راست): توزیع در کل بازهٔ ۰ تا ۲۵۵ پخش شده و کنتراست بهتر شده است.</span>
     </figcaption>
   </div>
-  <p><span class="en">For example, a photo taken in a dim warehouse typically has a histogram bunched entirely to the left (near zero) — meaning most pixels are dark and detail is lost in shadow.</span>
-  <span class="fa">مثلاً یک عکس گرفته‌شده در انبار کم‌نور معمولاً هیستوگرامش کاملاً سمت چپ (نزدیک صفر) متمرکز است — یعنی اکثر پیکسل‌ها تیره‌اند و جزئیات در سایه گم شده‌اند.</span></p>
+  <p><span class="en">For example, a photo taken in a dim warehouse typically has a histogram bunched entirely to the left (near zero), meaning most pixels are dark and detail is lost in shadow.</span>
+  <span class="fa">مثلاً یک عکس گرفته‌شده در انبار کم‌نور معمولاً هیستوگرامش کاملاً سمت چپ (نزدیک صفر) متمرکز است، یعنی اکثر پیکسل‌ها تیره‌اند و جزئیات در سایه گم شده‌اند.</span></p>
 </section>
 
 <section id="sec-eq">
@@ -484,8 +484,8 @@ _, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)</code></pre>
   <ul>
     <li><span class="en"><strong>Erosion</strong><sup class="fn" id="fnref-ero"><a href="#fn-ero">[11]</a></sup>: "eats away" white regions, shrinking and thinning them. Tiny white noise specks (a few lone pixels) are removed entirely, because they're too small for the kernel to fully fit over.</span>
     <span class="fa"><strong>Erosion</strong><sup class="fn" id="fnref-ero-fa"><a href="#fn-ero">[۱۱]</a></sup> (فرسایش): نواحی سفید را «می‌خورد» و کوچک/باریک‌تر می‌کند. نویزهای ریز سفید (چند پیکسل تنها) کاملاً حذف می‌شوند چون آن‌قدر کوچک‌اند که کرنل نمی‌تواند کاملاً رویشان بنشیند.</span></li>
-    <li><span class="en"><strong>Dilation</strong><sup class="fn" id="fnref-dil"><a href="#fn-dil">[12]</a></sup>: the opposite of erosion — grows white regions and fills small holes inside a white area.</span>
-    <span class="fa"><strong>Dilation</strong><sup class="fn" id="fnref-dil-fa"><a href="#fn-dil">[۱۲]</a></sup> (اتساع): برعکسِ erosion — نواحی سفید را بزرگ‌تر می‌کند و حفره‌های کوچک داخل یک ناحیهٔ سفید را پر می‌کند.</span></li>
+    <li><span class="en"><strong>Dilation</strong><sup class="fn" id="fnref-dil"><a href="#fn-dil">[12]</a></sup>: the opposite of erosion, grows white regions and fills small holes inside a white area.</span>
+    <span class="fa"><strong>Dilation</strong><sup class="fn" id="fnref-dil-fa"><a href="#fn-dil">[۱۲]</a></sup> (اتساع): برعکسِ erosion, نواحی سفید را بزرگ‌تر می‌کند و حفره‌های کوچک داخل یک ناحیهٔ سفید را پر می‌کند.</span></li>
     <li><span class="en"><strong>Opening</strong><sup class="fn" id="fnref-open"><a href="#fn-open">[13]</a></sup> = erosion followed by dilation. Removes small noise without altering the main object's overall shape.</span>
     <span class="fa"><strong>Opening</strong><sup class="fn" id="fnref-open-fa"><a href="#fn-open">[۱۳]</a></sup> = اول Erosion سپس Dilation. نویز کوچک را حذف می‌کند بدون این‌که شکل کلی شیء اصلی را تغییر دهد.</span></li>
     <li><span class="en"><strong>Closing</strong><sup class="fn" id="fnref-close"><a href="#fn-close">[14]</a></sup> = dilation followed by erosion. Fills small holes inside an object.</span>
@@ -527,7 +527,7 @@ opening = cv2.morphologyEx(binary, cv2.MORPH_OPEN, kernel)
 closing = cv2.morphologyEx(binary, cv2.MORPH_CLOSE, kernel)</code></pre>
 
   <div class="box box-try">
-    <h4><span class="en">Try It Yourself — Exercise 2</span><span class="fa">امتحانش کن — تمرین ۲</span></h4>
+    <h4><span class="en">Try It Yourself, Exercise 2</span><span class="fa">امتحانش کن، تمرین ۲</span></h4>
     <p style="margin:0 0 8px"><span class="en">Build a noisy binary image and clean it up with Opening:</span><span class="fa">یک تصویر باینری نویزی بساز و با Opening نویزش را پاک کن:</span></p>
     <pre><code>import numpy as np, cv2
 noisy = np.zeros((200,200), np.uint8)
@@ -540,21 +540,21 @@ cv2.imwrite("noisy.png", noisy)
 cv2.imwrite("clean.png", clean)</code></pre>
     <details class="solution">
       <summary><span class="en">What should I expect?</span><span class="fa">چه انتظاری باید داشته باشم؟</span></summary>
-      <p><span class="en">In <code class="ltr">noisy.png</code>, besides the main square, you'll see a few scattered white dots. In <code class="ltr">clean.png</code>, after Opening, those single-pixel dots have vanished but the main square remains nearly intact — because Opening only removes objects smaller than the kernel size.</span>
-      <span class="fa">در <code class="ltr">noisy.png</code> علاوه بر مربع اصلی، چند نقطهٔ سفید پراکنده می‌بینی. در <code class="ltr">clean.png</code> بعد از Opening، آن نقاط تک‌پیکسلی محو شده‌اند اما مربع اصلی تقریباً دست‌نخورده باقی مانده — چون Opening فقط اشیای کوچک‌تر از اندازهٔ کرنل را حذف می‌کند.</span></p>
+      <p><span class="en">In <code class="ltr">noisy.png</code>, besides the main square, you'll see a few scattered white dots. In <code class="ltr">clean.png</code>, after Opening, those single-pixel dots have vanished but the main square remains nearly intact, because Opening only removes objects smaller than the kernel size.</span>
+      <span class="fa">در <code class="ltr">noisy.png</code> علاوه بر مربع اصلی، چند نقطهٔ سفید پراکنده می‌بینی. در <code class="ltr">clean.png</code> بعد از Opening، آن نقاط تک‌پیکسلی محو شده‌اند اما مربع اصلی تقریباً دست‌نخورده باقی مانده، چون Opening فقط اشیای کوچک‌تر از اندازهٔ کرنل را حذف می‌کند.</span></p>
     </details>
   </div>
 </section>
 
 <section id="sec-robot">
   <h2><span class="num">9.</span><span class="en">A Real Robotics Use Case</span><span class="fa">کاربرد رباتیکی واقعی</span></h2>
-  <p><span class="en">Long before any deep learning model enters the picture, combining <strong>Thresholding + Morphology</strong> remains one of the fastest, lightest ways to do the following — and it runs perfectly well on a weak microcontroller or a Raspberry Pi:</span>
-  <span class="fa">پیش از این‌که هر مدل دیپ‌لرنینگی وارد ماجرا شود، ترکیب <strong>Thresholding + Morphology</strong> هنوز یکی از سریع‌ترین و سبک‌ترین راه‌ها برای کارهای زیر است — و روی یک میکروکنترلر ضعیف یا رزبری‌پای هم به‌خوبی اجرا می‌شود:</span></p>
+  <p><span class="en">Long before any deep learning model enters the picture, combining <strong>Thresholding + Morphology</strong> remains one of the fastest, lightest ways to do the following, and it runs perfectly well on a weak microcontroller or a Raspberry Pi:</span>
+  <span class="fa">پیش از این‌که هر مدل دیپ‌لرنینگی وارد ماجرا شود، ترکیب <strong>Thresholding + Morphology</strong> هنوز یکی از سریع‌ترین و سبک‌ترین راه‌ها برای کارهای زیر است، و روی یک میکروکنترلر ضعیف یا رزبری‌پای هم به‌خوبی اجرا می‌شود:</span></p>
   <ul>
-    <li><span class="en"><strong>Line Following:</strong> a robot tracking a black line on white ground — just thresholding and finding the center of the black region, no neural network needed.</span>
-    <span class="fa"><strong>دنبال‌کردن خط (Line Following):</strong> رباتی که باید یک نوار سیاه روی زمین سفید را دنبال کند — فقط با threshold و پیدا کردن مرکز ناحیهٔ سیاه، بدون نیاز به هیچ شبکهٔ عصبی.</span></li>
-    <li><span class="en"><strong>Isolating a bright object from a dark background:</strong> for example, a shiny metal part on a dark conveyor belt — threshold + opening to remove noise, then count the remaining white regions.</span>
-    <span class="fa"><strong>جداسازی شیء روشن از پس‌زمینه تیره:</strong> مثلاً یک قطعهٔ فلزی روشن روی نوار نقالهٔ تیره — threshold + opening برای حذف نویز، سپس شمارش نواحی سفید باقی‌مانده.</span></li>
+    <li><span class="en"><strong>Line Following:</strong> a robot tracking a black line on white ground, just thresholding and finding the center of the black region, no neural network needed.</span>
+    <span class="fa"><strong>دنبال‌کردن خط (Line Following):</strong> رباتی که باید یک نوار سیاه روی زمین سفید را دنبال کند، فقط با threshold و پیدا کردن مرکز ناحیهٔ سیاه، بدون نیاز به هیچ شبکهٔ عصبی.</span></li>
+    <li><span class="en"><strong>Isolating a bright object from a dark background:</strong> for example, a shiny metal part on a dark conveyor belt, threshold + opening to remove noise, then count the remaining white regions.</span>
+    <span class="fa"><strong>جداسازی شیء روشن از پس‌زمینه تیره:</strong> مثلاً یک قطعهٔ فلزی روشن روی نوار نقالهٔ تیره، threshold + opening برای حذف نویز، سپس شمارش نواحی سفید باقی‌مانده.</span></li>
   </ul>
   <div class="pipeline">
     <div class="step"><span class="en">Raw image</span><span class="fa">تصویر خام</span></div><div class="arrow">←</div>
@@ -568,8 +568,8 @@ cv2.imwrite("clean.png", clean)</code></pre>
 
 <section id="sec-real-photos">
   <h2><span class="en">From My Own Pipeline: A Real Photo, Step by Step</span><span class="fa">از پایپ‌لاین خودم: یک عکس واقعی، قدم‌به‌قدم</span></h2>
-  <p><span class="en">Everything above is easy to say in the abstract. Here is the exact same pipeline — <strong>histogram equalization</strong>, <strong>CLAHE</strong>, <strong>thresholding</strong> and <strong>morphology</strong> — run on one real photo from a personal Classical Computer Vision pipeline project, so you can see what each step actually does to real pixels, not just a diagram.</span>
-  <span class="fa">همه‌ی این‌ها روی کاغذ ساده به نظر می‌رسند. این‌جا دقیقاً همان پایپ‌لاین — <strong>هم‌سازی هیستوگرام</strong>، <strong>CLAHE</strong>، <strong>آستانه‌گذاری</strong> و <strong>مورفولوژی</strong> — روی یک عکس واقعی از یک پروژه شخصی Classical Computer Vision Pipeline اجرا شده، تا ببینی هر مرحله واقعاً روی پیکسل‌های واقعی چه‌کار می‌کند، نه فقط روی دیاگرام.</span></p>
+  <p><span class="en">Everything above is easy to say in the abstract. Here is the exact same pipeline, <strong>histogram equalization</strong>, <strong>CLAHE</strong>, <strong>thresholding</strong> and <strong>morphology</strong>, run on one real photo from a personal Classical Computer Vision pipeline project, so you can see what each step actually does to real pixels, not just a diagram.</span>
+  <span class="fa">همه‌ی این‌ها روی کاغذ ساده به نظر می‌رسند. این‌جا دقیقاً همان پایپ‌لاین، <strong>هم‌سازی هیستوگرام</strong>، <strong>CLAHE</strong>، <strong>آستانه‌گذاری</strong> و <strong>مورفولوژی</strong>, روی یک عکس واقعی از یک پروژه شخصی Classical Computer Vision Pipeline اجرا شده، تا ببینی هر مرحله واقعاً روی پیکسل‌های واقعی چه‌کار می‌کند، نه فقط روی دیاگرام.</span></p>
   <style>.real-gallery{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:16px 0}</style>
   <div class="real-gallery">
     <figure style="margin:0;flex:1 1 220px;min-width:180px;max-width:260px">
@@ -585,8 +585,8 @@ cv2.imwrite("clean.png", clean)</code></pre>
       <figcaption style="color:var(--muted);font-size:12.5px;margin-top:6px;text-align:center"><span class="en">CLAHE (local, adaptive equalization)</span><span class="fa">CLAHE (هم‌سازی محلی و تطبیقی)</span></figcaption>
     </figure>
   </div>
-  <p><span class="en">Notice CLAHE brings out local detail without blowing out bright regions the way a single global equalization can — this matters a lot for a robot's camera under uneven warehouse lighting.</span>
-  <span class="fa">دقت کن CLAHE جزئیات محلی را بدون سوزاندن نواحی روشن (کاری که هم‌سازی سراسری تک‌مرحله‌ای می‌تواند بکند) بیرون می‌کشد — این برای دوربین یک ربات زیر نور نامنظم انبار خیلی مهم است.</span></p>
+  <p><span class="en">Notice CLAHE brings out local detail without blowing out bright regions the way a single global equalization can, this matters a lot for a robot's camera under uneven warehouse lighting.</span>
+  <span class="fa">دقت کن CLAHE جزئیات محلی را بدون سوزاندن نواحی روشن (کاری که هم‌سازی سراسری تک‌مرحله‌ای می‌تواند بکند) بیرون می‌کشد، این برای دوربین یک ربات زیر نور نامنظم انبار خیلی مهم است.</span></p>
   <div class="real-gallery">
     <figure style="margin:0;flex:1 1 220px;min-width:180px;max-width:260px">
       <img src="data:image/png;base64,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" alt="Binary threshold" style="width:100%;height:auto;border-radius:8px;border:1px solid var(--line);display:block">
@@ -660,8 +660,8 @@ cv2.imwrite("clean.png", clean)</code></pre>
 
 <footer class="chapfoot">
   <div class="foot-inner">
-    <p><span class="en">Next chapter: from individual pixels to the concept of "shape" — gradients, Sobel, Canny, and contour extraction.</span>
-    <span class="fa">فصل بعد: از پیکسل‌های تک‌تک به مفهوم «شکل» می‌رسیم — گرادیان، Sobel، Canny و استخراج Contour.</span></p>
+    <p><span class="en">Next chapter: from individual pixels to the concept of "shape", gradients, Sobel, Canny, and contour extraction.</span>
+    <span class="fa">فصل بعد: از پیکسل‌های تک‌تک به مفهوم «شکل» می‌رسیم، گرادیان، Sobel، Canny و استخراج Contour.</span></p>
     <div class="foot-btns">
       <a class="btn-primary" href="04-edges-and-shapes.html"><span class="en">Next Chapter »</span><span class="fa">برو به فصل بعد »</span></a>
       <a class="btn-ghost" href="index.html"><span class="en">Back to Book Contents</span><span class="fa">بازگشت به فهرست کتاب</span></a>

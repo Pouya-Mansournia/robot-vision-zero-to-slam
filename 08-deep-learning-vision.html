@@ -17,7 +17,7 @@
   if (t === 'dark' || t === 'light') { document.documentElement.setAttribute('data-theme', t); }
 })();
 </script>
-<title>Robot Vision: Zero to SLAM — Ch. 08 Deep Learning in Computer Vision</title>
+<title>Robot Vision: Zero to SLAM · Ch. 08 Deep Learning in Computer Vision</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -128,7 +128,7 @@ footer.end{margin-top:3rem;padding:2rem 0;border-top:1px solid var(--line);text-
 <div class="wrap topbar">
 <div>
 <a class="book-name" href="index.html"><span class="en">Robot Vision: Zero to SLAM 🤖👁️</span><span class="fa">چشم ربات: از صفر تا SLAM 🤖👁️</span></a>
-<span class="chnum"><span class="en">— Chapter 08 of 10</span><span class="fa">— فصل ۰۸ از ۱۰</span></span>
+<span class="chnum"><span class="en">, Chapter 08 of 10</span><span class="fa">, فصل ۰۸ از ۱۰</span></span>
 </div>
 <nav class="navbtns">
 <a href="07-object-detection-yolo.html"><span class="en">← Previous</span><span class="fa">← فصل قبل</span></a>
@@ -144,8 +144,8 @@ footer.end{margin-top:3rem;padding:2rem 0;border-top:1px solid var(--line);text-
 <div class="hero">
 <h1><span class="en">Deep Learning in Computer Vision 🧠</span><span class="fa">یادگیری عمیق در بینایی ماشین 🧠</span></h1>
 <p class="lead">
-<span class="en">In earlier chapters we designed kernels by hand — blur, Sobel, morphology. But what if we let the computer itself learn the best kernels from thousands of examples? This chapter is the bridge between classical vision and the world of neural networks.</span>
-<span class="fa">در فصل‌های قبل کرنل‌ها را با دست طراحی کردیم — بلور، Sobel، مورفولوژی. اما اگر بگذاریم خود کامپیوتر بهترین کرنل‌ها را از روی هزاران مثال یاد بگیرد چه؟ این فصل پل بین بینایی کلاسیک و دنیای شبکه‌های عصبی است.</span>
+<span class="en">In earlier chapters we designed kernels by hand, blur, Sobel, morphology. But what if we let the computer itself learn the best kernels from thousands of examples? This chapter is the bridge between classical vision and the world of neural networks.</span>
+<span class="fa">در فصل‌های قبل کرنل‌ها را با دست طراحی کردیم، بلور، Sobel، مورفولوژی. اما اگر بگذاریم خود کامپیوتر بهترین کرنل‌ها را از روی هزاران مثال یاد بگیرد چه؟ این فصل پل بین بینایی کلاسیک و دنیای شبکه‌های عصبی است.</span>
 </p>
 </div>
 <div class="layout">
@@ -180,8 +180,8 @@ footer.end{margin-top:3rem;padding:2rem 0;border-top:1px solid var(--line);text-
 <section id="sec-why">
 <h2><span class="en">1. Why Hand-Crafted Filters Weren't Enough</span><span class="fa">۱. چرا فیلترهای دستی کافی نبودند؟</span></h2>
 <p>
-<span class="en">In Chapters 3 through 5 we designed the kernels ourselves: blur to smooth out noise, Sobel to find edges, morphology to clean up shapes. These kernels work well, but they're limited — we designed them based on our own mathematical understanding of "what an edge is."</span>
-<span class="fa">در فصل‌های ۳ تا ۵ کرنل‌ها را خودمان طراحی کردیم: بلور برای صاف کردن نویز، Sobel برای پیدا کردن لبه‌ها، مورفولوژی برای پاک‌سازی شکل‌ها. این کرنل‌ها خوب کار می‌کنند، اما محدودند — ما آنها را بر اساس درک ریاضی خودمان از «لبه چیست» طراحی کردیم.</span>
+<span class="en">In Chapters 3 through 5 we designed the kernels ourselves: blur to smooth out noise, Sobel to find edges, morphology to clean up shapes. These kernels work well, but they're limited, we designed them based on our own mathematical understanding of "what an edge is."</span>
+<span class="fa">در فصل‌های ۳ تا ۵ کرنل‌ها را خودمان طراحی کردیم: بلور برای صاف کردن نویز، Sobel برای پیدا کردن لبه‌ها، مورفولوژی برای پاک‌سازی شکل‌ها. این کرنل‌ها خوب کار می‌کنند، اما محدودند، ما آنها را بر اساس درک ریاضی خودمان از «لبه چیست» طراحی کردیم.</span>
 </p>
 <p>
 <span class="en">The key question: what if, instead of hand-designing them, we let the computer itself learn the "best kernels" from thousands of real examples? It might discover kernels that recognize not just edges, but fabric texture, wheel shapes, or even the abstract concept of a "human face." This is exactly the core idea behind the <b>CNN</b>.</span>
@@ -192,8 +192,8 @@ footer.end{margin-top:3rem;padding:2rem 0;border-top:1px solid var(--line);text-
 <section id="sec-cnn">
 <h2><span class="en">2. What is a CNN?</span><span class="fa">۲. CNN چیست؟</span></h2>
 <p>
-<span class="en"><b>CNN</b><sup><a href="#fn-cnn">1</a></sup> (Convolutional Neural Network) is a network of <b>Convolution</b><sup><a href="#fn-conv">2</a></sup> layers stacked one after another, each with a set of learnable kernels — meaning, unlike previous chapters, we don't decide the values inside the kernel; the network itself finds them during training.</span>
-<span class="fa"><b>CNN</b><sup><a href="#fn-cnn">۱</a></sup> (Convolutional Neural Network یا شبکهٔ عصبی کانولوشنی) شبکه‌ای است از لایه‌های Convolution<sup><a href="#fn-conv">۲</a></sup> که پشت‌سرهم قرار گرفته‌اند، و هرکدام مجموعه‌ای کرنل قابل‌یادگیری دارند — یعنی برخلاف فصل‌های قبل، مقادیر داخل کرنل را ما تعیین نمی‌کنیم؛ خود شبکه طی فرایند آموزش آنها را پیدا می‌کند.</span>
+<span class="en"><b>CNN</b><sup><a href="#fn-cnn">1</a></sup> (Convolutional Neural Network) is a network of <b>Convolution</b><sup><a href="#fn-conv">2</a></sup> layers stacked one after another, each with a set of learnable kernels, meaning, unlike previous chapters, we don't decide the values inside the kernel; the network itself finds them during training.</span>
+<span class="fa"><b>CNN</b><sup><a href="#fn-cnn">۱</a></sup> (Convolutional Neural Network یا شبکهٔ عصبی کانولوشنی) شبکه‌ای است از لایه‌های Convolution<sup><a href="#fn-conv">۲</a></sup> که پشت‌سرهم قرار گرفته‌اند، و هرکدام مجموعه‌ای کرنل قابل‌یادگیری دارند، یعنی برخلاف فصل‌های قبل، مقادیر داخل کرنل را ما تعیین نمی‌کنیم؛ خود شبکه طی فرایند آموزش آنها را پیدا می‌کند.</span>
 </p>
 <p><span class="en">The beautiful part is that these layers learn hierarchically:</span><span class="fa">نکتهٔ زیبا این است که این لایه‌ها به‌صورت سلسله‌مراتبی یاد می‌گیرند:</span></p>
 <ul>
@@ -242,8 +242,8 @@ footer.end{margin-top:3rem;padding:2rem 0;border-top:1px solid var(--line);text-
 </defs>
 </svg>
 <p style="text-align:center;color:var(--muted);font-size:.85rem">
-<span class="en">Each smaller box means the image dimensions have shrunk — exactly what Pooling does</span>
-<span class="fa">هر جعبه کوچک‌تر یعنی ابعاد تصویر کاهش پیدا کرده — دقیقاً کاری که Pooling انجام می‌دهد</span>
+<span class="en">Each smaller box means the image dimensions have shrunk, exactly what Pooling does</span>
+<span class="fa">هر جعبه کوچک‌تر یعنی ابعاد تصویر کاهش پیدا کرده، دقیقاً کاری که Pooling انجام می‌دهد</span>
 </p>
 </div>
 </section>
@@ -255,7 +255,7 @@ footer.end{margin-top:3rem;padding:2rem 0;border-top:1px solid var(--line);text-
 <span class="fa"><b>Pooling</b><sup><a href="#fn-pool">۳</a></sup> یعنی کاهش اندازهٔ تصویر با نگه‌داشتن مهم‌ترین اطلاعات. رایج‌ترین نوع آن <b>Max Pooling</b><sup><a href="#fn-maxpool">۴</a></sup> است: با یک پنجرهٔ ۲×۲، بزرگ‌ترین مقدار هر ۴ پیکسل را نگه می‌دارد و اندازهٔ تصویر را نصف می‌کند. این کار هم محاسبات را کم می‌کند و هم مدل را نسبت به جابه‌جایی کوچک شیء مقاوم‌تر می‌کند.</span>
 </p>
 <details class="try">
-<summary>🧪 <span class="en">Try it yourself — Exercise 1: Manually compute Max Pooling on a 4×4 matrix</span><span class="fa">امتحانش کن — تمرین ۱: محاسبهٔ دستی Max Pooling روی ماتریس ۴×۴</span></summary>
+<summary>🧪 <span class="en">Try it yourself, Exercise 1: Manually compute Max Pooling on a 4×4 matrix</span><span class="fa">امتحانش کن، تمرین ۱: محاسبهٔ دستی Max Pooling روی ماتریس ۴×۴</span></summary>
 <p style="margin-top:.8rem"><span class="en">Pool this 4×4 matrix with a 2×2 window and stride=2:</span><span class="fa">این ماتریس ۴×۴ را با پنجرهٔ ۲×۲ و stride=2 پول کن:</span></p>
 <div class="matrix ltr" dir="ltr" style="grid-template-columns:repeat(4,44px)">
 <div>1</div><div>3</div><div>2</div><div>2</div>
@@ -280,7 +280,7 @@ Bottom-right window: {2,8,0,5} → max = 8</span>
 <div class="hl">6</div><div class="hl">4</div>
 <div class="hl">7</div><div class="hl">9</div>
 </div>
-<p><span class="en">The 4×4 matrix became 2×2 — exactly the size reduction Pooling performs.</span><span class="fa">ماتریس ۴×۴ به ۲×۲ تبدیل شد — دقیقاً همان کاهش اندازه که Pooling انجام می‌دهد.</span></p>
+<p><span class="en">The 4×4 matrix became 2×2, exactly the size reduction Pooling performs.</span><span class="fa">ماتریس ۴×۴ به ۲×۲ تبدیل شد، دقیقاً همان کاهش اندازه که Pooling انجام می‌دهد.</span></p>
 </details>
 </details>
 </section>
@@ -299,8 +299,8 @@ $$ f(x) = \max(0, x) $$
 </div>
 </div>
 <p>
-<span class="en">Why is this non-linearity necessary? Because without it, several stacked Convolution layers would, mathematically, just be equivalent to one single linear layer — meaning no matter how many layers we add, the network couldn't learn complex patterns. ReLU is exactly what lets the network model the complex, non-linear relationships of the real world.</span>
-<span class="fa">چرا این غیرخطی بودن لازم است؟ چون بدون آن، چند لایهٔ Convolution پشت‌سرهم فقط از نظر ریاضی معادل یک لایهٔ خطی واحد می‌شد — یعنی هرچقدر هم لایه اضافه کنیم، شبکه نمی‌تواند الگوهای پیچیده یاد بگیرد. ReLU همان چیزی است که به شبکه اجازه می‌دهد روابط پیچیده و غیرخطی دنیای واقعی را مدل کند.</span>
+<span class="en">Why is this non-linearity necessary? Because without it, several stacked Convolution layers would, mathematically, just be equivalent to one single linear layer, meaning no matter how many layers we add, the network couldn't learn complex patterns. ReLU is exactly what lets the network model the complex, non-linear relationships of the real world.</span>
+<span class="fa">چرا این غیرخطی بودن لازم است؟ چون بدون آن، چند لایهٔ Convolution پشت‌سرهم فقط از نظر ریاضی معادل یک لایهٔ خطی واحد می‌شد، یعنی هرچقدر هم لایه اضافه کنیم، شبکه نمی‌تواند الگوهای پیچیده یاد بگیرد. ReLU همان چیزی است که به شبکه اجازه می‌دهد روابط پیچیده و غیرخطی دنیای واقعی را مدل کند.</span>
 </p>
 </section>
 
@@ -332,8 +332,8 @@ $$ f(x) = \max(0, x) $$
 <div class="warn">
 <b>⚠️ <span class="en">Common Mistake: Overfitting</span><span class="fa">اشتباه رایج: Overfitting</span></b><sup><a href="#fn-of">8</a></sup>
 <p>
-<span class="en">Trying to train a CNN from scratch with only a few hundred images usually leads to severe <b>Overfitting</b> — instead of learning the general pattern, the model "memorizes" the training photos and performs poorly on new data. The usual fix is Transfer Learning, not collecting millions more photos. Another common mistake: confusing Semantic Segmentation with Instance Segmentation — these are two different concepts (explained further below).</span>
-<span class="fa">تلاش برای آموزش یک CNN از صفر با فقط چند صد عکس، معمولاً به <b>Overfitting</b> شدید منجر می‌شود — مدل به‌جای یادگیری الگوی کلی، عکس‌های Train را «حفظ» می‌کند و روی داده‌ی جدید عملکرد ضعیفی دارد. راه‌حل معمولاً Transfer Learning است، نه جمع‌آوری میلیون‌ها عکس بیشتر. اشتباه رایج دیگر: قاطی کردن Semantic Segmentation با Instance Segmentation — این دو مفهوم متفاوتند (پایین‌تر توضیح داده می‌شود).</span>
+<span class="en">Trying to train a CNN from scratch with only a few hundred images usually leads to severe <b>Overfitting</b>, instead of learning the general pattern, the model "memorizes" the training photos and performs poorly on new data. The usual fix is Transfer Learning, not collecting millions more photos. Another common mistake: confusing Semantic Segmentation with Instance Segmentation, these are two different concepts (explained further below).</span>
+<span class="fa">تلاش برای آموزش یک CNN از صفر با فقط چند صد عکس، معمولاً به <b>Overfitting</b> شدید منجر می‌شود، مدل به‌جای یادگیری الگوی کلی، عکس‌های Train را «حفظ» می‌کند و روی داده‌ی جدید عملکرد ضعیفی دارد. راه‌حل معمولاً Transfer Learning است، نه جمع‌آوری میلیون‌ها عکس بیشتر. اشتباه رایج دیگر: قاطی کردن Semantic Segmentation با Instance Segmentation, این دو مفهوم متفاوتند (پایین‌تر توضیح داده می‌شود).</span>
 </p>
 </div>
 
@@ -381,8 +381,8 @@ results = model("warehouse.jpg")</code></pre>
 <section id="sec-transfer">
 <h2><span class="en">9. Transfer Learning</span><span class="fa">۹. Transfer Learning</span></h2>
 <p>
-<span class="en">Why don't we usually train from scratch? Because training a CNN from scratch on millions of images can take weeks and needs very heavy hardware. <b>Transfer Learning</b><sup><a href="#fn-tl2">11</a></sup> means starting from a model already trained (say, on <b>ImageNet</b><sup><a href="#fn-in">12</a></sup> or COCO) and just <b>Fine-tuning</b><sup><a href="#fn-ft2">13</a></sup> it for our own problem — exactly the same concept we saw for YOLO in Chapter 7.</span>
-<span class="fa">چرا معمولاً از صفر آموزش نمی‌دهیم؟ چون آموزش یک CNN از صفر روی میلیون‌ها تصویر می‌تواند هفته‌ها طول بکشد و به سخت‌افزار بسیار سنگین نیاز دارد. <b>Transfer Learning</b><sup><a href="#fn-tl2">۱۱</a></sup> یعنی از یک مدل از قبل آموزش‌دیده (مثلاً روی <b>ImageNet</b><sup><a href="#fn-in">۱۲</a></sup> یا COCO) شروع کنیم و فقط آن را برای مسئلهٔ خودمان <b>Fine-tune</b><sup><a href="#fn-ft2">۱۳</a></sup> کنیم — دقیقاً همان مفهومی که در فصل ۷ برای YOLO دیدیم.</span>
+<span class="en">Why don't we usually train from scratch? Because training a CNN from scratch on millions of images can take weeks and needs very heavy hardware. <b>Transfer Learning</b><sup><a href="#fn-tl2">11</a></sup> means starting from a model already trained (say, on <b>ImageNet</b><sup><a href="#fn-in">12</a></sup> or COCO) and just <b>Fine-tuning</b><sup><a href="#fn-ft2">13</a></sup> it for our own problem, exactly the same concept we saw for YOLO in Chapter 7.</span>
+<span class="fa">چرا معمولاً از صفر آموزش نمی‌دهیم؟ چون آموزش یک CNN از صفر روی میلیون‌ها تصویر می‌تواند هفته‌ها طول بکشد و به سخت‌افزار بسیار سنگین نیاز دارد. <b>Transfer Learning</b><sup><a href="#fn-tl2">۱۱</a></sup> یعنی از یک مدل از قبل آموزش‌دیده (مثلاً روی <b>ImageNet</b><sup><a href="#fn-in">۱۲</a></sup> یا COCO) شروع کنیم و فقط آن را برای مسئلهٔ خودمان <b>Fine-tune</b><sup><a href="#fn-ft2">۱۳</a></sup> کنیم، دقیقاً همان مفهومی که در فصل ۷ برای YOLO دیدیم.</span>
 </p>
 <div class="formula-box">
 $$ \text{Pretrained Knowledge (edges, shapes, textures)} + \text{Your small dataset} \rightarrow \text{Specialized Model} $$
@@ -390,7 +390,7 @@ $$ \text{Pretrained Knowledge (edges, shapes, textures)} + \text{Your small data
 </section>
 
 <details class="try">
-<summary>🧪 <span class="en">Try it yourself — Exercise 2: Fruit-type detection, from scratch or with Transfer Learning?</span><span class="fa">امتحانش کن — تمرین ۲: تشخیص نوع میوه، از صفر یا با Transfer Learning؟</span></summary>
+<summary>🧪 <span class="en">Try it yourself, Exercise 2: Fruit-type detection, from scratch or with Transfer Learning?</span><span class="fa">امتحانش کن، تمرین ۲: تشخیص نوع میوه، از صفر یا با Transfer Learning؟</span></summary>
 <p style="margin-top:.8rem">
 <span class="en">Imagine you want to build a "fruit type detection" model. If you train from scratch, roughly how many images would you need? What about with Transfer Learning? Why is the difference so large?</span>
 <span class="fa">فکر کن می‌خواهی یک مدل «تشخیص نوع میوه» بسازی. اگر از صفر آموزش بدهی، تقریباً چند تصویر لازم داری؟ اگر Transfer Learning استفاده کنی چطور؟ چرا این تفاوت اینقدر زیاد است؟</span>
@@ -398,7 +398,7 @@ $$ \text{Pretrained Knowledge (edges, shapes, textures)} + \text{Your small data
 <details>
 <summary><span class="en">Solution</span><span class="fa">راه‌حل</span></summary>
 <p><span class="en">From scratch: usually tens of thousands to hundreds of thousands of images are needed so the network can learn basic concepts like edges, colors, and textures entirely on its own.</span><span class="fa">از صفر: معمولاً ده‌ها هزار تا صدها هزار تصویر لازم است تا شبکه مفاهیم پایه مثل لبه، رنگ و بافت را خودش از صفر یاد بگیرد.</span></p>
-<p><span class="en">With Transfer Learning: since a pretrained model (on ImageNet) already knows edges/shapes/textures, usually a few hundred to a few thousand fruit photos are enough — because only the final layers need to learn what distinguishes an "apple" from an "orange," not discover the concept of an edge from zero.</span><span class="fa">با Transfer Learning: چون مدل Pretrained (روی ImageNet) از قبل edges/shapes/textures را می‌داند، معمولاً چند صد تا چند هزار عکس از میوه‌ها کافی است — چون فقط لایه‌های آخر باید یاد بگیرند «سیب» با «پرتقال» چه فرقی دارد، نه اینکه از صفر مفهوم لبه را کشف کنند.</span></p>
+<p><span class="en">With Transfer Learning: since a pretrained model (on ImageNet) already knows edges/shapes/textures, usually a few hundred to a few thousand fruit photos are enough, because only the final layers need to learn what distinguishes an "apple" from an "orange," not discover the concept of an edge from zero.</span><span class="fa">با Transfer Learning: چون مدل Pretrained (روی ImageNet) از قبل edges/shapes/textures را می‌داند، معمولاً چند صد تا چند هزار عکس از میوه‌ها کافی است، چون فقط لایه‌های آخر باید یاد بگیرند «سیب» با «پرتقال» چه فرقی دارد، نه اینکه از صفر مفهوم لبه را کشف کنند.</span></p>
 </details>
 </details>
 
@@ -407,12 +407,12 @@ $$ \text{Pretrained Knowledge (edges, shapes, textures)} + \text{Your small data
 <p><span class="en">Segmentation has very concrete applications in robotics:</span><span class="fa">Segmentation کاربردهای خیلی مشخصی در رباتیک دارد:</span></p>
 <ul>
 <li>
-<span class="en">Finding the exact drivable ground area (<b>Free Space</b>) in front of an AMR — not just "where there isn't a box or a person," but precisely which floor pixels are empty and passable.</span>
-<span class="fa">پیدا کردن دقیق ناحیهٔ قابل‌حرکت زمین (<b>Free Space</b>) جلوی یک AMR — نه فقط «جایی که یک باکس آدم نیست»، بلکه دقیقاً کدام پیکسل‌های زمین خالی و قابل عبورند.</span>
+<span class="en">Finding the exact drivable ground area (<b>Free Space</b>) in front of an AMR, not just "where there isn't a box or a person," but precisely which floor pixels are empty and passable.</span>
+<span class="fa">پیدا کردن دقیق ناحیهٔ قابل‌حرکت زمین (<b>Free Space</b>) جلوی یک AMR, نه فقط «جایی که یک باکس آدم نیست»، بلکه دقیقاً کدام پیکسل‌های زمین خالی و قابل عبورند.</span>
 </li>
 <li>
-<span class="en">Finding the exact boundary of a product for precise Grasping by a robotic arm — instead of an approximate box that might include part of a neighboring product, a precise pixel mask tells the arm exactly where to grip.</span>
-<span class="fa">پیدا کردن مرز دقیق یک محصول برای Grasping دقیق بازوی رباتیک — به‌جای یک باکس تقریبی که ممکن است بخشی از محصول کناری را هم شامل شود، ماسک پیکسلی دقیق به بازو می‌گوید دقیقاً کجا را بگیرد.</span>
+<span class="en">Finding the exact boundary of a product for precise Grasping by a robotic arm, instead of an approximate box that might include part of a neighboring product, a precise pixel mask tells the arm exactly where to grip.</span>
+<span class="fa">پیدا کردن مرز دقیق یک محصول برای Grasping دقیق بازوی رباتیک، به‌جای یک باکس تقریبی که ممکن است بخشی از محصول کناری را هم شامل شود، ماسک پیکسلی دقیق به بازو می‌گوید دقیقاً کجا را بگیرد.</span>
 </li>
 </ul>
 </section>
@@ -421,7 +421,7 @@ $$ \text{Pretrained Knowledge (edges, shapes, textures)} + \text{Your small data
 <h2><span class="en">Glossary</span><span class="fa">واژه‌نامه</span></h2>
 <dl class="glossary">
 <dt id="fn-cnn">1. CNN</dt>
-<dd><span class="en">Convolutional Neural Network — a neural network built from learnable convolution layers.</span><span class="fa">Convolutional Neural Network — شبکهٔ عصبی که از لایه‌های کانولوشن قابل‌یادگیری تشکیل شده.</span></dd>
+<dd><span class="en">Convolutional Neural Network, a neural network built from learnable convolution layers.</span><span class="fa">Convolutional Neural Network, شبکهٔ عصبی که از لایه‌های کانولوشن قابل‌یادگیری تشکیل شده.</span></dd>
 <dt id="fn-conv">2. Convolution Layer</dt>
 <dd><span class="en">A layer that extracts features by applying learnable kernels to the image.</span><span class="fa">لایه‌ای که با اعمال کرنل‌های قابل‌یادگیری روی تصویر، ویژگی استخراج می‌کند.</span></dd>
 <dt id="fn-pool">3. Pooling</dt>
@@ -451,8 +451,8 @@ $$ \text{Pretrained Knowledge (edges, shapes, textures)} + \text{Your small data
 
 <footer class="end">
 <p>
-<span class="en">Next chapter: in Chapter 9 we bring all these concepts into the real world of robotics — Visual Odometry, SLAM, and combining multiple sensors together.</span>
-<span class="fa">فصل بعد: در فصل ۹ همهٔ این مفاهیم را وارد دنیای رباتیک واقعی می‌کنیم — Visual Odometry، SLAM و ترکیب چند حسگر با هم.</span>
+<span class="en">Next chapter: in Chapter 9 we bring all these concepts into the real world of robotics, Visual Odometry, SLAM, and combining multiple sensors together.</span>
+<span class="fa">فصل بعد: در فصل ۹ همهٔ این مفاهیم را وارد دنیای رباتیک واقعی می‌کنیم، Visual Odometry، SLAM و ترکیب چند حسگر با هم.</span>
 </p>
 <div class="endbtns">
 <a href="09-robot-vision-slam-fusion.html"><span class="en">Go to Next Chapter →</span><span class="fa">برو به فصل بعد →</span></a>

@@ -17,7 +17,7 @@
   if (t === 'dark' || t === 'light') { document.documentElement.setAttribute('data-theme', t); }
 })();
 </script>
-<title>Robot Vision: Zero to SLAM — Ch.2</title>
+<title>Robot Vision: Zero to SLAM · Ch.2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
@@ -154,7 +154,7 @@ sup.fn{color:var(--accent);cursor:default;font-size:.75em}
 <header class="topbar">
   <div class="topbar-inner">
     <a class="book-name" href="index.html"><span class="en">📘 Robot Vision: Zero to SLAM</span><span class="fa">📘 چشم ربات: از صفر تا SLAM</span></a>
-    <span class="chapter-tag"><span class="en">Chapter 02 of 10 — OpenCV from Scratch</span><span class="fa">فصل ۰۲ از ۱۰ — OpenCV از صفر</span></span>
+    <span class="chapter-tag"><span class="en">Chapter 02 of 10 · OpenCV from Scratch</span><span class="fa">فصل ۰۲ از ۱۰ · OpenCV از صفر</span></span>
     <div class="nav-btns">
       <a href="01-what-is-a-digital-image.html"><span class="en">‹ Previous Chapter</span><span class="fa">‹ فصل قبل</span></a>
       <a href="index.html"><span class="en">Book Index</span><span class="fa">فهرست کتاب</span></a>
@@ -196,20 +196,20 @@ sup.fn{color:var(--accent);cursor:default;font-size:.75em}
     <div class="box box-why">
       <h3><span class="en">Why does this matter?</span><span class="fa">چرا این مهم است؟</span></h3>
       <p>
-        <span class="en">Almost every computer vision project in robotics — from lane detection to SLAM — is built on OpenCV<sup class="fn">1</sup>. Once you learn how to read, display, and draw with it, you have the foundation for nearly every chapter that follows in this book.</span>
-        <span class="fa">تقریباً هر پروژه‌ی بینایی ماشین در رباتیک — از تشخیص خط مسیر تا SLAM — روی OpenCV<sup class="fn">۱</sup> ساخته می‌شود. اگر یاد بگیرید چطور با آن عکس بخوانید، نمایش دهید و شکل بکشید، پایه‌ی تقریباً همه‌ی فصل‌های بعدی این کتاب را دارید.</span>
+        <span class="en">Almost every computer vision project in robotics, from lane detection to SLAM, is built on OpenCV<sup class="fn">1</sup>. Once you learn how to read, display, and draw with it, you have the foundation for nearly every chapter that follows in this book.</span>
+        <span class="fa">تقریباً هر پروژه‌ی بینایی ماشین در رباتیک، از تشخیص خط مسیر تا SLAM, روی OpenCV<sup class="fn">۱</sup> ساخته می‌شود. اگر یاد بگیرید چطور با آن عکس بخوانید، نمایش دهید و شکل بکشید، پایه‌ی تقریباً همه‌ی فصل‌های بعدی این کتاب را دارید.</span>
       </p>
     </div>
 
     <section id="sec-what">
       <h2><span class="num">1.</span> <span class="en">What Is OpenCV, and Why?</span><span class="fa">OpenCV چیست و چرا؟</span></h2>
       <p>
-        <span class="en">OpenCV stands for <em>Open Source Computer Vision Library</em> — a free, open-source library for image and video processing. Its core is written in C++ (for speed), but it has a Python "binding" — an interface that lets us access that same C++ power from Python.</span>
-        <span class="fa">OpenCV مخفف <em>Open Source Computer Vision Library</em> است — یک کتابخانه‌ی متن‌باز و رایگان برای پردازش تصویر و ویدیو. هسته‌ی اصلی آن با زبان C++ نوشته شده (برای سرعت بالا)، ولی یک «binding» یا رابط پایتونی دارد که به ما اجازه می‌دهد از پایتون به همان قدرت C++ دسترسی داشته باشیم.</span>
+        <span class="en">OpenCV stands for <em>Open Source Computer Vision Library</em>, a free, open-source library for image and video processing. Its core is written in C++ (for speed), but it has a Python "binding", an interface that lets us access that same C++ power from Python.</span>
+        <span class="fa">OpenCV مخفف <em>Open Source Computer Vision Library</em> است، یک کتابخانه‌ی متن‌باز و رایگان برای پردازش تصویر و ویدیو. هسته‌ی اصلی آن با زبان C++ نوشته شده (برای سرعت بالا)، ولی یک «binding» یا رابط پایتونی دارد که به ما اجازه می‌دهد از پایتون به همان قدرت C++ دسترسی داشته باشیم.</span>
       </p>
       <p>
-        <span class="en">Here's the interesting part: in Python, OpenCV works on the very same NumPy arrays we saw in the last chapter! So when you read an image with OpenCV, the result is just a plain NumPy array — no strange data structure involved.</span>
-        <span class="fa">نکته‌ی جالب این است که OpenCV در پایتون روی همان آرایه‌های NumPy کار می‌کند که در فصل قبل دیدیم! یعنی وقتی یک تصویر را با OpenCV می‌خوانید، نتیجه یک آرایه‌ی NumPy معمولی است — هیچ ساختار داده‌ی عجیبی در کار نیست.</span>
+        <span class="en">Here's the interesting part: in Python, OpenCV works on the very same NumPy arrays we saw in the last chapter! So when you read an image with OpenCV, the result is just a plain NumPy array, no strange data structure involved.</span>
+        <span class="fa">نکته‌ی جالب این است که OpenCV در پایتون روی همان آرایه‌های NumPy کار می‌کند که در فصل قبل دیدیم! یعنی وقتی یک تصویر را با OpenCV می‌خوانید، نتیجه یک آرایه‌ی NumPy معمولی است، هیچ ساختار داده‌ی عجیبی در کار نیست.</span>
       </p>
       <div class="pipe">
         <div class="box2"><span class="en">Your Python code</span><span class="fa">کد پایتون شما</span></div>
@@ -227,8 +227,8 @@ sup.fn{color:var(--accent);cursor:default;font-size:.75em}
       <p><span class="en">Installing it is just one line:</span><span class="fa">نصب آن فقط یک خط است:</span></p>
       <pre class="ltr"><code>pip install opencv-python</code></pre>
       <p>
-        <span class="en">After installing, import it in Python with <code class="ltr">import cv2</code> — yes, the module name is <code class="ltr">cv2</code>, not <code class="ltr">opencv</code>, one of the first common points of confusion for beginners!</span>
-        <span class="fa">بعد از نصب، در پایتون با <code class="ltr">import cv2</code> آن را وارد کنید — بله، اسم ماژول <code class="ltr">cv2</code> است نه <code class="ltr">opencv</code>، یکی از اولین سردرگمی‌های رایج مبتدی‌ها!</span>
+        <span class="en">After installing, import it in Python with <code class="ltr">import cv2</code>, yes, the module name is <code class="ltr">cv2</code>, not <code class="ltr">opencv</code>, one of the first common points of confusion for beginners!</span>
+        <span class="fa">بعد از نصب، در پایتون با <code class="ltr">import cv2</code> آن را وارد کنید، بله، اسم ماژول <code class="ltr">cv2</code> است نه <code class="ltr">opencv</code>، یکی از اولین سردرگمی‌های رایج مبتدی‌ها!</span>
       </p>
     </section>
 
@@ -248,15 +248,15 @@ cv2.imwrite("robot_copy.jpg", image)  # save</code></pre>
       <ul>
         <li><span class="en"><code class="ltr">cv2.imread()</code><sup class="fn">5</sup> reads an image file and returns it as a NumPy array.</span><span class="fa"><code class="ltr">cv2.imread()</code><sup class="fn">۵</sup> فایل تصویر را می‌خواند و آن را به‌صورت آرایه‌ی NumPy برمی‌گرداند.</span></li>
         <li><span class="en"><code class="ltr">cv2.imshow()</code><sup class="fn">6</sup> displays the image in a window.</span><span class="fa"><code class="ltr">cv2.imshow()</code><sup class="fn">۶</sup> تصویر را در یک پنجره نمایش می‌دهد.</span></li>
-        <li><span class="en"><code class="ltr">cv2.waitKey(0)</code> pauses the program until the user presses a key — without this line, the window opens and closes instantly!</span><span class="fa"><code class="ltr">cv2.waitKey(0)</code> برنامه را متوقف می‌کند تا کاربر کلیدی بزند — بدون این خط، پنجره بلافاصله باز و بسته می‌شود!</span></li>
+        <li><span class="en"><code class="ltr">cv2.waitKey(0)</code> pauses the program until the user presses a key, without this line, the window opens and closes instantly!</span><span class="fa"><code class="ltr">cv2.waitKey(0)</code> برنامه را متوقف می‌کند تا کاربر کلیدی بزند، بدون این خط، پنجره بلافاصله باز و بسته می‌شود!</span></li>
         <li><span class="en"><code class="ltr">cv2.imwrite()</code><sup class="fn">7</sup> saves the image to disk.</span><span class="fa"><code class="ltr">cv2.imwrite()</code><sup class="fn">۷</sup> تصویر را روی دیسک ذخیره می‌کند.</span></li>
       </ul>
 
       <div class="box box-mistake">
         <h3><span class="en">⚠ The Most Important Point in This Chapter: BGR, Not RGB!</span><span class="fa">⚠ مهم‌ترین نکته‌ی این فصل: BGR نه RGB!</span></h3>
         <p>
-          <span class="en">OpenCV reads and displays images in <strong>BGR</strong><sup class="fn">2</sup> order (blue-green-red) by default — not RGB<sup class="fn">3</sup> (red-green-blue), which most other libraries (like matplotlib) expect. This is one of the most common sources of beginner confusion: an image that looks correct in OpenCV may show up with swapped blue/red colors in matplotlib!</span>
-          <span class="fa">OpenCV به‌صورت پیش‌فرض تصویر را به ترتیب <strong>BGR</strong><sup class="fn">۲</sup> (آبی-سبز-قرمز) می‌خواند و نمایش می‌دهد — نه RGB<sup class="fn">۳</sup> (قرمز-سبز-آبی) که اغلب کتابخانه‌های دیگر (مثل matplotlib) انتظار دارند. این یکی از رایج‌ترین منابع سردرگمی مبتدی‌هاست: عکسی که در OpenCV درست به‌نظر می‌رسد، ممکن است در matplotlib با رنگ‌های آبی/قرمز جابه‌جا نمایش داده شود!</span>
+          <span class="en">OpenCV reads and displays images in <strong>BGR</strong><sup class="fn">2</sup> order (blue-green-red) by default, not RGB<sup class="fn">3</sup> (red-green-blue), which most other libraries (like matplotlib) expect. This is one of the most common sources of beginner confusion: an image that looks correct in OpenCV may show up with swapped blue/red colors in matplotlib!</span>
+          <span class="fa">OpenCV به‌صورت پیش‌فرض تصویر را به ترتیب <strong>BGR</strong><sup class="fn">۲</sup> (آبی-سبز-قرمز) می‌خواند و نمایش می‌دهد، نه RGB<sup class="fn">۳</sup> (قرمز-سبز-آبی) که اغلب کتابخانه‌های دیگر (مثل matplotlib) انتظار دارند. این یکی از رایج‌ترین منابع سردرگمی مبتدی‌هاست: عکسی که در OpenCV درست به‌نظر می‌رسد، ممکن است در matplotlib با رنگ‌های آبی/قرمز جابه‌جا نمایش داده شود!</span>
         </p>
         <p><span class="en">To convert between these two orders:</span><span class="fa">برای تبدیل بین این دو ترتیب:</span></p>
         <pre class="ltr"><code>rgb_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)</code></pre>
@@ -273,8 +273,8 @@ cv2.imwrite("robot_copy.jpg", image)  # save</code></pre>
             <text x="200" y="57" text-anchor="middle" font-size="13" fill="#fff">Green</text>
             <rect x="260" y="35" width="120" height="34" fill="#c76a2e"/>
             <text x="320" y="57" text-anchor="middle" font-size="13" fill="#fff">Red</text>
-            <text x="200" y="82" text-anchor="middle" font-size="12" fill="var(--accent-2)" class="en">OpenCV (BGR) — cv2.imread default</text>
-            <text x="200" y="82" text-anchor="middle" font-size="12" fill="var(--accent-2)" class="fa">OpenCV (BGR) — پیش‌فرض cv2.imread</text>
+            <text x="200" y="82" text-anchor="middle" font-size="12" fill="var(--accent-2)" class="en">OpenCV (BGR), cv2.imread default</text>
+            <text x="200" y="82" text-anchor="middle" font-size="12" fill="var(--accent-2)" class="fa">OpenCV (BGR), پیش‌فرض cv2.imread</text>
           </g>
           <g>
             <rect x="20" y="100" width="120" height="34" fill="#c76a2e"/>
@@ -297,8 +297,8 @@ cv2.imwrite("robot_copy.jpg", image)  # save</code></pre>
 rotated = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
 cropped = image[100:300, 200:500]   # crop is just NumPy array slicing!</code></pre>
       <p>
-        <span class="en">Interesting detail: <code class="ltr">cv2.resize()</code><sup class="fn">8</sup> takes the new absolute size as a tuple <code class="ltr">(width, height)</code> — here, unlike shape, width comes first! And as you can see in the third line, Crop<sup class="fn">10</sup> isn't a special OpenCV function at all — it's just ordinary NumPy array slicing, exactly what we saw in the last chapter with <code class="ltr">img[0:3, 0:3]</code>.</span>
-        <span class="fa">نکته‌ی جالب: <code class="ltr">cv2.resize()</code><sup class="fn">۸</sup> اندازه‌ی مطلق جدید را با یک تاپل <code class="ltr">(عرض, ارتفاع)</code> می‌گیرد (اینجا برخلاف shape، عرض اول است!). و همان‌طور که در خط سوم می‌بینید، Crop<sup class="fn">۱۰</sup> اصلاً یک تابع مخصوص OpenCV نیست — فقط slicing معمولیِ آرایه‌ی NumPy است، دقیقاً همان چیزی که در فصل قبل با <code class="ltr">img[0:3, 0:3]</code> دیدیم.</span>
+        <span class="en">Interesting detail: <code class="ltr">cv2.resize()</code><sup class="fn">8</sup> takes the new absolute size as a tuple <code class="ltr">(width, height)</code>, here, unlike shape, width comes first! And as you can see in the third line, Crop<sup class="fn">10</sup> isn't a special OpenCV function at all, it's just ordinary NumPy array slicing, exactly what we saw in the last chapter with <code class="ltr">img[0:3, 0:3]</code>.</span>
+        <span class="fa">نکته‌ی جالب: <code class="ltr">cv2.resize()</code><sup class="fn">۸</sup> اندازه‌ی مطلق جدید را با یک تاپل <code class="ltr">(عرض, ارتفاع)</code> می‌گیرد (اینجا برخلاف shape، عرض اول است!). و همان‌طور که در خط سوم می‌بینید، Crop<sup class="fn">۱۰</sup> اصلاً یک تابع مخصوص OpenCV نیست، فقط slicing معمولیِ آرایه‌ی NumPy است، دقیقاً همان چیزی که در فصل قبل با <code class="ltr">img[0:3, 0:3]</code> دیدیم.</span>
       </p>
 
       <h3><span class="en">Watch Out for Aspect Ratio</span><span class="fa">مراقب نسبت تصویر (Aspect Ratio) باشید</span></h3>
@@ -321,16 +321,16 @@ resized = cv2.resize(image, (640, new_h))</code></pre>
     <section id="sec-draw">
       <h2><span class="num">5.</span> <span class="en">Drawing Shapes on an Image</span><span class="fa">رسم شکل روی تصویر</span></h2>
       <p>
-        <span class="en">Drawing lines, rectangles, circles, and text on an image is one of the most widely used debugging tools in robot computer vision — for example, drawing a box around an object your algorithm detected.</span>
-        <span class="fa">رسم خط، مستطیل، دایره و متن روی تصویر یکی از پرکاربردترین ابزارهای دیباگ در بینایی ماشین رباتیک است — مثلاً کشیدن یک باکس دور شیئی که الگوریتم تشخیص داده.</span>
+        <span class="en">Drawing lines, rectangles, circles, and text on an image is one of the most widely used debugging tools in robot computer vision, for example, drawing a box around an object your algorithm detected.</span>
+        <span class="fa">رسم خط، مستطیل، دایره و متن روی تصویر یکی از پرکاربردترین ابزارهای دیباگ در بینایی ماشین رباتیک است، مثلاً کشیدن یک باکس دور شیئی که الگوریتم تشخیص داده.</span>
       </p>
       <pre class="ltr"><code>cv2.line(image, (0,0), (200,200), (0,255,0), 2)
 cv2.rectangle(image, (50,50), (300,300), (255,0,0), 3)
 cv2.circle(image, (150,150), 40, (0,0,255), -1)  # -1 means filled
 cv2.putText(image, "Robot", (50,40), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2)</code></pre>
       <p>
-        <span class="en">Remember: colors are always in <code class="ltr">(B, G, R)</code> format, not <code class="ltr">(R, G, B)</code>. For example, <code class="ltr">(0, 255, 0)</code> means pure green, and <code class="ltr">(255, 0, 0)</code> means pure blue — not red!</span>
-        <span class="fa">یادتان باشد: رنگ‌ها همیشه به فرمت <code class="ltr">(B, G, R)</code> هستند، نه <code class="ltr">(R, G, B)</code>. مثلاً <code class="ltr">(0, 255, 0)</code> یعنی سبز خالص، و <code class="ltr">(255, 0, 0)</code> یعنی آبی خالص — نه قرمز!</span>
+        <span class="en">Remember: colors are always in <code class="ltr">(B, G, R)</code> format, not <code class="ltr">(R, G, B)</code>. For example, <code class="ltr">(0, 255, 0)</code> means pure green, and <code class="ltr">(255, 0, 0)</code> means pure blue, not red!</span>
+        <span class="fa">یادتان باشد: رنگ‌ها همیشه به فرمت <code class="ltr">(B, G, R)</code> هستند، نه <code class="ltr">(R, G, B)</code>. مثلاً <code class="ltr">(0, 255, 0)</code> یعنی سبز خالص، و <code class="ltr">(255, 0, 0)</code> یعنی آبی خالص، نه قرمز!</span>
       </p>
       <div class="diagram">
         <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
@@ -365,8 +365,8 @@ cv2.destroyAllWindows()</code></pre>
         <span class="fa">در این کد، <code class="ltr">cv2.VideoCapture(0)</code><sup class="fn">۱۱</sup> دوربین شماره‌ی ۰ (معمولاً وبکم پیش‌فرض سیستم) را باز می‌کند. سپس در یک حلقه‌ی بی‌نهایت، هر بار یک فریم<sup class="fn">۱۲</sup> جدید می‌خوانیم، نمایشش می‌دهیم، و اگر کاربر کلید <code class="ltr">q</code> را بزند، حلقه را می‌شکنیم.</span>
       </p>
       <p>
-        <span class="en">This simple loop is exactly the pattern that later, in Chapter 10, becomes the foundation of a real-time pipeline in real robotics — where every frame from the robot's camera must be processed in a fraction of a second so the robot can make a decision.</span>
-        <span class="fa">این حلقه‌ی ساده، دقیقاً همان الگویی‌ست که بعداً در فصل ۱۰ پایه‌ی یک pipeline بلادرنگ (real-time) در رباتیک واقعی می‌شود — جایی که هر فریم از دوربین ربات باید در کسری از ثانیه پردازش شود تا ربات بتواند تصمیم بگیرد.</span>
+        <span class="en">This simple loop is exactly the pattern that later, in Chapter 10, becomes the foundation of a real-time pipeline in real robotics, where every frame from the robot's camera must be processed in a fraction of a second so the robot can make a decision.</span>
+        <span class="fa">این حلقه‌ی ساده، دقیقاً همان الگویی‌ست که بعداً در فصل ۱۰ پایه‌ی یک pipeline بلادرنگ (real-time) در رباتیک واقعی می‌شود، جایی که هر فریم از دوربین ربات باید در کسری از ثانیه پردازش شود تا ربات بتواند تصمیم بگیرد.</span>
       </p>
     </section>
 
@@ -383,7 +383,7 @@ cv2.destroyAllWindows()</code></pre>
 
 img = cv2.imread("robot.jpg")
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-print(gray.shape)   # just (height, width) — no color channel!
+print(gray.shape)   # just (height, width), no color channel!
 cv2.imwrite("robot_gray.jpg", gray)</code></pre>
           <p style="margin-top:8px">
             <span class="en">Note: the grayscale image's shape has only two numbers, since there's no longer a color channel.</span>
@@ -426,8 +426,8 @@ cv2.destroyAllWindows()</code></pre>
       <div class="box box-mistake">
         <h3><span class="en">⚠ Common Mistake</span><span class="fa">⚠ اشتباه رایج</span></h3>
         <p>
-          <span class="en"><strong>1.</strong> Forgetting <code class="ltr">cv2.waitKey()</code> — without this line, the display window opens and closes immediately, or freezes completely and stops responding.</span>
-          <span class="fa"><strong>۱.</strong> فراموش کردن <code class="ltr">cv2.waitKey()</code> — بدون این خط، پنجره‌ی نمایش تصویر بلافاصله باز و بسته می‌شود یا کاملاً فریز می‌ماند و پاسخگو نیست.</span>
+          <span class="en"><strong>1.</strong> Forgetting <code class="ltr">cv2.waitKey()</code>, without this line, the display window opens and closes immediately, or freezes completely and stops responding.</span>
+          <span class="fa"><strong>۱.</strong> فراموش کردن <code class="ltr">cv2.waitKey()</code>, بدون این خط، پنجره‌ی نمایش تصویر بلافاصله باز و بسته می‌شود یا کاملاً فریز می‌ماند و پاسخگو نیست.</span>
         </p>
         <p>
           <span class="en"><strong>2.</strong> Confusing BGR with RGB when the result is displayed with matplotlib. Since matplotlib expects RGB order, an image taken directly from OpenCV (without conversion) shows up with strange colors (blue and red swapped) in matplotlib.</span>
@@ -440,7 +440,7 @@ cv2.destroyAllWindows()</code></pre>
       <h2><span class="num">8.</span> <span class="en">Glossary</span><span class="fa">واژه‌نامه</span></h2>
       <dl class="gloss">
         <div class="gloss-item"><dt>1. OpenCV</dt><dd><span class="en">An open-source image and video processing library, with a C++ core and a fast Python interface.</span><span class="fa">کتابخانه‌ی متن‌باز پردازش تصویر و ویدیو، با هسته‌ی C++ و رابط پایتونی سریع.</span></dd></div>
-        <div class="gloss-item"><dt>2. BGR</dt><dd><span class="en">OpenCV's default color channel order: blue, green, red — unlike most other tools.</span><span class="fa">ترتیب پیش‌فرض کانال‌های رنگی در OpenCV: آبی، سبز، قرمز — برخلاف اکثر ابزارهای دیگر.</span></dd></div>
+        <div class="gloss-item"><dt>2. BGR</dt><dd><span class="en">OpenCV's default color channel order: blue, green, red, unlike most other tools.</span><span class="fa">ترتیب پیش‌فرض کانال‌های رنگی در OpenCV: آبی، سبز، قرمز، برخلاف اکثر ابزارهای دیگر.</span></dd></div>
         <div class="gloss-item"><dt>3. RGB</dt><dd><span class="en">The common color channel order used by most libraries and displays: red, green, blue.</span><span class="fa">ترتیب رایج کانال‌های رنگی در بیشتر کتابخانه‌ها و نمایشگرها: قرمز، سبز، آبی.</span></dd></div>
         <div class="gloss-item"><dt>4. cvtColor</dt><dd><span class="en">OpenCV's function for converting an image's color space, e.g. from BGR to RGB or from color to grayscale.</span><span class="fa">تابع OpenCV برای تبدیل فضای رنگی یک تصویر، مثلاً از BGR به RGB یا از رنگی به خاکستری.</span></dd></div>
         <div class="gloss-item"><dt>5. imread</dt><dd><span class="en">OpenCV's function for reading an image file from disk as a NumPy array.</span><span class="fa">تابع OpenCV برای خواندن یک فایل تصویر از دیسک به‌صورت آرایه‌ی NumPy.</span></dd></div>
@@ -479,8 +479,8 @@ cv2.destroyAllWindows()</code></pre>
     <div>
       <div class="lbl"><span class="en">Next Chapter</span><span class="fa">فصل بعد</span></div>
       <strong>
-        <span class="en">Chapter 3: Classical Image Processing — filtering, thresholding, and morphology.</span>
-        <span class="fa">فصل ۳: پردازش تصویر کلاسیک — فیلتر، آستانه‌گذاری و مورفولوژی.</span>
+        <span class="en">Chapter 3: Classical Image Processing, filtering, thresholding, and morphology.</span>
+        <span class="fa">فصل ۳: پردازش تصویر کلاسیک، فیلتر، آستانه‌گذاری و مورفولوژی.</span>
       </strong>
     </div>
     <div class="foot-btns">
