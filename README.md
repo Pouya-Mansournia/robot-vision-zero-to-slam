@@ -35,24 +35,45 @@ You should be able to read basic Python. That is the only real requirement. No p
 
 ```mermaid
 flowchart TD
-    subgraph P1["Part 1 - Image Foundations"]
+    subgraph P1["Part 1 · Image Foundations"]
         C1["1. What Is a Digital Image?"] --> C2["2. OpenCV From Scratch"]
     end
-    subgraph P2["Part 2 - Classical Vision"]
+    subgraph P2["Part 2 · Classical Vision"]
         C3["3. Classical Image Processing"] --> C4["4. Edges and Shapes"]
         C4 --> C5["5. Feature Detection & Matching"]
         C5 --> C6["6. Camera Geometry & 3D Vision"]
     end
-    subgraph P3["Part 3 - Deep Learning"]
+    subgraph P3["Part 3 · Deep Learning"]
         C7["7. Object Detection with YOLO"] --> C8["8. Deep Learning for Vision"]
     end
-    subgraph P4["Part 4 - Vision on a Real Robot"]
+    subgraph P4["Part 4 · Vision on a Real Robot"]
         C9["9. Vision for Robotics"] --> C10["10. ROS 2 and Real-Time Vision"]
     end
     C2 --> C3
     C6 --> C7
     C8 --> C9
+
+    classDef found fill:#0e7c86,stroke:#0b5a61,color:#ffffff
+    classDef classic fill:#c76a2e,stroke:#9c5122,color:#ffffff
+    classDef deep fill:#3457a6,stroke:#28407c,color:#ffffff
+    classDef robot fill:#2f8f5b,stroke:#246e46,color:#ffffff
+    class C1,C2 found
+    class C3,C4,C5,C6 classic
+    class C7,C8 deep
+    class C9,C10 robot
+
+    style P1 fill:#e7f2f3,stroke:#0e7c86,color:#0b5a61
+    style P2 fill:#f8ece2,stroke:#c76a2e,color:#9c5122
+    style P3 fill:#e9eef8,stroke:#3457a6,color:#28407c
+    style P4 fill:#e8f3ec,stroke:#2f8f5b,color:#246e46
 ```
+
+<p align="center">
+  <img src="assets/contours-inspection.jpg" alt="Contour extraction on a microscope image of a machined edge, with each contour outlined in red and labelled with its pixel area and solidity" width="47%">
+  <img src="assets/yolo-detection.jpg" alt="A YOLO model detecting a red ball in a rendered scene, drawn with a bounding box labelled 'sports ball 0.41'" width="47%">
+</p>
+
+<p align="center"><sub>Left: contour extraction and shape measurement from the classical-vision chapters. Right: a YOLO detection from Chapter 7.</sub></p>
 
 The order is linear, and `index.html` is the table of contents that links every chapter.
 
