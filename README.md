@@ -147,6 +147,21 @@ All 10 chapters are written and readable in both languages. The code samples are
 
 No license has been chosen yet. Until a `LICENSE` file is here, "free" means free to read, not a grant of reuse rights. A Creative Commons license for the prose is the likely direction.
 
+## Citing this book
+
+This repository is archived on Zenodo with a DOI, so it can be cited in academic work.
+
+- Repository: [Pouya-Mansournia/robot-vision-zero-to-slam](https://github.com/Pouya-Mansournia/robot-vision-zero-to-slam)
+- Latest release: `1.0.0`
+- DOI: [10.5281/zenodo.22293496](https://doi.org/10.5281/zenodo.22293496)
+
+## Open-source projects from this book
+
+These repositories were written from the material in this book, as worked examples of the pipeline it teaches:
+
+- [vision-gesture-control](https://github.com/Pouya-Mansournia/vision-gesture-control) - hand-gesture control built on the classical and detection chapters.
+- [football-ball-tracker](https://github.com/Pouya-Mansournia/football-ball-tracker) - ball detection and tracking built on the feature-matching, detection, and tracking chapters.
+
 ## Contributing
 
 Corrections and clearer explanations are welcome. Open an issue that names the chapter, the section, and what is wrong or unclear, or send a pull request with the fix. One rule matters more than the rest: a change to any passage has to update both the English and the Persian version in the same pull request. See [CONTRIBUTING.md](CONTRIBUTING.md) for the details.
