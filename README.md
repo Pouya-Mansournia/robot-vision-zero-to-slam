@@ -6,6 +6,8 @@
 
 This is a free book about computer vision for robotics, written in English and Persian. It starts from a question most tutorials skip, "what is a digital image, really?", and does not stop until you have followed the whole path to Visual SLAM and ROS 2.
 
+**Read it online: <https://pouya-mansournia.github.io/robot-vision-zero-to-slam/>**
+
 ![Chapters](https://img.shields.io/badge/chapters-10-0e7c86)
 ![Languages](https://img.shields.io/badge/languages-English%20%2B%20%D9%81%D8%A7%D8%B1%D8%B3%DB%8C-c76a2e)
 ![Format](https://img.shields.io/badge/format-static%20HTML-3457a6)
@@ -102,13 +104,13 @@ The header has two toggles, one for English and Persian, one for light and dark.
 
 ## Reading online
 
-Because the book is just static pages, it runs as a GitHub Pages site with no configuration. Turn on Pages in the repository settings, with branch `main` and the root folder, and it will be served here:
+The book is live as a GitHub Pages site, served straight from the `main` branch with no build step:
 
 ```
 https://pouya-mansournia.github.io/robot-vision-zero-to-slam/
 ```
 
-Until that is on, clone or download the repository and open the files locally:
+You can also clone or download the repository and open the files locally:
 
 ```bash
 git clone https://github.com/Pouya-Mansournia/robot-vision-zero-to-slam.git
