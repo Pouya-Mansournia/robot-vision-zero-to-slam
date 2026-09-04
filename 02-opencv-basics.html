@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
 (function(){
-  var saved = localStorage.getItem('cvbook-lang');
-  var lang = saved === 'fa' ? 'fa' : 'en';
+  var lang = 'en';
   document.documentElement.lang = lang;
   document.documentElement.dir = lang === 'fa' ? 'rtl' : 'ltr';
 })();
@@ -507,7 +506,6 @@ document.getElementById('langToggle').addEventListener('click', function(){
   var next = document.documentElement.lang === 'fa' ? 'en' : 'fa';
   document.documentElement.lang = next;
   document.documentElement.dir = next === 'fa' ? 'rtl' : 'ltr';
-  localStorage.setItem('cvbook-lang', next);
 });
 document.getElementById('themeToggle').addEventListener('click', function(){
   var current = document.documentElement.getAttribute('data-theme');

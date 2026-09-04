@@ -13,6 +13,7 @@ This is a free book about computer vision for robotics, written in English and P
 ![Format](https://img.shields.io/badge/format-static%20HTML-3457a6)
 ![Build](https://img.shields.io/badge/build-none-brightgreen)
 ![License](https://img.shields.io/badge/license-not%20yet%20chosen-lightgrey)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.22293496-1682d4)](https://doi.org/10.5281/zenodo.22293496)
 
 The whole book is plain HTML. There is nothing to install and nothing to build. You open a file in a browser and read it, or you read it online once GitHub Pages is turned on.
 
